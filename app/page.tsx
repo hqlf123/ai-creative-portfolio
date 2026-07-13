@@ -18,6 +18,8 @@ type Project = {
   deliverable: string;
 };
 
+const asset = (filename: string) => `${import.meta.env.BASE_URL}assets/${filename}`;
+
 const projects: Project[] = [
   {
     id: "headphones",
@@ -26,8 +28,8 @@ const projects: Project[] = [
     english: "HEADPHONE COMMERCIAL FILM",
     category: "AI 动态影像 / 产品广告",
     year: "2026",
-    cover: "/assets/hero-headphones-poster.jpg",
-    video: "/assets/hero-headphones.mp4",
+    cover: asset("hero-headphones-poster.jpg"),
+    video: asset("hero-headphones.mp4"),
     layout: "wide",
     position: "center",
     summary: "以微距材质、精密结构与低照度氛围，建立高端头戴耳机的科技感与听觉想象。",
@@ -41,8 +43,8 @@ const projects: Project[] = [
     english: "ORIGINAL MECHA TOY",
     category: "概念设计 / AI 广告",
     year: "2026",
-    cover: "/assets/mecha-toy-poster.jpg",
-    video: "/assets/mecha-toy.mp4",
+    cover: asset("mecha-toy-poster.jpg"),
+    video: asset("mecha-toy.mp4"),
     summary: "从原创机甲设定到战场叙事，用统一的机械语言完成角色、世界观与产品广告表达。",
     role: "世界观设定 · 视觉开发 · 成片",
     deliverable: "原创玩具广告",
@@ -54,8 +56,8 @@ const projects: Project[] = [
     english: "SHISHANJU RETREAT",
     category: "空间叙事 / 民宿广告",
     year: "2026",
-    cover: "/assets/shishanju-poster.jpg",
-    video: "/assets/shishanju.mp4",
+    cover: asset("shishanju-poster.jpg"),
+    video: asset("shishanju.mp4"),
     summary: "以克制、温暖的东方生活感组织空间镜头，让一座民宿从建筑变成可被向往的旅居体验。",
     role: "视觉提案 · 场景生成 · 影片制作",
     deliverable: "品牌形象片",
@@ -67,7 +69,7 @@ const projects: Project[] = [
     english: "VITARA X1 PRO",
     category: "电商视觉 / 详情页",
     year: "2026",
-    cover: "/assets/phone-detail.webp",
+    cover: asset("phone-detail.webp"),
     layout: "tall",
     position: "center top",
     summary: "围绕影像、性能与旗舰工艺重组信息层级，建立从首屏冲击到参数说服的完整电商叙事。",
@@ -81,7 +83,7 @@ const projects: Project[] = [
     english: "BRAND IP SYSTEM",
     category: "品牌设计 / IP 全案",
     year: "2024",
-    cover: "/assets/dumpling-ip-cover.webp",
+    cover: asset("dumpling-ip-cover.webp"),
     position: "center",
     summary: "把亲切的社交语义转化成可识别、可延展的饺子 IP，覆盖品牌角色、语言与传播应用。",
     role: "品牌策略 · IP 设计 · 应用延展",
@@ -94,7 +96,7 @@ const projects: Project[] = [
     english: "EDITORIAL COVER STUDY",
     category: "平面设计 / 封面实验",
     year: "2026",
-    cover: "/assets/magazine-cover.webp",
+    cover: asset("magazine-cover.webp"),
     layout: "tall",
     position: "center 18%",
     summary: "以复古雕版、东方祝愿与当代版式构成高密度视觉封面，探索传统意象的现代转译。",
@@ -187,8 +189,8 @@ export default function Home() {
       <section className="hero" id="top">
         <video
           className="hero-video"
-          src="/assets/hero-headphones.mp4"
-          poster="/assets/hero-headphones-poster.jpg"
+          src={asset("hero-headphones.mp4")}
+          poster={asset("hero-headphones-poster.jpg")}
           autoPlay
           muted
           loop
@@ -233,7 +235,7 @@ export default function Home() {
           </div>
           <div className="profile-body">
             <figure className="profile-portrait">
-              <img src="/assets/book-cover.webp" alt="人物视觉作品《澄心》局部" />
+              <img src={asset("book-cover.webp")} alt="人物视觉作品《澄心》局部" />
               <figcaption><span>PROFILE VISUAL / 01</span><span>FROM “澄心”</span></figcaption>
             </figure>
             <div className="profile-copy">

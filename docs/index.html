@@ -1,91 +1,15 @@
 <!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="专注多模态创作、生成式设计与 AI 产品表达的个人作品集。">
-  <title>AI Creative Portfolio — 创意技术作品集</title>
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./app.js" defer></script>
-</head>
-<body>
-  <main>
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="返回首页"><span class="brand-mark">AI</span><span>CREATIVE<br>TECHNOLOGIST</span></a>
-      <nav aria-label="主导航"><a href="#works">作品</a><a href="#about">关于</a><a href="#contact">联系</a></nav>
-      <a class="header-cta" href="#contact">LET'S TALK <span aria-hidden="true">↗</span></a>
-    </header>
-
-    <section class="hero" id="top">
-      <div class="hero-kicker"><span class="status-dot"></span> AVAILABLE FOR 2026</div>
-      <h1>把模型能力<br>变成<span class="outline-word">可感知</span>的作品。</h1>
-      <div class="hero-bottom"><p>AI 创意技术 / 视觉叙事 / 产品表达<br>从研究、提示工程到最终交付。</p><a class="round-link" href="#works" aria-label="浏览作品">↗</a></div>
-      <div class="hero-index" aria-hidden="true">PORTFOLIO — 26</div>
-    </section>
-
-    <section class="manifesto" id="about">
-      <div class="section-label"><span>01</span> / PROFILE</div>
-      <div class="manifesto-copy"><p>我不只会“调用 AI”。</p><p class="muted">我把复杂模型变成清晰的创作方法，</p><p>让技术真正服务于叙事、审美与决策。</p></div>
-      <div class="profile-meta">
-        <div><span>FOCUS</span><b>多模态创作<br>生成式设计</b></div>
-        <div><span>STACK</span><b>LLM / IMAGE<br>VIDEO / AGENTS</b></div>
-        <div><span>BASED</span><b>CHINA<br>REMOTE READY</b></div>
-      </div>
-    </section>
-
-    <section class="works" id="works">
-      <div class="works-head">
-        <div><div class="section-label"><span>02</span> / SELECTED WORKS</div><h2>精选作品</h2></div>
-        <div class="filters" role="group" aria-label="筛选作品">
-          <button class="active" data-filter="全部">全部<sup>6</sup></button><button data-filter="视频">视频<sup>2</sup></button><button data-filter="图像">图像<sup>2</sup></button><button data-filter="PPTX">PPTX<sup>2</sup></button>
-        </div>
-      </div>
-      <div class="project-grid">
-        <article class="project-card" data-category="图像">
-          <button class="visual-button" data-project="pjsk" aria-label="查看多模态世界角色系统详情"><div class="project-visual visual-system"><img class="static-image" src="./work-world.png" alt="多模态世界角色系统作品预览"><span class="visual-code">01 / 图像</span></div><span class="view-pill">VIEW CASE ↗</span></button>
-          <div class="project-info"><span>01</span><div><h3>多模态世界角色系统</h3><p>MULTIMODAL WORLD BUILDING</p></div><time>2026</time></div>
-        </article>
-        <article class="project-card" data-category="视频">
-          <button class="visual-button" data-project="future-film" aria-label="查看算法之后创意之前详情"><div class="project-visual visual-video"><div class="video-orbit orbit-one"></div><div class="video-orbit orbit-two"></div><div class="play"><span>▶</span></div><div class="video-time">00:48</div><div class="visual-code">02 / MOTION</div></div><span class="view-pill">VIEW CASE ↗</span></button>
-          <div class="project-info"><span>02</span><div><h3>算法之后，创意之前</h3><p>AFTER THE ALGORITHM</p></div><time>2026</time></div>
-        </article>
-        <article class="project-card" data-category="图像">
-          <button class="visual-button" data-project="poster" aria-label="查看未知字体实验详情"><div class="project-visual visual-image"><img class="static-image" src="./work-poster.png" alt="未知字体实验作品预览"><span class="visual-code">03 / 图像</span></div><span class="view-pill">VIEW CASE ↗</span></button>
-          <div class="project-info"><span>03</span><div><h3>未知字体实验</h3><p>UNKNOWN TYPE STUDY</p></div><time>2026</time></div>
-        </article>
-        <article class="project-card" data-category="PPTX">
-          <button class="visual-button" data-project="ai-deck" aria-label="查看AI产品策略提案详情"><div class="project-visual visual-deck"><div class="deck-slide deck-back"><span>04</span></div><div class="deck-slide deck-middle"><i></i></div><div class="deck-slide deck-front"><small>AI / 2026</small><strong>AI PRODUCT STRATEGY</strong><div class="deck-rule"></div></div><div class="visual-code">04 / DECK</div></div><span class="view-pill">VIEW CASE ↗</span></button>
-          <div class="project-info"><span>04</span><div><h3>AI 产品策略提案</h3><p>AI PRODUCT STRATEGY</p></div><time>2026</time></div>
-        </article>
-        <article class="project-card" data-category="视频">
-          <button class="visual-button" data-project="motion" aria-label="查看生成式动态视觉详情"><div class="project-visual visual-video"><div class="video-orbit orbit-one"></div><div class="video-orbit orbit-two"></div><div class="play"><span>▶</span></div><div class="video-time">01:26</div><div class="visual-code">05 / MOTION</div></div><span class="view-pill">VIEW CASE ↗</span></button>
-          <div class="project-info"><span>05</span><div><h3>生成式动态视觉</h3><p>GENERATIVE MOTION STUDY</p></div><time>2025</time></div>
-        </article>
-        <article class="project-card" data-category="PPTX">
-          <button class="visual-button" data-project="research" aria-label="查看多智能体研究报告详情"><div class="project-visual visual-deck"><div class="deck-slide deck-back"><span>06</span></div><div class="deck-slide deck-middle"><i></i></div><div class="deck-slide deck-front"><small>AI / 2025</small><strong>MULTI-AGENT RESEARCH</strong><div class="deck-rule"></div></div><div class="visual-code">06 / DECK</div></div><span class="view-pill">VIEW CASE ↗</span></button>
-          <div class="project-info"><span>06</span><div><h3>多智能体研究报告</h3><p>MULTI-AGENT RESEARCH</p></div><time>2025</time></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="process">
-      <div class="section-label"><span>03</span> / HOW I WORK</div><h2>不是黑箱，<br>是可复用的方法。</h2>
-      <ol>
-        <li><span>01</span><div><b>定义问题</b><small>CONTEXT &amp; QUESTION</small></div><p>先确认作品要改变谁的认知，以及用什么证据判断它有效。</p></li>
-        <li><span>02</span><div><b>设计系统</b><small>WORKFLOW &amp; CONTROL</small></div><p>把模型、提示、素材和人工判断组织成稳定且可迭代的工作流。</p></li>
-        <li><span>03</span><div><b>交付表达</b><small>CRAFT &amp; DELIVERY</small></div><p>让每一个镜头、画面和页面都经得起审美与业务目标的检验。</p></li>
-      </ol>
-    </section>
-
-    <footer id="contact">
-      <div class="footer-status"><span class="status-dot"></span> 接受实习、合作与有趣的问题</div><h2>一起做点<br><i>新东西。</i></h2>
-      <a class="email-link" href="mailto:hello@example.com">HELLO@EXAMPLE.COM <span>↗</span></a>
-      <div class="footer-bottom"><span>© 2026 AI CREATIVE PORTFOLIO</span><div><a href="#top">小红书</a><a href="#top">BILIBILI</a><a href="#top">返回顶部 ↑</a></div></div>
-    </footer>
-
-    <div class="modal-backdrop" hidden>
-      <section class="case-modal" role="dialog" aria-modal="true" aria-labelledby="case-title"><button class="modal-close" aria-label="关闭详情">×</button><div class="modal-number"></div><h2 id="case-title"></h2><p class="modal-en"></p><p class="modal-desc"></p><div class="modal-stats"><div><span>我的角色</span><b>研究 · 创意 · 制作</b></div><div><span>工具与方法</span><b class="modal-tools"></b></div><div><span>成果</span><b class="modal-metric"></b></div></div><button class="next-case">下一个项目 <span>→</span></button></section>
-    </div>
-  </main>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0d0e" />
+    <meta name="description" content="聚焦 AI 动态影像、品牌系统与商业视觉的个人设计作品集。" />
+    <title>视觉设计师 / AI 设计师 / 品牌设计师作品集</title>
+    <script type="module" crossorigin src="/ai-creative-portfolio/assets/index-Dz1Nxx54.js"></script>
+    <link rel="stylesheet" crossorigin href="/ai-creative-portfolio/assets/index-D0FtVJTk.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
