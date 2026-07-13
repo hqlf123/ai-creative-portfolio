@@ -1,6 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+
+type ProjectGroup = "动态影像" | "商业详情" | "品牌全案" | "平面设计";
+type MediaType = "video" | "image" | "pages";
 
 type Project = {
   id: string;
@@ -8,10 +11,16 @@ type Project = {
   title: string;
   english: string;
   category: string;
+  group: ProjectGroup;
   year: string;
   cover: string;
-  video?: string;
-  layout?: "wide" | "tall";
+  media: MediaType;
+  source?: string;
+  pagePrefix?: string;
+  pageCount?: number;
+  featured?: boolean;
+  long?: boolean;
+  portrait?: boolean;
   position?: string;
   summary: string;
   role: string;
@@ -27,14 +36,15 @@ const projects: Project[] = [
     title: "声场之外",
     english: "HEADPHONE COMMERCIAL FILM",
     category: "AI 动态影像 / 产品广告",
+    group: "动态影像",
     year: "2026",
     cover: asset("hero-headphones-poster.jpg"),
-    video: asset("hero-headphones.mp4"),
-    layout: "wide",
-    position: "center",
+    media: "video",
+    source: asset("hero-headphones.mp4"),
+    featured: true,
     summary: "以微距材质、精密结构与低照度氛围，建立高端头戴耳机的科技感与听觉想象。",
     role: "创意概念 · AI 视觉 · 动态剪辑",
-    deliverable: "品牌广告片",
+    deliverable: "16 秒品牌广告片",
   },
   {
     id: "mecha",
@@ -42,110 +52,470 @@ const projects: Project[] = [
     title: "钢铁人格",
     english: "ORIGINAL MECHA TOY",
     category: "概念设计 / AI 广告",
+    group: "动态影像",
     year: "2026",
     cover: asset("mecha-toy-poster.jpg"),
-    video: asset("mecha-toy.mp4"),
+    media: "video",
+    source: asset("mecha-toy.mp4"),
+    featured: true,
     summary: "从原创机甲设定到战场叙事，用统一的机械语言完成角色、世界观与产品广告表达。",
     role: "世界观设定 · 视觉开发 · 成片",
-    deliverable: "原创玩具广告",
+    deliverable: "33 秒原创玩具广告",
   },
   {
-    id: "shishanju",
+    id: "shishanju-film",
     index: "03",
     title: "住进秋天",
-    english: "SHISHANJU RETREAT",
+    english: "SHISHANJU RETREAT FILM",
     category: "空间叙事 / 民宿广告",
+    group: "动态影像",
     year: "2026",
     cover: asset("shishanju-poster.jpg"),
-    video: asset("shishanju.mp4"),
+    media: "video",
+    source: asset("shishanju.mp4"),
+    featured: true,
     summary: "以克制、温暖的东方生活感组织空间镜头，让一座民宿从建筑变成可被向往的旅居体验。",
     role: "视觉提案 · 场景生成 · 影片制作",
-    deliverable: "品牌形象片",
+    deliverable: "23 秒品牌形象片",
   },
   {
-    id: "phone",
+    id: "phone-detail",
     index: "04",
     title: "未来影像",
     english: "VITARA X1 PRO",
-    category: "电商视觉 / 详情页",
+    category: "电商视觉 / 手机详情页",
+    group: "商业详情",
     year: "2026",
     cover: asset("phone-detail.webp"),
-    layout: "tall",
+    media: "image",
+    featured: true,
+    long: true,
     position: "center top",
     summary: "围绕影像、性能与旗舰工艺重组信息层级，建立从首屏冲击到参数说服的完整电商叙事。",
     role: "视觉策略 · 页面设计 · AI 制图",
-    deliverable: "产品详情页",
+    deliverable: "完整手机产品详情页",
   },
   {
-    id: "dumpling",
+    id: "dumpling-ip",
     index: "05",
     title: "饺个朋友",
     english: "BRAND IP SYSTEM",
     category: "品牌设计 / IP 全案",
+    group: "品牌全案",
     year: "2024",
     cover: asset("dumpling-ip-cover.webp"),
-    position: "center",
-    summary: "把亲切的社交语义转化成可识别、可延展的饺子 IP，覆盖品牌角色、语言与传播应用。",
+    media: "pages",
+    pagePrefix: "dumpling-ip",
+    pageCount: 17,
+    featured: true,
+    summary: "把亲切的社交语义转化成可识别、可延展的饺子 IP，覆盖品牌策略、角色、语言与传播应用。",
     role: "品牌策略 · IP 设计 · 应用延展",
-    deliverable: "17P 品牌全案",
+    deliverable: "17 页品牌全案",
   },
   {
-    id: "editorial",
+    id: "magazine-cover",
     index: "06",
     title: "事事如意",
     english: "EDITORIAL COVER STUDY",
-    category: "平面设计 / 封面实验",
+    category: "平面设计 / 杂志封面",
+    group: "平面设计",
     year: "2026",
     cover: asset("magazine-cover.webp"),
-    layout: "tall",
+    media: "image",
+    featured: true,
+    long: true,
     position: "center 18%",
     summary: "以复古雕版、东方祝愿与当代版式构成高密度视觉封面，探索传统意象的现代转译。",
     role: "艺术指导 · 版式设计 · AI 插画",
-    deliverable: "杂志封面",
+    deliverable: "完整杂志封面设计",
+  },
+  {
+    id: "coldx-detail",
+    index: "07",
+    title: "冷萃工坊",
+    english: "COLD-X PRODUCT DETAIL",
+    category: "电商视觉 / 产品详情页",
+    group: "商业详情",
+    year: "2026",
+    cover: asset("coldx-cover.webp"),
+    media: "pages",
+    pagePrefix: "coldx",
+    pageCount: 11,
+    summary: "围绕快速冷萃、大容量、易清洁和智能操作建立完整卖点链路，形成清晰的家电详情页节奏。",
+    role: "信息梳理 · AI 制图 · 页面设计",
+    deliverable: "11 页完整产品详情",
+  },
+  {
+    id: "mouse-detail",
+    index: "08",
+    title: "灵动掌控",
+    english: "AURORA M7 DETAIL PAGE",
+    category: "电商视觉 / 鼠标详情页",
+    group: "商业详情",
+    year: "2026",
+    cover: asset("mouse-detail.webp"),
+    media: "image",
+    long: true,
+    position: "center top",
+    summary: "从传感器性能、连接方式到握持体验与使用场景，完成一条兼顾科技感和购买说服的页面叙事。",
+    role: "卖点规划 · 页面设计 · 产品视觉",
+    deliverable: "完整鼠标产品详情页",
+  },
+  {
+    id: "shishanju-visual",
+    index: "09",
+    title: "柿山居",
+    english: "HOMESTAY VISUAL PROPOSAL",
+    category: "品牌视觉 / 空间提案",
+    group: "商业详情",
+    year: "2026",
+    cover: asset("homestay-visual.webp"),
+    media: "image",
+    long: true,
+    position: "center top",
+    summary: "以居、憩、栖、浴、庭、食、途、望、读、归十个空间切片，构建温润安静的民宿视觉语言。",
+    role: "视觉概念 · 场景设计 · 提案编排",
+    deliverable: "完整民宿视觉提案长图",
+  },
+  {
+    id: "book-cover",
+    index: "10",
+    title: "澄心",
+    english: "BOOK COVER DESIGN",
+    category: "平面设计 / 书籍封面",
+    group: "平面设计",
+    year: "2026",
+    cover: asset("book-cover.webp"),
+    media: "image",
+    summary: "以墨绿、橙色和静坐人物形成克制的精神气质，让东方内观主题在当代书籍语境中成立。",
+    role: "艺术指导 · 插画 · 版式设计",
+    deliverable: "完整书籍封面展开图",
+  },
+  {
+    id: "hosiery-film",
+    index: "11",
+    title: "轻奢触感",
+    english: "LEGWEAR COMMERCIAL",
+    category: "时尚产品 / 短视频广告",
+    group: "动态影像",
+    year: "2026",
+    cover: asset("hosiery-poster.jpg"),
+    media: "video",
+    source: asset("hosiery.mp4"),
+    summary: "通过开箱、材质与触感细节建立轻奢氛围，在短时长内完成产品质感表达。",
+    role: "创意 · AI 画面 · 剪辑",
+    deliverable: "15 秒产品广告",
+  },
+  {
+    id: "game-wholesale",
+    index: "12",
+    title: "一键升级",
+    english: "GAME UA CREATIVE",
+    category: "游戏买量 / 效果广告",
+    group: "动态影像",
+    year: "2026",
+    cover: asset("game-wholesale-poster.jpg"),
+    media: "video",
+    source: asset("game-wholesale.mp4"),
+    portrait: true,
+    summary: "以直接冲突、即时反馈和升级爽点组织竖屏买量节奏，让信息在前三秒快速成立。",
+    role: "买量创意 · 画面生成 · 剪辑",
+    deliverable: "15 秒竖屏买量广告",
+  },
+  {
+    id: "power-bank",
+    index: "13",
+    title: "随身能量",
+    english: "POWER BANK SOCIAL AD",
+    category: "数码产品 / 社交广告",
+    group: "动态影像",
+    year: "2026",
+    cover: asset("power-bank-poster.jpg"),
+    media: "video",
+    source: asset("power-bank.mp4"),
+    portrait: true,
+    summary: "以生活场景切入便携充电需求，用人物演示快速连接产品功能与真实使用情境。",
+    role: "脚本 · AI 人物 · 成片",
+    deliverable: "15 秒竖屏产品广告",
+  },
+  {
+    id: "chicken-feet",
+    index: "14",
+    title: "一口上头",
+    english: "SNACK FOOD SHORT AD",
+    category: "食品饮料 / 效果广告",
+    group: "动态影像",
+    year: "2026",
+    cover: asset("chicken-feet-poster.jpg"),
+    media: "video",
+    source: asset("chicken-feet.mp4"),
+    portrait: true,
+    summary: "以夸张人物反应、口味提示与产品特写形成高密度节奏，强化零食的即时诱惑。",
+    role: "创意脚本 · AI 表演 · 剪辑",
+    deliverable: "15 秒竖屏食品广告",
+  },
+  {
+    id: "hanging-sword",
+    index: "15",
+    title: "悬剑劫",
+    english: "WUXIA CINEMATIC",
+    category: "叙事影像 / 武侠概念片",
+    group: "动态影像",
+    year: "2026",
+    cover: asset("hanging-sword-poster.jpg"),
+    media: "video",
+    source: asset("hanging-sword.mp4"),
+    summary: "以荒漠、悬剑与江湖危机建立武侠世界观，完成长时叙事、镜头衔接与氛围统一。",
+    role: "世界观 · 分镜 · AI 影片",
+    deliverable: "172 秒完整武侠概念片",
+  },
+  {
+    id: "pocket-fighter",
+    index: "16",
+    title: "口袋小斗",
+    english: "POCKET FIGHTER CAMPAIGN",
+    category: "怀旧数码 / 产品广告",
+    group: "动态影像",
+    year: "2026",
+    cover: asset("pocket-fighter-poster.jpg"),
+    media: "video",
+    source: asset("pocket-fighter.mp4"),
+    portrait: true,
+    summary: "以真人口播与掌机演示连接怀旧情绪和即玩卖点，形成轻快、直接的社交平台表达。",
+    role: "脚本 · AI 人物 · 产品呈现",
+    deliverable: "17 秒竖屏产品广告",
+  },
+  {
+    id: "wilderness-journey",
+    index: "17",
+    title: "风野牧旅",
+    english: "WILDERNESS JOURNEY",
+    category: "文旅影像 / 人群适配",
+    group: "动态影像",
+    year: "2026",
+    cover: asset("wilderness-journey-poster.jpg"),
+    media: "video",
+    source: asset("wilderness-journey.mp4"),
+    portrait: true,
+    summary: "以第一视角自然行走和舒缓节奏适配中年受众，传递远离喧嚣、回到旷野的旅行感受。",
+    role: "受众适配 · 画面设计 · 成片",
+    deliverable: "53 秒竖屏文旅影像",
+  },
+  {
+    id: "warm-grandma",
+    index: "18",
+    title: "奶奶的小故事",
+    english: "A WARM GRANDMA STORY",
+    category: "情感叙事 / 抖音短片",
+    group: "动态影像",
+    year: "2026",
+    cover: asset("warm-grandma-poster.jpg"),
+    media: "video",
+    source: asset("warm-grandma.mp4"),
+    portrait: true,
+    summary: "以温馨家庭叙事与生活细节承载情绪，在短视频语境里完成有起伏、有落点的小故事。",
+    role: "故事脚本 · AI 人物 · 剪辑",
+    deliverable: "38 秒竖屏情感短片",
+  },
+  {
+    id: "ai-news",
+    index: "19",
+    title: "AI 时代观察",
+    english: "AI NEWS EDITORIAL",
+    category: "资讯内容 / 自媒体视频",
+    group: "动态影像",
+    year: "2026",
+    cover: asset("ai-news-poster.jpg"),
+    media: "video",
+    source: asset("ai-news.mp4"),
+    summary: "以报刊拼贴、资料画面和信息字幕构成新闻语法，提升复杂议题的观看节奏与可信感。",
+    role: "内容包装 · 视觉素材 · 后期",
+    deliverable: "82 秒资讯成片",
+  },
+  {
+    id: "fantasy-arena",
+    index: "20",
+    title: "虚幻竞技场",
+    english: "FANTASY ARENA",
+    category: "概念影像 / 游戏世界观",
+    group: "动态影像",
+    year: "2026",
+    cover: asset("fantasy-arena-poster.jpg"),
+    media: "video",
+    source: asset("fantasy-arena.mp4"),
+    summary: "围绕废土竞技与机械生命建立高强度视觉世界，通过长时镜头组织强化电影化沉浸感。",
+    role: "概念设定 · AI 视觉 · 长片剪辑",
+    deliverable: "110 秒完整概念片",
+  },
+  {
+    id: "green-soda",
+    index: "21",
+    title: "青提气泡",
+    english: "GREEN GRAPE SODA",
+    category: "食品饮料 / 产品广告",
+    group: "动态影像",
+    year: "2026",
+    cover: asset("green-soda-poster.jpg"),
+    media: "video",
+    source: asset("green-soda.mp4"),
+    summary: "用水汽、青提与罐身特写建立清爽口感，将色彩和声音节奏集中在一支短时产品片中。",
+    role: "产品视觉 · AI 生成 · 剪辑",
+    deliverable: "13 秒饮料广告",
+  },
+  {
+    id: "dumpling-film",
+    index: "22",
+    title: "饺个朋友品牌片",
+    english: "DUMPLING BRAND FILM",
+    category: "品牌 IP / 动态广告",
+    group: "动态影像",
+    year: "2024",
+    cover: asset("dumpling-brand-poster.jpg"),
+    media: "video",
+    source: asset("dumpling-brand.mp4"),
+    summary: "让品牌 IP 从静态设定进入真实产品与餐饮场景，完成角色亲和力和品牌记忆的动态延展。",
+    role: "IP 动态化 · 场景生成 · 成片",
+    deliverable: "17 秒品牌广告",
   },
 ];
 
 const strengths = [
-  {
-    number: "01",
-    title: "AI 影像导演力",
-    english: "AI MOTION DIRECTION",
-    copy: "从创意概念、分镜、画面生成到节奏剪辑，让每一次生成都服务于明确的导演意图。",
-    tags: ["SCRIPT", "STORYBOARD", "VIDEO GEN", "EDIT"],
-  },
-  {
-    number: "02",
-    title: "品牌系统化",
-    english: "BRAND SYSTEMS",
-    copy: "把定位、视觉语言、IP 角色与应用延展组织成一致的品牌体验，而不是零散的漂亮画面。",
-    tags: ["STRATEGY", "IDENTITY", "IP", "GUIDELINE"],
-  },
-  {
-    number: "03",
-    title: "商业视觉落地",
-    english: "COMMERCIAL CRAFT",
-    copy: "理解卖点、信息层级与转化目标，在审美与商业效率之间找到清晰、可执行的解法。",
-    tags: ["E-COMMERCE", "CAMPAIGN", "KEY VISUAL"],
-  },
-  {
-    number: "04",
-    title: "跨媒介工作流",
-    english: "MULTI-MODAL WORKFLOW",
-    copy: "灵活组合图像、视频、文字与模型能力，建立稳定、可复用、能持续迭代的创作流程。",
-    tags: ["IMAGE", "VIDEO", "LLM", "WORKFLOW"],
-  },
+  { number: "01", title: "AI 影像导演力", english: "AI MOTION DIRECTION", copy: "从创意概念、分镜、画面生成到节奏剪辑，让每一次生成都服务于明确的导演意图。", tags: ["SCRIPT", "STORYBOARD", "VIDEO GEN", "EDIT"] },
+  { number: "02", title: "品牌系统化", english: "BRAND SYSTEMS", copy: "把定位、视觉语言、IP 角色与应用延展组织成一致的品牌体验，而不是零散的漂亮画面。", tags: ["STRATEGY", "IDENTITY", "IP", "GUIDELINE"] },
+  { number: "03", title: "商业视觉落地", english: "COMMERCIAL CRAFT", copy: "理解卖点、信息层级与转化目标，在审美与商业效率之间找到清晰、可执行的解法。", tags: ["E-COMMERCE", "CAMPAIGN", "KEY VISUAL"] },
+  { number: "04", title: "跨媒介工作流", english: "MULTI-MODAL WORKFLOW", copy: "灵活组合图像、视频、文字与模型能力，建立稳定、可复用、能持续迭代的创作流程。", tags: ["IMAGE", "VIDEO", "LLM", "WORKFLOW"] },
 ];
+
+const filters: Array<"全部" | ProjectGroup> = ["全部", "动态影像", "商业详情", "品牌全案", "平面设计"];
 
 function Arrow() {
   return <span aria-hidden="true">↗</span>;
 }
 
-export default function Home() {
-  const [selected, setSelected] = useState<Project | null>(null);
-  const [scrolled, setScrolled] = useState(false);
-  const [progress, setProgress] = useState(0);
+function ProjectCard({ project }: { project: Project }) {
+  return (
+    <article className={`project-card ${project.id === "headphones" ? "is-wide" : ""}`}>
+      <a className="project-media" href={`#case/${project.id}`} aria-label={`查看完整项目：${project.title}`}>
+        <img src={project.cover} alt={`${project.title}项目封面`} style={{ objectPosition: project.position }} />
+        <span className="project-index">CASE / {project.index}</span>
+        {project.media === "video" && <span className="play-badge"><i>▶</i> PLAY FULL FILM</span>}
+        {project.media === "pages" && <span className="play-badge"><i>＋</i> ALL {project.pageCount} PAGES</span>}
+        {project.media === "image" && project.long && <span className="play-badge"><i>↓</i> FULL LENGTH</span>}
+        <span className="open-project">VIEW COMPLETE CASE <Arrow /></span>
+      </a>
+      <div className="project-meta">
+        <div><h3>{project.title}</h3><p>{project.english}</p></div>
+        <div><span>{project.category}</span><time>{project.year}</time></div>
+      </div>
+    </article>
+  );
+}
+
+function ArchiveCard({ project }: { project: Project }) {
+  return (
+    <article className={`archive-card ${project.portrait ? "is-portrait" : ""}`}>
+      <a className="archive-media" href={`#case/${project.id}`} aria-label={`打开完整项目：${project.title}`}>
+        <img src={project.cover} alt={`${project.title}项目封面`} style={{ objectPosition: project.position }} />
+        <span className="archive-number">{project.index}</span>
+        <span className="archive-type">{project.media === "video" ? "FULL FILM" : project.media === "pages" ? `${project.pageCount} PAGES` : "FULL IMAGE"}</span>
+        <span className="archive-arrow"><Arrow /></span>
+      </a>
+      <div className="archive-meta">
+        <div><h3>{project.title}</h3><p>{project.english}</p></div>
+        <span>{project.group}</span>
+      </div>
+    </article>
+  );
+}
+
+function CaseScene({ project }: { project: Project }) {
+  const projectIndex = projects.findIndex((item) => item.id === project.id);
+  const nextProject = projects[(projectIndex + 1) % projects.length];
+  const pages = project.pageCount
+    ? Array.from({ length: project.pageCount }, (_, index) => asset(`case-pages/${project.pagePrefix}-${index + 1 < 10 ? "0" : ""}${index + 1}.webp`))
+    : [];
 
   useEffect(() => {
+    document.title = `${project.title} — 完整案例`;
+    window.scrollTo(0, 0);
+    return () => { document.title = "视觉设计师 / AI 设计师 / 品牌设计师作品集"; };
+  }, [project]);
+
+  return (
+    <main className={`case-scene case-${project.media} case-${project.id}`}>
+      <header className="case-header">
+        <a href={import.meta.env.BASE_URL} className="case-back">← 返回作品集</a>
+        <span>{project.index} / {projects.length} · COMPLETE CASE</span>
+        <a href="#contact-case">联系合作 <Arrow /></a>
+      </header>
+
+      <section className="case-hero shell">
+        <div className="case-label"><span>{project.group}</span><span>{project.year}</span></div>
+        <h1>{project.title}</h1>
+        <p className="case-en">{project.english}</p>
+        <div className="case-intro">
+          <p>{project.summary}</p>
+          <dl>
+            <div><dt>我的角色</dt><dd>{project.role}</dd></div>
+            <div><dt>交付内容</dt><dd>{project.deliverable}</dd></div>
+            <div><dt>项目类型</dt><dd>{project.category}</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section className="case-work">
+        {project.media === "video" && project.source && (
+          <div className={`case-video-frame ${project.portrait ? "is-portrait" : ""}`}>
+            <video src={project.source} poster={project.cover} controls playsInline preload="metadata" />
+          </div>
+        )}
+
+        {project.media === "image" && (
+          <figure className={`case-image-frame ${project.long ? "is-long" : ""}`}>
+            <img src={project.cover} alt={`${project.title}完整作品`} />
+            <figcaption>FULL ARTWORK · 100% DISPLAY</figcaption>
+          </figure>
+        )}
+
+        {project.media === "pages" && (
+          <div className="case-pages-wrap">
+            <div className="pages-status shell">
+              <span>COMPLETE DOCUMENT</span>
+              <strong>{project.pageCount} / {project.pageCount} PAGES</strong>
+              <span>NO PAGES OMITTED</span>
+            </div>
+            <div className="case-pages">
+              {pages.map((page, index) => (
+                <figure key={page}>
+                  <img src={page} alt={`${project.title}第 ${index + 1} 页`} loading={index < 2 ? "eager" : "lazy"} />
+                  <figcaption>PAGE {String(index + 1).padStart(2, "0")} / {String(project.pageCount).padStart(2, "0")}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        )}
+      </section>
+
+      <footer className="case-footer shell" id="contact-case">
+        <div><span>NEXT CASE / {nextProject.index}</span><h2>{nextProject.title}</h2></div>
+        <a href={`#case/${nextProject.id}`}>查看下一个完整项目 <Arrow /></a>
+      </footer>
+    </main>
+  );
+}
+
+function PortfolioHome() {
+  const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [filter, setFilter] = useState<(typeof filters)[number]>("全部");
+  const featuredProjects = projects.filter((project) => project.featured);
+  const archiveProjects = useMemo(
+    () => projects.filter((project) => !project.featured && (filter === "全部" || project.group === filter)),
+    [filter],
+  );
+
+  useEffect(() => {
+    document.title = "视觉设计师 / AI 设计师 / 品牌设计师作品集";
     const onScroll = () => {
       const total = document.documentElement.scrollHeight - window.innerHeight;
       setScrolled(window.scrollY > 28);
@@ -156,224 +526,99 @@ export default function Home() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = selected ? "hidden" : "";
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setSelected(null);
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.body.style.overflow = "";
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [selected]);
-
   return (
     <main>
       <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
         <div className="header-inner">
-          <a className="brand" href="#top" aria-label="返回首页">
-            <span className="brand-glyph">D<span>+</span></span>
-            <span className="brand-copy">VISUAL / AI<br />DESIGNER</span>
-          </a>
-          <nav aria-label="主导航">
-            <a href="#work"><span>01</span> 作品</a>
-            <a href="#profile"><span>02</span> 关于</a>
-            <a href="#strengths"><span>03</span> 能力</a>
-          </nav>
+          <a className="brand" href="#top" aria-label="返回首页"><span className="brand-glyph">D<span>+</span></span><span className="brand-copy">VISUAL / AI<br />DESIGNER</span></a>
+          <nav aria-label="主导航"><a href="#work"><span>01</span> 精选</a><a href="#archive"><span>02</span> 全部作品</a><a href="#profile"><span>03</span> 关于</a></nav>
           <a className="contact-pill" href="#contact">联系合作 <Arrow /></a>
         </div>
         <div className="page-progress" style={{ width: `${progress}%` }} />
       </header>
 
       <section className="hero" id="top">
-        <video
-          className="hero-video"
-          src={asset("hero-headphones.mp4")}
-          poster={asset("hero-headphones-poster.jpg")}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-        />
-        <div className="hero-shade" />
-        <div className="hero-grid" aria-hidden="true" />
+        <video className="hero-video" src={asset("hero-headphones.mp4")} poster={asset("hero-headphones-poster.jpg")} autoPlay muted loop playsInline preload="metadata" />
+        <div className="hero-shade" /><div className="hero-grid" aria-hidden="true" />
         <div className="hero-content shell">
-          <div className="hero-eyebrow">
-            <span><i /> AVAILABLE FOR SELECTED PROJECTS</span>
-            <span>PORTFOLIO / 2026</span>
-          </div>
-          <div className="hero-title-wrap">
-            <p className="hero-role">视觉设计师 / AI 设计师 / 品牌设计师</p>
-            <h1>让视觉<br /><em>先于语言</em><br />抵达。</h1>
-          </div>
+          <div className="hero-eyebrow"><span><i /> COMPLETE PORTFOLIO · 22 PROJECTS</span><span>PORTFOLIO / 2026</span></div>
+          <div className="hero-title-wrap"><p className="hero-role">视觉设计师 / AI 设计师 / 品牌设计师</p><h1>让视觉<br /><em>先于语言</em><br />抵达。</h1></div>
           <div className="hero-footer">
             <p>DESIGNING WHAT PEOPLE FEEL<br />BEFORE THEY READ.</p>
-            <div className="hero-disciplines">
-              <span>AI MOTION</span>
-              <span>BRAND SYSTEM</span>
-              <span>COMMERCIAL VISUAL</span>
-            </div>
-            <a className="scroll-cue" href="#profile" aria-label="向下浏览">
-              <span>SCROLL</span><i>↓</i>
-            </a>
+            <div className="hero-disciplines"><span>15 FULL FILMS</span><span>28 PDF PAGES</span><span>5 COMPLETE ARTWORKS</span></div>
+            <a className="scroll-cue" href="#work"><span>VIEW ALL</span><i>↓</i></a>
           </div>
         </div>
         <div className="hero-side" aria-hidden="true">ART × TECHNOLOGY × BUSINESS</div>
       </section>
 
       <section className="profile shell section" id="profile">
-        <div className="section-rail">
-          <span>01</span>
-          <p>PROFILE<br />个人经历</p>
-        </div>
+        <div className="section-rail"><span>01</span><p>PROFILE<br />个人经历</p></div>
         <div className="profile-main">
-          <div className="profile-heading">
-            <p className="overline">BETWEEN IMAGINATION AND EXECUTION</p>
-            <h2>在创意与技术之间，<br /><span>建立可感知的品牌体验。</span></h2>
-          </div>
+          <div className="profile-heading"><p className="overline">BETWEEN IMAGINATION AND EXECUTION</p><h2>在创意与技术之间，<br /><span>建立可感知的品牌体验。</span></h2></div>
           <div className="profile-body">
-            <figure className="profile-portrait">
-              <img src={asset("book-cover.webp")} alt="人物视觉作品《澄心》局部" />
-              <figcaption><span>PROFILE VISUAL / 01</span><span>FROM “澄心”</span></figcaption>
-            </figure>
+            <figure className="profile-portrait"><img src={asset("book-cover.webp")} alt="人物视觉作品《澄心》局部" /><figcaption><span>PROFILE VISUAL / 01</span><span>FROM “澄心”</span></figcaption></figure>
             <div className="profile-copy">
               <p className="intro">我是一名视觉设计师、AI 设计师与品牌设计师，持续探索生成式 AI 如何进入真实商业创作。</p>
               <p>从一条广告片、一张主视觉，到一套完整品牌表达，我关注的不只是画面是否好看，更在意它能否准确传递价值、建立记忆，并最终成为可落地的作品。</p>
-              <div className="contact-list">
-                <div><span>NAME</span><b>YOUR NAME / 待补充</b></div>
-                <div><span>BASED</span><b>CHINA · REMOTE READY</b></div>
-                <div><span>EMAIL</span><a href="mailto:hello@yourname.com">HELLO@YOURNAME.COM <Arrow /></a></div>
-                <div><span>SOCIAL</span><b>小红书 / 抖音 / BEHANCE</b></div>
-              </div>
+              <div className="contact-list"><div><span>NAME</span><b>YOUR NAME / 待补充</b></div><div><span>BASED</span><b>CHINA · REMOTE READY</b></div><div><span>EMAIL</span><a href="mailto:hello@yourname.com">HELLO@YOURNAME.COM <Arrow /></a></div><div><span>SOCIAL</span><b>小红书 / 抖音 / BEHANCE</b></div></div>
             </div>
           </div>
-          <div className="profile-stats" aria-label="项目数据">
-            <div><strong>20<sup>+</sup></strong><span>完成项目<br />SELECTED OUTPUTS</span></div>
-            <div><strong>15</strong><span>动态影像<br />MOTION FILMS</span></div>
-            <div><strong>07</strong><span>品牌与商业视觉<br />VISUAL SYSTEMS</span></div>
-            <div><strong>03</strong><span>核心创作维度<br />DESIGN DISCIPLINES</span></div>
-          </div>
+          <div className="profile-stats"><div><strong>22</strong><span>完整项目<br />COMPLETE PROJECTS</span></div><div><strong>15</strong><span>动态影像<br />FULL FILMS</span></div><div><strong>28</strong><span>全案页面<br />PDF PAGES</span></div><div><strong>05</strong><span>完整视觉长图<br />FULL ARTWORKS</span></div></div>
         </div>
       </section>
 
       <section className="work section" id="work">
         <div className="shell work-shell">
-          <div className="section-rail light">
-            <span>02</span>
-            <p>SELECTED<br />WORKS</p>
-          </div>
+          <div className="section-rail light"><span>02</span><p>SELECTED<br />WORKS</p></div>
           <div className="work-main">
-            <div className="work-heading">
-              <div>
-                <p className="overline">CURATED PROJECTS / 2024—2026</p>
-                <h2>精选项目</h2>
+            <div className="work-heading"><div><p className="overline">CURATED PROJECTS / 2024—2026</p><h2>精选项目</h2></div><p>先从六个代表项目进入完整案例，<br />每张卡片均通往独立展示场景。</p></div>
+            <div className="project-grid">{featuredProjects.map((project) => <ProjectCard key={project.id} project={project} />)}</div>
+
+            <section className="archive" id="archive">
+              <div className="archive-heading">
+                <div><p className="overline">COMPLETE ARCHIVE / EVERY WORK INCLUDED</p><h2>全部作品</h2></div>
+                <strong>22<sup>/22</sup></strong>
               </div>
-              <p>跨越 AI 影像、品牌系统、商业广告与平面设计，<br />每一个项目都从真实的表达目标出发。</p>
-            </div>
-            <div className="project-grid">
-              {projects.map((project) => (
-                <article className={`project-card ${project.layout ? `is-${project.layout}` : ""}`} key={project.id}>
-                  <button className="project-media" onClick={() => setSelected(project)} aria-label={`查看项目：${project.title}`}>
-                    <img src={project.cover} alt={`${project.title}项目封面`} style={{ objectPosition: project.position }} />
-                    <span className="project-index">CASE / {project.index}</span>
-                    {project.video && <span className="play-badge"><i>▶</i> PLAY FILM</span>}
-                    <span className="open-project">VIEW PROJECT <Arrow /></span>
+              <div className="archive-filters" role="group" aria-label="筛选全部作品">
+                {filters.map((item) => (
+                  <button key={item} className={filter === item ? "active" : ""} onClick={() => setFilter(item)}>
+                    {item}<sup>{item === "全部" ? 16 : projects.filter((project) => !project.featured && project.group === item).length}</sup>
                   </button>
-                  <div className="project-meta">
-                    <div>
-                      <h3>{project.title}</h3>
-                      <p>{project.english}</p>
-                    </div>
-                    <div><span>{project.category}</span><time>{project.year}</time></div>
-                  </div>
-                </article>
-              ))}
-            </div>
-            <div className="archive-note">
-              <span>MORE IN ARCHIVE</span>
-              <p>另有游戏买量、资讯短片、食品广告、文旅影像等完整作品，可按需提供。</p>
-              <i>＋</i>
-            </div>
+                ))}
+              </div>
+              <div className="archive-grid">{archiveProjects.map((project) => <ArchiveCard key={project.id} project={project} />)}</div>
+            </section>
           </div>
         </div>
       </section>
 
       <section className="strengths shell section" id="strengths">
-        <div className="section-rail">
-          <span>03</span>
-          <p>WHY ME<br />个人优势</p>
-        </div>
+        <div className="section-rail"><span>03</span><p>WHY ME<br />个人优势</p></div>
         <div className="strength-main">
-          <div className="strength-heading">
-            <p className="overline">CAPABILITIES / NOT JUST TOOLS</p>
-            <h2>从想法，到被看见。<br /><span>再到真正落地。</span></h2>
-          </div>
-          <div className="strength-grid">
-            {strengths.map((item) => (
-              <article className="strength-card" key={item.number}>
-                <div className="strength-top"><span>{item.number}</span><i>✦</i></div>
-                <div>
-                  <p>{item.english}</p>
-                  <h3>{item.title}</h3>
-                  <div className="card-line" />
-                  <p className="strength-copy">{item.copy}</p>
-                </div>
-                <div className="strength-tags">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-              </article>
-            ))}
-          </div>
+          <div className="strength-heading"><p className="overline">CAPABILITIES / NOT JUST TOOLS</p><h2>从想法，到被看见。<br /><span>再到真正落地。</span></h2></div>
+          <div className="strength-grid">{strengths.map((item) => <article className="strength-card" key={item.number}><div className="strength-top"><span>{item.number}</span><i>✦</i></div><div><p>{item.english}</p><h3>{item.title}</h3><div className="card-line" /><p className="strength-copy">{item.copy}</p></div><div className="strength-tags">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></article>)}</div>
         </div>
       </section>
 
       <footer className="contact" id="contact">
         <div className="contact-grid" aria-hidden="true" />
-        <div className="contact-inner shell">
-          <div className="contact-top">
-            <span><i /> OPEN FOR COLLABORATION</span>
-            <span>BASED IN CHINA / WORKING WORLDWIDE</span>
-          </div>
-          <div className="contact-title">
-            <p>HAVE A PROJECT IN MIND?</p>
-            <h2>一起做点<br /><em>值得被记住的。</em></h2>
-          </div>
-          <a className="contact-email" href="mailto:hello@yourname.com">
-            <span>HELLO@YOURNAME.COM</span><Arrow />
-          </a>
-          <div className="contact-bottom">
-            <span>© 2026 VISUAL / AI / BRAND DESIGNER</span>
-            <div><a href="#top">BACK TO TOP ↑</a><a href="#work">WORKS</a><a href="#profile">PROFILE</a></div>
-            <span>DESIGNED WITH INTENT</span>
-          </div>
-        </div>
+        <div className="contact-inner shell"><div className="contact-top"><span><i /> OPEN FOR COLLABORATION</span><span>BASED IN CHINA / WORKING WORLDWIDE</span></div><div className="contact-title"><p>HAVE A PROJECT IN MIND?</p><h2>一起做点<br /><em>值得被记住的。</em></h2></div><a className="contact-email" href="mailto:hello@yourname.com"><span>HELLO@YOURNAME.COM</span><Arrow /></a><div className="contact-bottom"><span>© 2026 VISUAL / AI / BRAND DESIGNER</span><div><a href="#top">BACK TO TOP ↑</a><a href="#work">WORKS</a><a href="#profile">PROFILE</a></div><span>22 COMPLETE PROJECTS</span></div></div>
       </footer>
-
-      {selected && (
-        <div className="modal-backdrop" onMouseDown={() => setSelected(null)}>
-          <section className="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" onMouseDown={(event) => event.stopPropagation()}>
-            <button className="modal-close" onClick={() => setSelected(null)} aria-label="关闭项目">×</button>
-            <div className="modal-media">
-              {selected.video ? (
-                <video src={selected.video} poster={selected.cover} controls autoPlay playsInline />
-              ) : (
-                <img src={selected.cover} alt={`${selected.title}项目大图`} />
-              )}
-            </div>
-            <div className="modal-content">
-              <div className="modal-kicker"><span>CASE / {selected.index}</span><span>{selected.year}</span></div>
-              <h2 id="modal-title">{selected.title}</h2>
-              <p className="modal-english">{selected.english}</p>
-              <p className="modal-summary">{selected.summary}</p>
-              <dl>
-                <div><dt>我的角色</dt><dd>{selected.role}</dd></div>
-                <div><dt>交付内容</dt><dd>{selected.deliverable}</dd></div>
-                <div><dt>项目类型</dt><dd>{selected.category}</dd></div>
-              </dl>
-            </div>
-          </section>
-        </div>
-      )}
     </main>
   );
+}
+
+export default function Home() {
+  const [caseId, setCaseId] = useState(() => typeof window !== "undefined" && window.location.hash.startsWith("#case/") ? window.location.hash.slice(6) : "");
+
+  useEffect(() => {
+    const onHashChange = () => setCaseId(window.location.hash.startsWith("#case/") ? window.location.hash.slice(6) : "");
+    onHashChange();
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
+
+  const project = projects.find((item) => item.id === caseId);
+  return project ? <CaseScene project={project} /> : <PortfolioHome />;
 }
