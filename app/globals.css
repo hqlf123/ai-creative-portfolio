@@ -44,10 +44,11 @@ img, video { display: block; max-width: 100%; }
 }
 .site-header.is-scrolled { height: 70px; background: rgba(8, 10, 11, .84); border-color: var(--line); backdrop-filter: blur(20px); }
 .header-inner { width: min(1700px, calc(100% - 96px)); height: 100%; margin: auto; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
-.brand { width: max-content; display: flex; align-items: center; gap: 13px; }
-.brand-glyph { width: 43px; height: 43px; border: 1px solid rgba(255,255,255,.55); display: grid; place-items: center; font-size: 18px; font-weight: 650; letter-spacing: -.08em; }
-.brand-glyph span { color: var(--signal); }
-.brand-copy { font: 700 9px/1.15 "SFMono-Regular", Consolas, monospace; letter-spacing: .12em; }
+.brand { width: max-content; display: flex; align-items: center; }
+.brand-lockup { position: relative; display: block; width: 212px; height: 66px; overflow: hidden; background: #090a0b; }
+.brand-lockup img { position: absolute; width: 392px; height: 152px; max-width: none; left: -32px; top: -20px; object-fit: none; }
+.brand-lockup.is-compact { width: 52px; height: 52px; }
+.brand-lockup.is-compact img { width: 294px; height: 114px; left: -24px; top: -15px; object-fit: fill; }
 .site-header nav { display: flex; gap: 42px; font-size: 12px; }
 .site-header nav a { display: flex; align-items: baseline; gap: 7px; transition: color .2s ease; }
 .site-header nav a span { color: #707672; font: 9px "SFMono-Regular", Consolas, monospace; }
@@ -256,8 +257,10 @@ img, video { display: block; max-width: 100%; }
 .contact-bottom > span:last-child { justify-self: end; }
 
 .case-scene { min-height: 100svh; background: #0b0d0e; color: var(--ink); }
-.case-header { position: sticky; top: 0; z-index: 50; height: 72px; padding: 0 max(24px, calc((100vw - 1700px) / 2)); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; border-bottom: 1px solid var(--line); background: rgba(8,10,10,.9); backdrop-filter: blur(18px); font: 700 9px "SFMono-Regular", Consolas, monospace; letter-spacing: .12em; }
-.case-header > span { color: #777d78; }
+.case-header { position: sticky; top: 0; z-index: 50; height: 82px; padding: 0 max(24px, calc((100vw - 1700px) / 2)); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; border-bottom: 1px solid var(--line); background: rgba(8,10,10,.94); backdrop-filter: blur(18px); font: 700 9px "SFMono-Regular", Consolas, monospace; letter-spacing: .12em; }
+.case-back { display: flex; align-items: center; gap: 11px; }
+.case-back b { color: var(--signal); font-size: 15px; font-weight: 500; }
+.case-brand { justify-self: center; display: block; height: 66px; }
 .case-header > a:last-child { justify-self: end; display: flex; gap: 10px; }
 .case-back { transition: color .2s; }
 .case-back:hover { color: var(--signal); }
@@ -400,8 +403,8 @@ img, video { display: block; max-width: 100%; }
   .shell, .header-inner { width: calc(100% - 36px); }
   .section { padding-block: 86px; }
   .site-header, .site-header.is-scrolled { height: 66px; }
-  .brand-glyph { width: 36px; height: 36px; }
-  .brand-copy { display: none; }
+  .site-header .brand-lockup { width: 52px; height: 52px; }
+  .site-header .brand-lockup img { width: 294px; height: 114px; left: -24px; top: -15px; object-fit: fill; }
   .contact-pill { padding: 10px 13px; }
   .hero-video { object-position: 66% center; }
   .hero-shade { background: linear-gradient(90deg, rgba(7,8,9,.9), rgba(7,8,9,.35)), linear-gradient(0deg, rgba(7,8,9,.9), transparent 60%); }
@@ -465,8 +468,11 @@ img, video { display: block; max-width: 100%; }
   .contact-bottom { grid-template-columns: 1fr auto; gap: 20px; }
   .contact-bottom > span:last-child, .contact-bottom > a:last-child { display: none; }
   .contact-bottom div { flex-direction: column; gap: 7px; text-align: right; }
-  .case-header { height: 64px; padding: 0 18px; grid-template-columns: 1fr auto; font-size: 8px; }
-  .case-header > span { display: none; }
+  .case-header { height: 64px; padding: 0 18px; grid-template-columns: auto 1fr auto; font-size: 8px; }
+  .case-back span { display: none; }
+  .case-brand { height: 52px; }
+  .case-brand .brand-lockup { width: 52px; height: 52px; }
+  .case-brand .brand-lockup img { width: 294px; height: 114px; left: -24px; top: -15px; object-fit: fill; }
   .case-header > a:last-child { font-size: 0; }
   .case-header > a:last-child span { font-size: 16px; }
   .case-hero { padding-top: 80px; padding-bottom: 80px; }

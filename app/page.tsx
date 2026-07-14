@@ -433,6 +433,14 @@ function Arrow() {
   return <span aria-hidden="true">↗</span>;
 }
 
+function BrandLockup({ compact = false }: { compact?: boolean }) {
+  return (
+    <span className={`brand-lockup ${compact ? "is-compact" : ""}`}>
+      <img src={asset("luo-tianxiang-brand-lockup.png")} alt="罗天翔 AIGC Visual 品牌标识" />
+    </span>
+  );
+}
+
 function coverFormatLabel(format: CoverFormat) {
   if (format === "vertical") return "9:16 VERTICAL";
   if (format === "portrait") return "PORTRAIT";
@@ -704,8 +712,8 @@ function CaseScene({ project }: { project: Project }) {
   return (
     <main className={`case-scene case-${project.media} case-${project.id}`}>
       <header className="case-header">
-        <a href={`${import.meta.env.BASE_URL}#archive`} className="case-back">← 返回原浏览位置</a>
-        <span>LUO TIANXIANG · CASE {project.index} / {projects.length}</span>
+        <a href={`${import.meta.env.BASE_URL}#archive`} className="case-back"><b aria-hidden="true">←</b><span>返回作品 / CASE {project.index}</span></a>
+        <a href={`${import.meta.env.BASE_URL}#top`} className="case-brand" aria-label="返回罗天翔作品集首页"><BrandLockup /></a>
         <a href="#contact-case">联系合作 <Arrow /></a>
       </header>
 
@@ -819,7 +827,7 @@ function PortfolioHome() {
     <main>
       <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
         <div className="header-inner">
-          <a className="brand" href="#top" aria-label="返回首页"><span className="brand-glyph">L<span>+</span></span><span className="brand-copy">LUO TIANXIANG<br />AIGC VISUAL</span></a>
+          <a className="brand" href="#top" aria-label="返回首页"><BrandLockup /></a>
           <nav aria-label="主导航"><a href="#work"><span>01</span> 精选</a><a href="#archive"><span>02</span> 分类作品</a><a href="#experience"><span>03</span> 经历</a><a href="#profile"><span>04</span> 关于</a></nav>
           <a className="contact-pill" href="#contact">联系合作 <Arrow /></a>
         </div>
