@@ -34,6 +34,13 @@ const imageSlugs = [
   "homestay-visual.webp",
 ];
 
+const phoneDetailAssets = [
+  "phone-v2-hero.png",
+  "phone-v2-performance.png",
+  "phone-v2-camera.png",
+  "phone-v2-durability.png",
+];
+
 const projectIds = [
   "headphones", "mecha", "shishanju-film", "phone-detail", "dumpling-ip", "magazine-cover",
   "coldx-detail", "mouse-detail", "shishanju-visual", "book-cover", "hosiery-film", "game-wholesale",
@@ -62,6 +69,18 @@ test("all five complete image works are present", () => {
     assertFile(path.join(publicAssets, filename));
     assertFile(path.join(docsAssets, filename));
   }
+});
+
+test("future imaging detail page uses sharp text layers and generated visuals", () => {
+  const source = fs.readFileSync(path.join(projectRoot, "app", "page.tsx"), "utf8");
+  for (const filename of phoneDetailAssets) {
+    assertFile(path.join(publicAssets, filename));
+    assertFile(path.join(docsAssets, filename));
+  }
+  assert.ok(source.includes("function PhoneDetailPage()"), "Missing rebuilt phone detail page");
+  assert.ok(source.includes("未来影像"), "Phone headline must stay as native text");
+  assert.ok(source.includes("Snapdragon 8 Gen 3"), "Performance claims must stay as native text");
+  assert.ok(source.includes("VITARA X1 Pro"), "Product model must stay as native text");
 });
 
 test("PDF proposals contain every sequential page", () => {
@@ -96,4 +115,26 @@ test("portfolio artwork is always rendered without cropping", () => {
   assert.match(styles, /\.media-stage \.media-artwork\s*\{[^}]*object-fit:\s*contain/s);
   assert.match(styles, /\.case-image-frame img\s*\{[^}]*object-fit:\s*contain/s);
   assert.match(styles, /\.case-pages img\s*\{[^}]*object-fit:\s*contain/s);
+});
+
+test("portfolio categories are complete and returning preserves context", () => {
+  const source = fs.readFileSync(path.join(projectRoot, "app", "page.tsx"), "utf8");
+  const expectedCounts = {
+    "横屏商业广告": 7,
+    "竖屏抖音爆款": 6,
+    "漫剧作品": 2,
+    "商业详情": 4,
+    "品牌全案": 1,
+    "平面设计": 2,
+  };
+
+  assert.ok(!source.includes('["全部",'), "The removed all-category filter must not return");
+  for (const [group, count] of Object.entries(expectedCounts)) {
+    const matches = source.match(new RegExp(`group: "${group}"`, "g")) ?? [];
+    assert.equal(matches.length, count, `${group} project count mismatch`);
+  }
+  assert.ok(source.includes('project.group === filter'), "Archive must include featured brand projects in their category");
+  assert.ok(source.includes('portfolio:return-y'), "Missing return-position persistence");
+  assert.ok(source.includes('portfolio:filter'), "Missing category persistence");
+  assert.ok(source.includes("返回原浏览位置"), "Case back action must explain preserved position");
 });

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-type ProjectGroup = "动态影像" | "商业详情" | "品牌全案" | "平面设计";
+type ProjectGroup = "横屏商业广告" | "竖屏抖音爆款" | "漫剧作品" | "商业详情" | "品牌全案" | "平面设计";
 type MediaType = "video" | "image" | "pages";
 
 type Project = {
@@ -36,7 +36,7 @@ const projects: Project[] = [
     title: "声场之外",
     english: "HEADPHONE COMMERCIAL FILM",
     category: "AI 动态影像 / 产品广告",
-    group: "动态影像",
+    group: "横屏商业广告",
     year: "2026",
     cover: asset("hero-headphones-poster.jpg"),
     media: "video",
@@ -52,7 +52,7 @@ const projects: Project[] = [
     title: "钢铁人格",
     english: "ORIGINAL MECHA TOY",
     category: "概念设计 / AI 广告",
-    group: "动态影像",
+    group: "横屏商业广告",
     year: "2026",
     cover: asset("mecha-toy-poster.jpg"),
     media: "video",
@@ -68,7 +68,7 @@ const projects: Project[] = [
     title: "住进秋天",
     english: "SHISHANJU RETREAT FILM",
     category: "空间叙事 / 民宿广告",
-    group: "动态影像",
+    group: "横屏商业广告",
     year: "2026",
     cover: asset("shishanju-poster.jpg"),
     media: "video",
@@ -86,10 +86,9 @@ const projects: Project[] = [
     category: "电商视觉 / 手机详情页",
     group: "商业详情",
     year: "2026",
-    cover: asset("phone-detail.webp"),
+    cover: asset("phone-v2-hero.png"),
     media: "image",
     featured: true,
-    long: true,
     position: "center top",
     summary: "围绕影像、性能与旗舰工艺重组信息层级，建立从首屏冲击到参数说服的完整电商叙事。",
     role: "视觉策略 · 页面设计 · AI 制图",
@@ -197,7 +196,7 @@ const projects: Project[] = [
     title: "轻奢触感",
     english: "LEGWEAR COMMERCIAL",
     category: "时尚产品 / 短视频广告",
-    group: "动态影像",
+    group: "横屏商业广告",
     year: "2026",
     cover: asset("hosiery-poster.jpg"),
     media: "video",
@@ -212,7 +211,7 @@ const projects: Project[] = [
     title: "一键升级",
     english: "GAME UA CREATIVE",
     category: "游戏买量 / 效果广告",
-    group: "动态影像",
+    group: "竖屏抖音爆款",
     year: "2026",
     cover: asset("game-wholesale-poster.jpg"),
     media: "video",
@@ -228,7 +227,7 @@ const projects: Project[] = [
     title: "随身能量",
     english: "POWER BANK SOCIAL AD",
     category: "数码产品 / 社交广告",
-    group: "动态影像",
+    group: "竖屏抖音爆款",
     year: "2026",
     cover: asset("power-bank-poster.jpg"),
     media: "video",
@@ -244,7 +243,7 @@ const projects: Project[] = [
     title: "一口上头",
     english: "SNACK FOOD SHORT AD",
     category: "食品饮料 / 效果广告",
-    group: "动态影像",
+    group: "竖屏抖音爆款",
     year: "2026",
     cover: asset("chicken-feet-poster.jpg"),
     media: "video",
@@ -260,7 +259,7 @@ const projects: Project[] = [
     title: "悬剑劫",
     english: "WUXIA CINEMATIC",
     category: "叙事影像 / 武侠概念片",
-    group: "动态影像",
+    group: "漫剧作品",
     year: "2026",
     cover: asset("hanging-sword-poster.jpg"),
     media: "video",
@@ -275,7 +274,7 @@ const projects: Project[] = [
     title: "口袋小斗",
     english: "POCKET FIGHTER CAMPAIGN",
     category: "怀旧数码 / 产品广告",
-    group: "动态影像",
+    group: "竖屏抖音爆款",
     year: "2026",
     cover: asset("pocket-fighter-poster.jpg"),
     media: "video",
@@ -291,7 +290,7 @@ const projects: Project[] = [
     title: "风野牧旅",
     english: "WILDERNESS JOURNEY",
     category: "文旅影像 / 人群适配",
-    group: "动态影像",
+    group: "竖屏抖音爆款",
     year: "2026",
     cover: asset("wilderness-journey-poster.jpg"),
     media: "video",
@@ -307,7 +306,7 @@ const projects: Project[] = [
     title: "奶奶的小故事",
     english: "A WARM GRANDMA STORY",
     category: "情感叙事 / 抖音短片",
-    group: "动态影像",
+    group: "竖屏抖音爆款",
     year: "2026",
     cover: asset("warm-grandma-poster.jpg"),
     media: "video",
@@ -323,7 +322,7 @@ const projects: Project[] = [
     title: "AI 时代观察",
     english: "AI NEWS EDITORIAL",
     category: "资讯内容 / 自媒体视频",
-    group: "动态影像",
+    group: "横屏商业广告",
     year: "2026",
     cover: asset("ai-news-poster.jpg"),
     media: "video",
@@ -338,7 +337,7 @@ const projects: Project[] = [
     title: "虚幻竞技场",
     english: "FANTASY ARENA",
     category: "概念影像 / 游戏世界观",
-    group: "动态影像",
+    group: "漫剧作品",
     year: "2026",
     cover: asset("fantasy-arena-poster.jpg"),
     media: "video",
@@ -353,7 +352,7 @@ const projects: Project[] = [
     title: "青提气泡",
     english: "GREEN GRAPE SODA",
     category: "食品饮料 / 产品广告",
-    group: "动态影像",
+    group: "横屏商业广告",
     year: "2026",
     cover: asset("green-soda-poster.jpg"),
     media: "video",
@@ -368,7 +367,7 @@ const projects: Project[] = [
     title: "饺个朋友品牌片",
     english: "DUMPLING BRAND FILM",
     category: "品牌 IP / 动态广告",
-    group: "动态影像",
+    group: "横屏商业广告",
     year: "2024",
     cover: asset("dumpling-brand-poster.jpg"),
     media: "video",
@@ -386,7 +385,11 @@ const strengths = [
   { number: "04", title: "跨媒介工作流", english: "MULTI-MODAL WORKFLOW", copy: "灵活组合图像、视频、文字与模型能力，建立稳定、可复用、能持续迭代的创作流程。", tags: ["IMAGE", "VIDEO", "LLM", "WORKFLOW"] },
 ];
 
-const filters: Array<"全部" | ProjectGroup> = ["全部", "动态影像", "商业详情", "品牌全案", "平面设计"];
+const filters: ProjectGroup[] = ["横屏商业广告", "竖屏抖音爆款", "漫剧作品", "商业详情", "品牌全案", "平面设计"];
+
+const rememberPortfolioPosition = () => {
+  sessionStorage.setItem("portfolio:return-y", String(window.scrollY));
+};
 
 function Arrow() {
   return <span aria-hidden="true">↗</span>;
@@ -395,7 +398,7 @@ function Arrow() {
 function ProjectCard({ project }: { project: Project }) {
   return (
     <article className={`project-card ${project.id === "headphones" ? "is-wide" : ""}`}>
-      <a className={`project-media media-stage media-${project.media} ${project.long ? "is-long-artwork" : ""}`} href={`#case/${project.id}`} aria-label={`查看完整项目：${project.title}`}>
+      <a className={`project-media media-stage media-${project.media} ${project.long ? "is-long-artwork" : ""}`} href={`#case/${project.id}`} onClick={rememberPortfolioPosition} aria-label={`查看完整项目：${project.title}`}>
         <img className="media-artwork" src={project.cover} alt={`${project.title}项目封面，完整画面无裁切`} style={{ objectPosition: project.position }} />
         <span className="media-frame-note" aria-hidden="true">FULL FRAME · NO CROP</span>
         <span className="project-index">CASE / {project.index}</span>
@@ -415,7 +418,7 @@ function ProjectCard({ project }: { project: Project }) {
 function ArchiveCard({ project }: { project: Project }) {
   return (
     <article className={`archive-card ${project.portrait ? "is-portrait" : ""}`}>
-      <a className={`archive-media media-stage media-${project.media} ${project.long ? "is-long-artwork" : ""}`} href={`#case/${project.id}`} aria-label={`打开完整项目：${project.title}`}>
+      <a className={`archive-media media-stage media-${project.media} ${project.long ? "is-long-artwork" : ""}`} href={`#case/${project.id}`} onClick={rememberPortfolioPosition} aria-label={`打开完整项目：${project.title}`}>
         <img className="media-artwork" src={project.cover} alt={`${project.title}项目封面，完整画面无裁切`} style={{ objectPosition: project.position }} />
         <span className="media-frame-note" aria-hidden="true">FULL FRAME</span>
         <span className="archive-number">{project.index}</span>
@@ -427,6 +430,94 @@ function ArchiveCard({ project }: { project: Project }) {
         <span>{project.group}</span>
       </div>
     </article>
+  );
+}
+
+function PhoneDetailPage() {
+  const heroSpecs = [
+    ["2K 144Hz", "超视网膜屏"],
+    ["200MP", "超感光主摄"],
+    ["5400mAh", "超长续航"],
+    ["IP68", "防尘防水"],
+    ["3D Sonic", "超声波指纹"],
+    ["Ice Blue", "冰川蓝配色"],
+  ];
+  const performance = [["30%", "CPU 性能提升"], ["25%", "GPU 性能提升"], ["20%", "能效提升"]];
+  const lenses = [["200MP", "超感光主摄"], ["50MP", "超广角镜头"], ["64MP", "潜望长焦"], ["TOF", "激光对焦"]];
+
+  return (
+    <div className="phone-v2" aria-label="VITARA X1 Pro 高清产品详情页">
+      <section className="phone-v2-visual phone-v2-hero-visual">
+        <img src={asset("phone-v2-hero.png")} alt="VITARA X1 Pro 深空旗舰手机完整主视觉" />
+        <div className="phone-v2-copy phone-v2-copy-left">
+          <p className="phone-v2-kicker">VITARA X1 Pro · FLAGSHIP IMAGING</p>
+          <h2>未来影像<br /><span>旗舰新境</span></h2>
+          <p>探索科技美学新高度</p>
+        </div>
+      </section>
+
+      <section className="phone-v2-specs" aria-label="核心卖点">
+        {heroSpecs.map(([value, label]) => <div key={value}><strong>{value}</strong><span>{label}</span></div>)}
+      </section>
+
+      <section className="phone-v2-split">
+        <article className="phone-v2-panel phone-v2-light-panel">
+          <p className="phone-v2-kicker">SLIM FLAGSHIP</p>
+          <h3>轻薄旗舰<br />手感新生</h3>
+          <div className="phone-v2-numbers"><div><strong>7.98</strong><span>mm 机身厚度</span></div><div><strong>196</strong><span>g 轻盈重量</span></div></div>
+        </article>
+        <article className="phone-v2-panel">
+          <p className="phone-v2-kicker">PRECISE CRAFT</p>
+          <h3>旗舰工艺<br />精致细节</h3>
+          <ul><li>钛金属中框 · 坚固轻盈</li><li>微弧面玻璃 · 光滑无界</li><li>丝绒 AG 玻璃 · 不沾指纹</li></ul>
+        </article>
+      </section>
+
+      <section className="phone-v2-visual phone-v2-performance">
+        <img src={asset("phone-v2-performance.png")} alt="VITARA X1 Pro 芯片与散热系统完整分解视觉" loading="lazy" />
+        <div className="phone-v2-copy phone-v2-copy-left">
+          <p className="phone-v2-kicker">SNAPDRAGON 8 GEN 3</p>
+          <h3>巅峰性能<br /><span>冷静制胜</span></h3>
+          <p>全新冰封散热系统，持续释放旗舰性能</p>
+          <div className="phone-v2-metrics">{performance.map(([value, label]) => <div key={value}><strong>{value}</strong><span>{label}</span></div>)}</div>
+        </div>
+      </section>
+
+      <section className="phone-v2-system-grid">
+        <article><p className="phone-v2-kicker">MEMORY & STORAGE</p><h3>LPDDR5X + UFS 4.0</h3><strong>至高 16GB + 1TB</strong></article>
+        <article><p className="phone-v2-kicker">PERFORMANCE CONTROL</p><h3>性能调度，自由掌控</h3><div className="phone-v2-modes"><span>X-Mode<small>性能模式</small></span><span>Balance<small>均衡模式</small></span><span>Eco<small>节能模式</small></span></div></article>
+      </section>
+
+      <section className="phone-v2-visual phone-v2-camera">
+        <img src={asset("phone-v2-camera.png")} alt="VITARA X1 Pro 高清影像系统完整视觉" loading="lazy" />
+        <div className="phone-v2-copy phone-v2-copy-left">
+          <p className="phone-v2-kicker">ULTRA IMAGING SYSTEM</p>
+          <h3>2 亿超感光<br /><span>影像系统</span></h3>
+          <div className="phone-v2-lenses">{lenses.map(([value, label]) => <div key={value}><strong>{value}</strong><span>{label}</span></div>)}</div>
+        </div>
+      </section>
+
+      <section className="phone-v2-feature-grid">
+        <article><p className="phone-v2-kicker">DISPLAY</p><h3>2K · 144Hz</h3><p>6.78 英寸超视网膜屏</p><div><strong>3000nit</strong><span>峰值亮度</span></div></article>
+        <article><p className="phone-v2-kicker">POWER</p><h3>5400mAh</h3><p>全天候超长续航</p><div className="phone-v2-charge"><span><strong>45W</strong>有线快充</span><span><strong>40W</strong>无线快充</span><span><strong>10W</strong>反向充电</span></div></article>
+        <article><p className="phone-v2-kicker">ORIGINOS 4</p><h3>智慧体验<br />流畅高效</h3><p>智能侧边栏 · 原子通知 · 跨设备互联</p></article>
+        <article><p className="phone-v2-kicker">PRIVACY</p><h3>多重隐私保护</h3><p>应用加密 · 隐私替身 · 权限管理 · 安全芯片</p></article>
+      </section>
+
+      <section className="phone-v2-visual phone-v2-durability">
+        <img src={asset("phone-v2-durability.png")} alt="VITARA X1 Pro 防水与四色机身完整视觉" loading="lazy" />
+        <div className="phone-v2-copy phone-v2-copy-left">
+          <p className="phone-v2-kicker">FLAGSHIP QUALITY</p>
+          <h3>旗舰品质<br /><span>坚固可靠</span></h3>
+          <div className="phone-v2-cert"><span><strong>IP68</strong>防尘防水</span><span><strong>SGS</strong>整机可靠性认证</span><span><strong>TÜV</strong>低蓝光认证</span></div>
+        </div>
+      </section>
+
+      <section className="phone-v2-footer-grid">
+        <article><p className="phone-v2-kicker">PRODUCT SPECIFICATIONS</p><h3>产品参数</h3><dl><div><dt>产品名称</dt><dd>VITARA X1 Pro</dd></div><div><dt>机身尺寸</dt><dd>163.1 × 75.8 × 7.98 mm</dd></div><div><dt>机身重量</dt><dd>196g</dd></div><div><dt>处理器</dt><dd>Snapdragon 8 Gen 3</dd></div><div><dt>存储组合</dt><dd>12GB+256GB / 16GB+512GB / 16GB+1TB</dd></div><div><dt>电池容量</dt><dd>5400mAh</dd></div><div><dt>系统</dt><dd>OriginOS 4</dd></div></dl></article>
+        <article><p className="phone-v2-kicker">IN THE BOX</p><h3>包装清单</h3><p>手机主机 · 充电器 · 数据线 · SIM 卡针 · 保护壳 · 说明书</p><div className="phone-v2-colors"><span>曜石黑</span><span>星河银</span><span>冰川蓝</span><span>极光金</span></div></article>
+      </section>
+    </div>
   );
 }
 
@@ -446,7 +537,7 @@ function CaseScene({ project }: { project: Project }) {
   return (
     <main className={`case-scene case-${project.media} case-${project.id}`}>
       <header className="case-header">
-        <a href={import.meta.env.BASE_URL} className="case-back">← 返回作品集</a>
+        <a href={`${import.meta.env.BASE_URL}#archive`} className="case-back">← 返回原浏览位置</a>
         <span>{project.index} / {projects.length} · COMPLETE CASE</span>
         <a href="#contact-case">联系合作 <Arrow /></a>
       </header>
@@ -472,7 +563,9 @@ function CaseScene({ project }: { project: Project }) {
           </div>
         )}
 
-        {project.media === "image" && (
+        {project.id === "phone-detail" && <PhoneDetailPage />}
+
+        {project.media === "image" && project.id !== "phone-detail" && (
           <figure className={`case-image-frame ${project.long ? "is-long" : ""}`}>
             <img src={project.cover} alt={`${project.title}完整作品`} />
             <figcaption>FULL ARTWORK · 100% DISPLAY</figcaption>
@@ -509,10 +602,14 @@ function CaseScene({ project }: { project: Project }) {
 function PortfolioHome() {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [filter, setFilter] = useState<(typeof filters)[number]>("全部");
+  const [filter, setFilter] = useState<ProjectGroup>(() => {
+    if (typeof window === "undefined") return filters[0];
+    const saved = sessionStorage.getItem("portfolio:filter") as ProjectGroup | null;
+    return saved && filters.includes(saved) ? saved : filters[0];
+  });
   const featuredProjects = projects.filter((project) => project.featured);
   const archiveProjects = useMemo(
-    () => projects.filter((project) => !project.featured && (filter === "全部" || project.group === filter)),
+    () => projects.filter((project) => project.group === filter),
     [filter],
   );
 
@@ -528,12 +625,30 @@ function PortfolioHome() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    sessionStorage.setItem("portfolio:filter", filter);
+  }, [filter]);
+
+  useEffect(() => {
+    const savedY = Number(sessionStorage.getItem("portfolio:return-y"));
+    if (!Number.isFinite(savedY) || savedY <= 0) return;
+    const firstFrame = requestAnimationFrame(() => window.scrollTo(0, savedY));
+    const settle = window.setTimeout(() => {
+      window.scrollTo(0, savedY);
+      sessionStorage.removeItem("portfolio:return-y");
+    }, 180);
+    return () => {
+      cancelAnimationFrame(firstFrame);
+      window.clearTimeout(settle);
+    };
+  }, []);
+
   return (
     <main>
       <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
         <div className="header-inner">
           <a className="brand" href="#top" aria-label="返回首页"><span className="brand-glyph">D<span>+</span></span><span className="brand-copy">VISUAL / AI<br />DESIGNER</span></a>
-          <nav aria-label="主导航"><a href="#work"><span>01</span> 精选</a><a href="#archive"><span>02</span> 全部作品</a><a href="#profile"><span>03</span> 关于</a></nav>
+          <nav aria-label="主导航"><a href="#work"><span>01</span> 精选</a><a href="#archive"><span>02</span> 分类作品</a><a href="#profile"><span>03</span> 关于</a></nav>
           <a className="contact-pill" href="#contact">联系合作 <Arrow /></a>
         </div>
         <div className="page-progress" style={{ width: `${progress}%` }} />
@@ -579,13 +694,13 @@ function PortfolioHome() {
 
             <section className="archive" id="archive">
               <div className="archive-heading">
-                <div><p className="overline">COMPLETE ARCHIVE / EVERY WORK INCLUDED</p><h2>全部作品</h2></div>
+                <div><p className="overline">PROJECT CATEGORIES / EVERY WORK INCLUDED</p><h2>分类作品</h2></div>
                 <strong>22<sup>/22</sup></strong>
               </div>
-              <div className="archive-filters" role="group" aria-label="筛选全部作品">
+              <div className="archive-filters" role="group" aria-label="按类别筛选作品">
                 {filters.map((item) => (
                   <button key={item} className={filter === item ? "active" : ""} onClick={() => setFilter(item)}>
-                    {item}<sup>{item === "全部" ? 16 : projects.filter((project) => !project.featured && project.group === item).length}</sup>
+                    {item}<sup>{projects.filter((project) => project.group === item).length}</sup>
                   </button>
                 ))}
               </div>
