@@ -433,10 +433,16 @@ function Arrow() {
   return <span aria-hidden="true">↗</span>;
 }
 
-function BrandLockup({ compact = false }: { compact?: boolean }) {
+function AvatarIdentity() {
   return (
-    <span className={`brand-lockup ${compact ? "is-compact" : ""}`}>
-      <img src={asset("luo-tianxiang-brand-lockup.png")} alt="罗天翔 AIGC Visual 品牌标识" />
+    <span className="avatar-identity">
+      <span className="avatar-thumb" aria-hidden="true">
+        <img src={asset("luo-tianxiang-art-avatar.png")} alt="" />
+      </span>
+      <span className="avatar-copy">
+        <b>LUO TIANXIANG</b>
+        <small>AIGC VISUAL</small>
+      </span>
     </span>
   );
 }
@@ -713,7 +719,7 @@ function CaseScene({ project }: { project: Project }) {
     <main className={`case-scene case-${project.media} case-${project.id}`}>
       <header className="case-header">
         <a href={`${import.meta.env.BASE_URL}#archive`} className="case-back"><b aria-hidden="true">←</b><span>返回作品 / CASE {project.index}</span></a>
-        <a href={`${import.meta.env.BASE_URL}#top`} className="case-brand" aria-label="返回罗天翔作品集首页"><BrandLockup /></a>
+        <a href={`${import.meta.env.BASE_URL}#top`} className="case-brand" aria-label="返回罗天翔作品集首页"><AvatarIdentity /></a>
         <a href="#contact-case">联系合作 <Arrow /></a>
       </header>
 
@@ -788,10 +794,15 @@ function PortfolioHome() {
     return saved && filters.includes(saved) ? saved : filters[0];
   });
   const featuredProjects = projects.filter((project) => project.featured);
-  const archiveProjects = useMemo(
-    () => projects.filter((project) => project.group === filter),
-    [filter],
-  );
+  const archiveProjects = useMemo(() => {
+    const filteredProjects = projects.filter((project) => project.group === filter);
+    if (filter !== "商业详情") return filteredProjects;
+
+    const detailOrder = ["shishanju-visual", "coldx-detail", "mouse-detail", "phone-detail"];
+    return filteredProjects.toSorted(
+      (first, second) => detailOrder.indexOf(first.id) - detailOrder.indexOf(second.id),
+    );
+  }, [filter]);
 
   useEffect(() => {
     document.title = "罗天翔 — AIGC 视觉设计作品集";
@@ -827,7 +838,7 @@ function PortfolioHome() {
     <main>
       <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
         <div className="header-inner">
-          <a className="brand" href="#top" aria-label="返回首页"><BrandLockup /></a>
+          <a className="brand" href="#top" aria-label="返回首页"><AvatarIdentity /></a>
           <nav aria-label="主导航"><a href="#work"><span>01</span> 精选</a><a href="#archive"><span>02</span> 分类作品</a><a href="#experience"><span>03</span> 经历</a><a href="#profile"><span>04</span> 关于</a></nav>
           <a className="contact-pill" href="#contact">联系合作 <Arrow /></a>
         </div>
@@ -854,7 +865,7 @@ function PortfolioHome() {
         <div className="profile-main">
           <div className="profile-heading"><p className="overline">BETWEEN IMAGINATION AND EXECUTION</p><h2>在编导思维与生成技术之间，<br /><span>创造可落地的视觉叙事。</span></h2></div>
           <div className="profile-body">
-            <figure className="profile-portrait"><img src={asset("luo-tianxiang-profile.jpg")} alt="AIGC 视觉设计师罗天翔个人肖像" /><figcaption><span>LUO TIANXIANG / 罗天翔</span><span>AIGC VISUAL</span></figcaption></figure>
+            <figure className="profile-portrait"><img src={asset("luo-tianxiang-art-avatar.png")} alt="罗天翔的 AIGC 艺术头像" /><figcaption><span>LUO TIANXIANG / 罗天翔</span><span>AIGC VISUAL</span></figcaption></figure>
             <div className="profile-copy">
               <p className="intro">我是罗天翔，一名拥有广播电视编导背景的 AIGC 视觉创作者。</p>
               <p>我把导演式的叙事判断、商业视觉的信息组织与生成式 AI 的制作效率放进同一条工作流。从创意提案、脚本分镜、角色场景到剪辑调色，我关心的不只是画面是否惊艳，更在意它是否准确、完整并真正可交付。</p>
