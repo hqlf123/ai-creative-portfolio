@@ -620,7 +620,7 @@ function PhoneDetailPage() {
         <img src={asset("phone-v2-hero.png")} alt="VITARA X1 Pro 深空旗舰手机完整主视觉" />
         <div className="phone-v2-copy phone-v2-copy-left">
           <p className="phone-v2-kicker">VITARA X1 Pro · FLAGSHIP IMAGING</p>
-          <h2>未来影像<br /><span>旗舰新境</span></h2>
+          <h2 className="motion-title">未来影像<br /><span>旗舰新境</span></h2>
           <p>探索科技美学新高度</p>
         </div>
       </section>
@@ -700,7 +700,19 @@ function CaseScene({ project }: { project: Project }) {
   useEffect(() => {
     document.title = `${project.title} — 完整案例`;
     window.scrollTo(0, 0);
-    return () => { document.title = "罗天翔 — AIGC 视觉设计作品集"; };
+    const titles = document.querySelectorAll<HTMLElement>(".motion-title");
+    const titleObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-title-visible");
+        titleObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -12%", threshold: .18 });
+    titles.forEach((title) => titleObserver.observe(title));
+    return () => {
+      document.title = "罗天翔 — AIGC 视觉设计作品集";
+      titleObserver.disconnect();
+    };
   }, [project]);
 
   return (
@@ -713,7 +725,7 @@ function CaseScene({ project }: { project: Project }) {
 
       <section className="case-hero shell">
         <div className="case-label"><span>{project.group}</span><span>{project.year}</span></div>
-        <h1>{project.title}</h1>
+        <h1 className="motion-title">{project.title}</h1>
         <p className="case-en">{project.english}</p>
         <div className="case-intro">
           <p>{project.summary}</p>
@@ -766,7 +778,7 @@ function CaseScene({ project }: { project: Project }) {
       </section>
 
       <footer className="case-footer shell" id="contact-case">
-        <div><span>NEXT CASE / {nextProject.index}</span><h2>{nextProject.title}</h2></div>
+        <div><span>NEXT CASE / {nextProject.index}</span><h2 className="motion-title">{nextProject.title}</h2></div>
         <a href={`#case/${nextProject.id}`}>查看下一个完整项目 <Arrow /></a>
       </footer>
     </main>
@@ -824,8 +836,21 @@ function PortfolioHome() {
       });
     }, { rootMargin: "-22% 0px -54%", threshold: .08 });
 
+    const titles = document.querySelectorAll<HTMLElement>(".motion-title");
+    const titleObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-title-visible");
+        titleObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: "0px 0px -12%", threshold: .18 });
+
     sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    titles.forEach((title) => titleObserver.observe(title));
+    return () => {
+      observer.disconnect();
+      titleObserver.disconnect();
+    };
   }, []);
 
   useEffect(() => {
@@ -882,7 +907,7 @@ function PortfolioHome() {
         <div className="hero-shade" /><div className="hero-grid" aria-hidden="true" />
         <div className="hero-content shell">
           <div className="hero-eyebrow"><span><i /> COMPLETE PORTFOLIO · 22 PROJECTS</span><span>PORTFOLIO / 2026</span></div>
-          <div className="hero-title-wrap"><p className="hero-role">罗天翔 · AI 视觉设计 / AIGC 影像 / 新媒体内容</p><h1>把想象<br /><em>导演成</em><br />真实。</h1></div>
+          <div className="hero-title-wrap"><p className="hero-role">罗天翔 · AI 视觉设计 / AIGC 影像 / 新媒体内容</p><h1 className="motion-title">把想象<br /><em>导演成</em><br />真实</h1></div>
           <div className="hero-footer">
             <p>DESIGNING WHAT PEOPLE FEEL<br />BEFORE THEY READ.</p>
             <div className="hero-disciplines"><span>15 FULL FILMS</span><span>28 PDF PAGES</span><span>5 COMPLETE ARTWORKS</span></div>
@@ -895,7 +920,7 @@ function PortfolioHome() {
       <section className="profile shell section" id="profile">
         <div className="section-rail"><span>01</span><p>PROFILE<br />个人经历</p></div>
         <div className="profile-main">
-          <div className="profile-heading"><p className="overline">BETWEEN IMAGINATION AND EXECUTION</p><h2>在编导思维与生成技术之间，<br /><span>创造可落地的视觉叙事。</span></h2></div>
+          <div className="profile-heading"><p className="overline">BETWEEN IMAGINATION AND EXECUTION</p><h2 className="motion-title">在编导思维与生成技术之间<br /><span>创造可落地的视觉叙事</span></h2></div>
           <div className="profile-body">
             <figure className="profile-portrait"><img src={asset("luo-tianxiang-art-avatar.png")} alt="罗天翔的 AIGC 艺术头像" /><figcaption><span>LUO TIANXIANG / 罗天翔</span><span>AIGC VISUAL</span></figcaption></figure>
             <div className="profile-copy">
@@ -913,12 +938,12 @@ function PortfolioHome() {
         <div className="shell work-shell">
           <div className="section-rail light"><span>02</span><p>SELECTED<br />WORKS</p></div>
           <div className="work-main">
-            <div className="work-heading"><div><p className="overline">CURATED PROJECTS / 2024—2026</p><h2>精选项目</h2></div><p>先从六个代表项目进入完整案例，<br />每张卡片均通往独立展示场景。</p></div>
+            <div className="work-heading"><div><p className="overline">CURATED PROJECTS / 2024—2026</p><h2 className="motion-title">精选项目</h2></div><p>先从六个代表项目进入完整案例，<br />每张卡片均通往独立展示场景。</p></div>
             <div className="project-grid">{featuredProjects.map((project) => <ProjectCard key={project.id} project={project} />)}</div>
 
             <section className="archive" id="archive">
               <div className="archive-heading">
-                <div><p className="overline">PROJECT CATEGORIES / EVERY WORK INCLUDED</p><h2>分类作品</h2></div>
+                <div><p className="overline">PROJECT CATEGORIES / EVERY WORK INCLUDED</p><h2 className="motion-title">分类作品</h2></div>
                 <strong>22<sup>/22</sup></strong>
               </div>
               <div className="archive-filters" role="group" aria-label="按类别筛选作品">
@@ -937,21 +962,21 @@ function PortfolioHome() {
       <section className="strengths shell section" id="strengths">
         <div className="section-rail"><span>03</span><p>WHY ME<br />个人优势</p></div>
         <div className="strength-main">
-          <div className="strength-heading"><p className="overline">CAPABILITIES / NOT JUST TOOLS</p><h2>从想法，到被看见。<br /><span>再到真正落地。</span></h2></div>
+          <div className="strength-heading"><p className="overline">CAPABILITIES / NOT JUST TOOLS</p><h2 className="motion-title">从想法到被看见<br /><span>再到真正落地</span></h2></div>
           <div className="strength-grid">{strengths.map((item) => <article className="strength-card" key={item.number}><div className="strength-top"><span>{item.number}</span><i>✦</i></div><div><p>{item.english}</p><h3>{item.title}</h3><div className="card-line" /><p className="strength-copy">{item.copy}</p></div><div className="strength-tags">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></article>)}</div>
         </div>
       </section>
 
       <footer className="contact" id="contact">
         <div className="contact-grid" aria-hidden="true" />
-        <div className="contact-inner shell"><div className="contact-top"><span><i /> OPEN FOR COLLABORATION</span><span>LUO TIANXIANG / CHINA</span></div><div className="contact-title"><p>HAVE A PROJECT IN MIND?</p><h2>让下一个想法，<br /><em>成为真实作品。</em></h2></div><div className="contact-actions"><a className="contact-email" href="mailto:1158190818@qq.com"><span>1158190818@QQ.COM</span><Arrow /></a><button type="button" className="wechat-contact" onClick={() => setWechatOpen(true)}><span><small>WECHAT</small>LTX</span><b>打开二维码 <Arrow /></b></button></div><div className="contact-bottom"><span>© 2026 罗天翔 · AIGC VISUAL DESIGNER</span><div><a href="#top">BACK TO TOP ↑</a><a href="#work">WORKS</a><a href="#strengths">CAPABILITIES</a></div><a href="tel:+8618229693585">+86 182 2969 3585</a></div></div>
+        <div className="contact-inner shell"><div className="contact-top"><span><i /> OPEN FOR COLLABORATION</span><span>LUO TIANXIANG / CHINA</span></div><div className="contact-title"><p>HAVE A PROJECT IN MIND?</p><h2 className="motion-title">让下一个想法<br /><em>成为真实作品</em></h2></div><div className="contact-actions"><a className="contact-email" href="mailto:1158190818@qq.com"><span>1158190818@QQ.COM</span><Arrow /></a><button type="button" className="wechat-contact" onClick={() => setWechatOpen(true)}><span><small>WECHAT</small>LTX</span><b>打开二维码 <Arrow /></b></button></div><div className="contact-bottom"><span>© 2026 罗天翔 · AIGC VISUAL DESIGNER</span><div><a href="#top">BACK TO TOP ↑</a><a href="#work">WORKS</a><a href="#strengths">CAPABILITIES</a></div><a href="tel:+8618229693585">+86 182 2969 3585</a></div></div>
       </footer>
 
       {wechatOpen && (
         <div className="wechat-modal-backdrop" role="presentation" onClick={() => setWechatOpen(false)}>
           <section className="wechat-modal" role="dialog" aria-modal="true" aria-labelledby="wechat-title" onClick={(event) => event.stopPropagation()}>
             <button type="button" className="wechat-modal-close" onClick={() => setWechatOpen(false)} aria-label="关闭微信二维码">×</button>
-            <div className="wechat-modal-heading"><p>WECHAT CONTACT / 微信联系</p><h2 id="wechat-title">添加微信<br /><span>LTX</span></h2></div>
+            <div className="wechat-modal-heading"><p>WECHAT CONTACT / 微信联系</p><h2 className="motion-title is-title-visible" id="wechat-title">添加微信<br /><span>LTX</span></h2></div>
             <a className="wechat-qr-link" href={asset("wechat-ltx-qr.png")} target="_blank" rel="noreferrer" aria-label="在新窗口打开微信二维码原图">
               <img src={asset("wechat-ltx-qr.png")} alt="罗天翔微信二维码，微信号 LTX" />
             </a>

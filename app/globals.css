@@ -961,3 +961,97 @@ body:has(a:hover, button:hover) ::selection { background: white; }
   .wechat-modal-close { right: 14px; top: 14px; width: 42px; height: 42px; }
   .wechat-qr-link img { max-height: 62svh; }
 }
+
+/* P3-INSPIRED DISPLAY TITLE MOTION — SHARP BY DESIGN, NO BLUR */
+.motion-title {
+  position: relative;
+  isolation: isolate;
+  width: fit-content;
+  max-width: 100%;
+  transform-origin: left center;
+  will-change: translate, scale;
+}
+
+.motion-title::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -4%;
+  bottom: .06em;
+  width: 0;
+  height: .14em;
+  background: linear-gradient(90deg, #1768ff 0%, #66e8ff 62%, rgba(102, 232, 255, 0) 100%);
+  box-shadow: 0 0 22px rgba(57, 198, 255, .42);
+  transform: skewX(-30deg);
+  opacity: .86;
+}
+
+.motion-title::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: -.42em;
+  top: -.16em;
+  width: .46em;
+  aspect-ratio: 1;
+  border: max(1px, .018em) solid rgba(180, 243, 255, .82);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 .08em rgba(39, 130, 255, .18),
+    inset .1em 0 0 rgba(87, 226, 255, .24);
+  opacity: .22;
+  rotate: -32deg;
+  scale: .72;
+}
+
+.motion-title.is-title-visible {
+  animation: p3-title-snap .78s cubic-bezier(.16, .86, .18, 1) both;
+}
+
+.motion-title.is-title-visible::before {
+  animation: p3-title-sweep .92s cubic-bezier(.16, .86, .18, 1) .08s both;
+}
+
+.motion-title.is-title-visible::after {
+  animation:
+    p3-title-orbit-in .85s cubic-bezier(.16, .86, .18, 1) .18s both,
+    p3-title-orbit-loop 8s linear 1.03s infinite;
+}
+
+@keyframes p3-title-snap {
+  0% { opacity: .72; translate: -28px 0; scale: .95 1; }
+  52% { opacity: 1; translate: 8px 0; scale: 1.015 1; }
+  72% { translate: -3px 0; }
+  100% { opacity: 1; translate: 0 0; scale: 1; }
+}
+
+@keyframes p3-title-sweep {
+  0% { width: 0; translate: -12% 0; opacity: 0; }
+  44% { width: 108%; opacity: .92; }
+  100% { width: 76%; translate: 7% 0; opacity: .5; }
+}
+
+@keyframes p3-title-orbit-in {
+  0% { opacity: 0; scale: .4; rotate: -95deg; }
+  62% { opacity: .62; scale: 1.12; rotate: 14deg; }
+  100% { opacity: .32; scale: 1; rotate: 0deg; }
+}
+
+@keyframes p3-title-orbit-loop {
+  from { rotate: 0deg; }
+  to { rotate: 360deg; }
+}
+
+@media (max-width: 760px) {
+  .motion-title::before { height: .11em; }
+  .motion-title::after { right: -.2em; top: -.08em; width: .36em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-title,
+  .motion-title.is-title-visible,
+  .motion-title.is-title-visible::before,
+  .motion-title.is-title-visible::after { animation: none; }
+  .motion-title::before { width: 72%; opacity: .45; }
+  .motion-title::after { opacity: .25; scale: 1; }
+}
