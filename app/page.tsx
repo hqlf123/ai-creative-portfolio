@@ -29,7 +29,10 @@ type Project = {
   deliverable: string;
 };
 
-const asset = (filename: string) => `${import.meta.env.BASE_URL}assets/${filename}`;
+const portfolioMediaCdn = "https://hqlf123.github.io/ai-creative-portfolio/assets/";
+const asset = (filename: string) => filename.endsWith(".mp4")
+  ? `${portfolioMediaCdn}${filename}`
+  : `${import.meta.env.BASE_URL}assets/${filename}`;
 
 const projects: Project[] = [
   {
