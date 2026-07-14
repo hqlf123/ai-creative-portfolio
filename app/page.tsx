@@ -402,10 +402,22 @@ const projects: Project[] = [
 ];
 
 const strengths = [
-  { number: "01", title: "AI 影像导演力", english: "AI MOTION DIRECTION", copy: "从创意概念、分镜、画面生成到节奏剪辑，让每一次生成都服务于明确的导演意图。", tags: ["SCRIPT", "STORYBOARD", "VIDEO GEN", "EDIT"] },
-  { number: "02", title: "品牌系统化", english: "BRAND SYSTEMS", copy: "把定位、视觉语言、IP 角色与应用延展组织成一致的品牌体验，而不是零散的漂亮画面。", tags: ["STRATEGY", "IDENTITY", "IP", "GUIDELINE"] },
-  { number: "03", title: "商业视觉落地", english: "COMMERCIAL CRAFT", copy: "理解卖点、信息层级与转化目标，在审美与商业效率之间找到清晰、可执行的解法。", tags: ["E-COMMERCE", "CAMPAIGN", "KEY VISUAL"] },
-  { number: "04", title: "跨媒介工作流", english: "MULTI-MODAL WORKFLOW", copy: "灵活组合图像、视频、文字与模型能力，建立稳定、可复用、能持续迭代的创作流程。", tags: ["IMAGE", "VIDEO", "LLM", "WORKFLOW"] },
+  { number: "01", title: "AI 编导全流程", english: "AI CREATIVE DIRECTION", copy: "从需求拆解、脚本与分镜，到角色、场景、镜头调度和节奏剪辑，让每一次生成都服从明确的导演意图。", tags: ["SCRIPT", "STORYBOARD", "VIDEO GEN", "EDIT"] },
+  { number: "02", title: "商业视觉落地", english: "COMMERCIAL CRAFT", copy: "围绕卖点、信息层级与转化目标，完成电商详情、品牌 IP、主视觉与动态延展。", tags: ["E-COMMERCE", "CAMPAIGN", "KEY VISUAL"] },
+  { number: "03", title: "AIGC 制作交付", english: "AIGC PRODUCTION", copy: "覆盖提示词、角色与场景一致性、生图与视频生成、声音、调色、审片及多平台版本交付。", tags: ["IMAGE GEN", "VIDEO GEN", "SOUND", "QC"] },
+  { number: "04", title: "内容策划传播", english: "CONTENT & MEDIA", copy: "把媒体编辑、新闻写作与短视频运营经验转化为清晰、有叙事力、能被传播的视觉内容。", tags: ["EDITORIAL", "COPY", "SOCIAL", "OPERATION"] },
+];
+
+const experience = [
+  { period: "2024.05 — 至今", company: "湖南日报融媒体传播有限公司", role: "AIGC 编辑", description: "负责企业、科技、产业及新闻稿件撰写，从资料梳理到结构化成稿，持续将复杂信息转译成清晰内容。" },
+  { period: "2022.08 — 2023.06", company: "华声在线 · 湘报严选部门", role: "内容 / 直播运营", description: "完成《新湖南》公众号短视频拍摄与后期，并负责直播中控、商城运营、产品与节日文案及抖音助农直播。" },
+  { period: "2021.07 — 2021.10", company: "湖南卫视金鹰卡通频道", role: "后期剪辑 / 花字 / 字幕", description: "参与《童趣大冒险》后期制作，在真实栏目流程中完成剪辑、花字与字幕相关工作。" },
+];
+
+const toolGroups = [
+  ["图像与视频生成", "Midjourney · Stable Diffusion · ComfyUI · FLUX · ImageGen · 即梦 · 可灵 · Runway · Vidu · 海螺 AI"],
+  ["大模型与智能体", "ChatGPT · Claude · Gemini · Grok · Kimi · DeepSeek · 豆包 · Codex"],
+  ["设计与后期", "Photoshop · Premiere Pro · DaVinci Resolve · 剪映 · Cinema 4D"],
 ];
 
 const filters: ProjectGroup[] = ["横屏商业广告", "竖屏抖音爆款", "漫剧作品", "商业详情", "品牌全案", "平面设计"];
@@ -683,14 +695,14 @@ function CaseScene({ project }: { project: Project }) {
   useEffect(() => {
     document.title = `${project.title} — 完整案例`;
     window.scrollTo(0, 0);
-    return () => { document.title = "视觉设计师 / AI 设计师 / 品牌设计师作品集"; };
+    return () => { document.title = "罗天翔 — AIGC 视觉设计作品集"; };
   }, [project]);
 
   return (
     <main className={`case-scene case-${project.media} case-${project.id}`}>
       <header className="case-header">
         <a href={`${import.meta.env.BASE_URL}#archive`} className="case-back">← 返回原浏览位置</a>
-        <span>{project.index} / {projects.length} · COMPLETE CASE</span>
+        <span>LUO TIANXIANG · CASE {project.index} / {projects.length}</span>
         <a href="#contact-case">联系合作 <Arrow /></a>
       </header>
 
@@ -705,6 +717,11 @@ function CaseScene({ project }: { project: Project }) {
             <div><dt>交付内容</dt><dd>{project.deliverable}</dd></div>
             <div><dt>项目类型</dt><dd>{project.category}</dd></div>
           </dl>
+        </div>
+        <div className="case-method" aria-label="项目方法">
+          <div><span>01 / DIRECTION</span><strong>需求拆解与创意导演</strong></div>
+          <div><span>02 / PRODUCTION</span><strong>AIGC 视觉与动态制作</strong></div>
+          <div><span>03 / DELIVERY</span><strong>审片、优化与成品交付</strong></div>
         </div>
       </section>
 
@@ -766,7 +783,7 @@ function PortfolioHome() {
   );
 
   useEffect(() => {
-    document.title = "视觉设计师 / AI 设计师 / 品牌设计师作品集";
+    document.title = "罗天翔 — AIGC 视觉设计作品集";
     const onScroll = () => {
       const total = document.documentElement.scrollHeight - window.innerHeight;
       setScrolled(window.scrollY > 28);
@@ -799,8 +816,8 @@ function PortfolioHome() {
     <main>
       <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
         <div className="header-inner">
-          <a className="brand" href="#top" aria-label="返回首页"><span className="brand-glyph">D<span>+</span></span><span className="brand-copy">VISUAL / AI<br />DESIGNER</span></a>
-          <nav aria-label="主导航"><a href="#work"><span>01</span> 精选</a><a href="#archive"><span>02</span> 分类作品</a><a href="#profile"><span>03</span> 关于</a></nav>
+          <a className="brand" href="#top" aria-label="返回首页"><span className="brand-glyph">L<span>+</span></span><span className="brand-copy">LUO TIANXIANG<br />AIGC VISUAL</span></a>
+          <nav aria-label="主导航"><a href="#work"><span>01</span> 精选</a><a href="#archive"><span>02</span> 分类作品</a><a href="#experience"><span>03</span> 经历</a><a href="#profile"><span>04</span> 关于</a></nav>
           <a className="contact-pill" href="#contact">联系合作 <Arrow /></a>
         </div>
         <div className="page-progress" style={{ width: `${progress}%` }} />
@@ -811,7 +828,7 @@ function PortfolioHome() {
         <div className="hero-shade" /><div className="hero-grid" aria-hidden="true" />
         <div className="hero-content shell">
           <div className="hero-eyebrow"><span><i /> COMPLETE PORTFOLIO · 22 PROJECTS</span><span>PORTFOLIO / 2026</span></div>
-          <div className="hero-title-wrap"><p className="hero-role">视觉设计师 / AI 设计师 / 品牌设计师</p><h1>让视觉<br /><em>先于语言</em><br />抵达。</h1></div>
+          <div className="hero-title-wrap"><p className="hero-role">罗天翔 · AI 视觉设计 / AIGC 影像 / 新媒体内容</p><h1>把想象<br /><em>导演成</em><br />真实。</h1></div>
           <div className="hero-footer">
             <p>DESIGNING WHAT PEOPLE FEEL<br />BEFORE THEY READ.</p>
             <div className="hero-disciplines"><span>15 FULL FILMS</span><span>28 PDF PAGES</span><span>5 COMPLETE ARTWORKS</span></div>
@@ -824,13 +841,14 @@ function PortfolioHome() {
       <section className="profile shell section" id="profile">
         <div className="section-rail"><span>01</span><p>PROFILE<br />个人经历</p></div>
         <div className="profile-main">
-          <div className="profile-heading"><p className="overline">BETWEEN IMAGINATION AND EXECUTION</p><h2>在创意与技术之间，<br /><span>建立可感知的品牌体验。</span></h2></div>
+          <div className="profile-heading"><p className="overline">BETWEEN IMAGINATION AND EXECUTION</p><h2>在编导思维与生成技术之间，<br /><span>创造可落地的视觉叙事。</span></h2></div>
           <div className="profile-body">
-            <figure className="profile-portrait"><img src={asset("book-cover.webp")} alt="人物视觉作品《澄心》局部" /><figcaption><span>PROFILE VISUAL / 01</span><span>FROM “澄心”</span></figcaption></figure>
+            <figure className="profile-portrait"><img src={asset("luo-tianxiang-profile.jpg")} alt="AIGC 视觉设计师罗天翔个人肖像" /><figcaption><span>LUO TIANXIANG / 罗天翔</span><span>AIGC VISUAL</span></figcaption></figure>
             <div className="profile-copy">
-              <p className="intro">我是一名视觉设计师、AI 设计师与品牌设计师，持续探索生成式 AI 如何进入真实商业创作。</p>
-              <p>从一条广告片、一张主视觉，到一套完整品牌表达，我关注的不只是画面是否好看，更在意它能否准确传递价值、建立记忆，并最终成为可落地的作品。</p>
-              <div className="contact-list"><div><span>NAME</span><b>YOUR NAME / 待补充</b></div><div><span>BASED</span><b>CHINA · REMOTE READY</b></div><div><span>EMAIL</span><a href="mailto:hello@yourname.com">HELLO@YOURNAME.COM <Arrow /></a></div><div><span>SOCIAL</span><b>小红书 / 抖音 / BEHANCE</b></div></div>
+              <p className="intro">我是罗天翔，一名拥有广播电视编导背景的 AIGC 视觉创作者。</p>
+              <p>我把导演式的叙事判断、商业视觉的信息组织与生成式 AI 的制作效率放进同一条工作流。从创意提案、脚本分镜、角色场景到剪辑调色，我关心的不只是画面是否惊艳，更在意它是否准确、完整并真正可交付。</p>
+              <div className="contact-list"><div><span>NAME</span><b>罗天翔 / LUO TIANXIANG</b></div><div><span>EDUCATION</span><b>西南石油大学 · 广播电视编导</b></div><div><span>EMAIL</span><a href="mailto:1158190818@qq.com">1158190818@QQ.COM <Arrow /></a></div><div><span>PHONE</span><a href="tel:+8618229693585">182 2969 3585 <Arrow /></a></div></div>
+              <a className="resume-link" href={`${import.meta.env.BASE_URL}luo-tianxiang-resume.pdf`} target="_blank" rel="noreferrer">查看完整简历 PDF <Arrow /></a>
             </div>
           </div>
           <div className="profile-stats"><div><strong>22</strong><span>完整项目<br />COMPLETE PROJECTS</span></div><div><strong>15</strong><span>动态影像<br />FULL FILMS</span></div><div><strong>28</strong><span>全案页面<br />PDF PAGES</span></div><div><strong>05</strong><span>完整视觉长图<br />FULL ARTWORKS</span></div></div>
@@ -870,9 +888,31 @@ function PortfolioHome() {
         </div>
       </section>
 
+      <section className="experience section" id="experience">
+        <div className="shell experience-shell">
+          <div className="section-rail light"><span>04</span><p>EXPERIENCE<br />经历与工具</p></div>
+          <div className="experience-main">
+            <div className="experience-heading"><p className="overline">EDITORIAL ROOTS / GENERATIVE FUTURE</p><h2>真实内容经验，<br /><span>驱动新一代视觉创作。</span></h2></div>
+            <div className="career-list">
+              {experience.map((item, index) => (
+                <article className="career-item" key={item.company}>
+                  <span className="career-number">0{index + 1}</span>
+                  <time>{item.period}</time>
+                  <div><h3>{item.company}</h3><p className="career-role">{item.role}</p><p>{item.description}</p></div>
+                </article>
+              ))}
+            </div>
+            <div className="experience-bottom">
+              <article className="education-card"><p className="overline">EDUCATION & RECOGNITION</p><h3>西南石油大学</h3><p>广播电视编导 · 本科 · 学士学位<br />2018 — 2023</p><div className="award-line"><strong>2020</strong><span>四川省大学生新媒体创意大赛<br />二等奖 × 1 · 三等奖 × 1</span></div><div className="award-line"><strong>06</strong><span>篇文章刊载于“新湖南”网站<br />企业 · 科技 · 产业内容</span></div></article>
+              <article className="tools-card"><p className="overline">SELECTED TOOLKIT</p>{toolGroups.map(([label, tools]) => <div key={label}><h3>{label}</h3><p>{tools}</p></div>)}</article>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className="contact" id="contact">
         <div className="contact-grid" aria-hidden="true" />
-        <div className="contact-inner shell"><div className="contact-top"><span><i /> OPEN FOR COLLABORATION</span><span>BASED IN CHINA / WORKING WORLDWIDE</span></div><div className="contact-title"><p>HAVE A PROJECT IN MIND?</p><h2>一起做点<br /><em>值得被记住的。</em></h2></div><a className="contact-email" href="mailto:hello@yourname.com"><span>HELLO@YOURNAME.COM</span><Arrow /></a><div className="contact-bottom"><span>© 2026 VISUAL / AI / BRAND DESIGNER</span><div><a href="#top">BACK TO TOP ↑</a><a href="#work">WORKS</a><a href="#profile">PROFILE</a></div><span>22 COMPLETE PROJECTS</span></div></div>
+        <div className="contact-inner shell"><div className="contact-top"><span><i /> OPEN FOR COLLABORATION</span><span>LUO TIANXIANG / CHINA</span></div><div className="contact-title"><p>HAVE A PROJECT IN MIND?</p><h2>让下一个想法，<br /><em>成为真实作品。</em></h2></div><a className="contact-email" href="mailto:1158190818@qq.com"><span>1158190818@QQ.COM</span><Arrow /></a><div className="contact-bottom"><span>© 2026 罗天翔 · AIGC VISUAL DESIGNER</span><div><a href="#top">BACK TO TOP ↑</a><a href="#work">WORKS</a><a href="#experience">EXPERIENCE</a></div><a href="tel:+8618229693585">+86 182 2969 3585</a></div></div>
       </footer>
     </main>
   );

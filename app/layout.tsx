@@ -3,23 +3,21 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hqlf123.github.io/ai-creative-portfolio/"),
-  title: "视觉设计师 / AI 设计师 / 品牌设计师作品集",
-  description: "聚焦 AI 动态影像、品牌系统与商业视觉的个人设计作品集。",
-  keywords: ["视觉设计师", "AI设计师", "品牌设计师", "AIGC", "作品集"],
+  title: "罗天翔 — AIGC 视觉设计作品集",
+  description: "罗天翔个人作品集：AI 视觉设计、AIGC 影像创作、新媒体内容与商业视觉。",
+  keywords: ["罗天翔", "AI视觉设计", "AIGC影像", "AI编导", "新媒体", "作品集"],
   openGraph: {
-    title: "AI Creative Portfolio",
-    description: "视觉设计 · AI 影像 · 品牌设计",
+    title: "罗天翔 — AIGC 视觉设计作品集",
+    description: "AI 视觉设计 · AIGC 影像创作 · 新媒体内容 · AI 编导创作",
     url: "https://hqlf123.github.io/ai-creative-portfolio/",
-    siteName: "AI Creative Portfolio",
+    siteName: "罗天翔作品集",
     locale: "zh_CN",
     type: "website",
-    images: [{ url: "og.png", width: 2184, height: 1005, alt: "AI Creative Portfolio" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Creative Portfolio",
-    description: "视觉设计 · AI 影像 · 品牌设计",
-    images: ["og.png"],
+    title: "罗天翔 — AIGC 视觉设计作品集",
+    description: "AI 视觉设计 · AIGC 影像创作 · 新媒体内容",
   },
 };
 
