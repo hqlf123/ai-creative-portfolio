@@ -395,8 +395,9 @@ function Arrow() {
 function ProjectCard({ project }: { project: Project }) {
   return (
     <article className={`project-card ${project.id === "headphones" ? "is-wide" : ""}`}>
-      <a className="project-media" href={`#case/${project.id}`} aria-label={`查看完整项目：${project.title}`}>
-        <img src={project.cover} alt={`${project.title}项目封面`} style={{ objectPosition: project.position }} />
+      <a className={`project-media media-stage media-${project.media} ${project.long ? "is-long-artwork" : ""}`} href={`#case/${project.id}`} aria-label={`查看完整项目：${project.title}`}>
+        <img className="media-artwork" src={project.cover} alt={`${project.title}项目封面，完整画面无裁切`} style={{ objectPosition: project.position }} />
+        <span className="media-frame-note" aria-hidden="true">FULL FRAME · NO CROP</span>
         <span className="project-index">CASE / {project.index}</span>
         {project.media === "video" && <span className="play-badge"><i>▶</i> PLAY FULL FILM</span>}
         {project.media === "pages" && <span className="play-badge"><i>＋</i> ALL {project.pageCount} PAGES</span>}
@@ -414,8 +415,9 @@ function ProjectCard({ project }: { project: Project }) {
 function ArchiveCard({ project }: { project: Project }) {
   return (
     <article className={`archive-card ${project.portrait ? "is-portrait" : ""}`}>
-      <a className="archive-media" href={`#case/${project.id}`} aria-label={`打开完整项目：${project.title}`}>
-        <img src={project.cover} alt={`${project.title}项目封面`} style={{ objectPosition: project.position }} />
+      <a className={`archive-media media-stage media-${project.media} ${project.long ? "is-long-artwork" : ""}`} href={`#case/${project.id}`} aria-label={`打开完整项目：${project.title}`}>
+        <img className="media-artwork" src={project.cover} alt={`${project.title}项目封面，完整画面无裁切`} style={{ objectPosition: project.position }} />
+        <span className="media-frame-note" aria-hidden="true">FULL FRAME</span>
         <span className="archive-number">{project.index}</span>
         <span className="archive-type">{project.media === "video" ? "FULL FILM" : project.media === "pages" ? `${project.pageCount} PAGES` : "FULL IMAGE"}</span>
         <span className="archive-arrow"><Arrow /></span>

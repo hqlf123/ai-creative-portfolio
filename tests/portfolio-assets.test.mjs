@@ -86,3 +86,14 @@ test("all 22 projects are registered in the portfolio", () => {
     assert.ok(source.includes(`id: "${id}"`), `Missing project registration: ${id}`);
   }
 });
+
+test("portfolio artwork is always rendered without cropping", () => {
+  const source = fs.readFileSync(path.join(projectRoot, "app", "page.tsx"), "utf8");
+  const styles = fs.readFileSync(path.join(projectRoot, "app", "globals.css"), "utf8");
+
+  assert.ok(source.includes('className="media-artwork"'), "Featured artwork must use the full-frame class");
+  assert.ok(styles.includes(".media-stage .media-artwork"), "Missing shared artwork frame styles");
+  assert.match(styles, /\.media-stage \.media-artwork\s*\{[^}]*object-fit:\s*contain/s);
+  assert.match(styles, /\.case-image-frame img\s*\{[^}]*object-fit:\s*contain/s);
+  assert.match(styles, /\.case-pages img\s*\{[^}]*object-fit:\s*contain/s);
+});
