@@ -11,6 +11,8 @@ type Project = {
   index: string;
   title: string;
   english: string;
+  listingTitle?: string;
+  listingEnglish?: string;
   category: string;
   group: ProjectGroup;
   year: string;
@@ -91,6 +93,8 @@ const projects: Project[] = [
     index: "04",
     title: "未来影像",
     english: "VITARA X1 PRO",
+    listingTitle: "VITARA X1 Pro 旗舰手机详情",
+    listingEnglish: "FLAGSHIP SMARTPHONE PRODUCT DETAIL",
     category: "电商视觉 / 手机详情页",
     group: "商业详情",
     year: "2026",
@@ -144,6 +148,8 @@ const projects: Project[] = [
     index: "07",
     title: "冷萃工坊",
     english: "COLD-X PRODUCT DETAIL",
+    listingTitle: "Cold-X 冷萃咖啡机详情",
+    listingEnglish: "COLD BREW COFFEE MAKER PRODUCT DETAIL",
     category: "电商视觉 / 产品详情页",
     group: "商业详情",
     year: "2026",
@@ -161,6 +167,8 @@ const projects: Project[] = [
     index: "08",
     title: "灵动掌控",
     english: "AURORA M7 DETAIL PAGE",
+    listingTitle: "AURORA M7 无线鼠标详情",
+    listingEnglish: "WIRELESS MOUSE PRODUCT DETAIL",
     category: "电商视觉 / 鼠标详情页",
     group: "商业详情",
     year: "2026",
@@ -178,6 +186,8 @@ const projects: Project[] = [
     index: "09",
     title: "柿山居",
     english: "HOMESTAY VISUAL PROPOSAL",
+    listingTitle: "柿山居民宿视觉提案",
+    listingEnglish: "SHISHANJU HOMESTAY VISUAL PROPOSAL",
     category: "品牌视觉 / 空间提案",
     group: "商业详情",
     year: "2026",
@@ -570,7 +580,7 @@ function ProjectCard({ project }: { project: Project }) {
         <span className="open-project">VIEW COMPLETE CASE <Arrow /></span>
       </a>
       <div className="project-meta">
-        <div><h3>{project.title}</h3><p>{project.english}</p></div>
+        <div><h3>{project.listingTitle ?? project.title}</h3><p>{project.listingEnglish ?? project.english}</p></div>
         <div><span>{project.category}</span><time>{project.year}</time></div>
       </div>
     </article>
@@ -595,7 +605,7 @@ function ArchiveCard({ project }: { project: Project }) {
         <span className="archive-arrow"><Arrow /></span>
       </a>
       <div className="archive-meta">
-        <div><h3>{project.title}</h3><p>{project.english}</p></div>
+        <div><h3>{project.listingTitle ?? project.title}</h3><p>{project.listingEnglish ?? project.english}</p></div>
         <span>{project.group}</span>
       </div>
     </article>
