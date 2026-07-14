@@ -649,3 +649,92 @@ body::selection, ::selection { background: var(--signal); color: #03133d; }
   .profile-portrait { width: 94%; }
   .strength-card { clip-path: polygon(0 0, 92% 0, 100% 5%, 100% 100%, 0 100%); }
 }
+
+/* READABILITY PASS — keep the editorial hierarchy, remove micro-type */
+.overline { font-size: 12px; line-height: 1.45; }
+.avatar-copy b { font-size: 12px; }
+.avatar-copy small { font-size: 10px; }
+.site-header nav { font-size: 14px; }
+.site-header nav a span { font-size: 11px; }
+.contact-pill { font-size: 13px; }
+.hero-eyebrow { font-size: 11px; line-height: 1.3; }
+.hero-role { font-size: 15px; line-height: 1.5; }
+.hero-footer > p { font-size: 11px; }
+.hero-disciplines span { font-size: 10px; }
+.scroll-cue { font-size: 11px; }
+.hero-side { font-size: 10px; }
+.section-rail > span { font-size: 11px; }
+.section-rail p { font-size: 12px; }
+.profile-portrait figcaption { font-size: 10px; }
+.profile-copy > p { font-size: 17px; line-height: 1.85; }
+.contact-list span { font-size: 10px; }
+.contact-list b, .contact-list a { font-size: 13px; }
+.resume-link { font-size: 11px; }
+.profile-stats span { font-size: 11px; }
+.work-heading > p { font-size: 15px; }
+.cover-kicker { font-size: 10px; }
+.cover-identity em { font-size: 11px; }
+.cover-identity small { font-size: 10px; }
+.archive-media .cover-identity em, .archive-media .cover-identity small { font-size: 9px; }
+.media-frame-note { font-size: 9px; }
+.project-index { font-size: 10px; }
+.open-project { font-size: 10px; }
+.project-meta h3 { font-size: 26px; }
+.project-meta p, .project-meta span, .project-meta time { font-size: 10px; line-height: 1.5; }
+.archive-note span { font-size: 11px; }
+.archive-note p { font-size: 14px; }
+.archive-filters button { font-size: 13px; }
+.archive-filters sup { font-size: 10px; }
+.archive-number { font-size: 11px; }
+.archive-meta h3 { font-size: 21px; }
+.archive-meta p { font-size: 10px; line-height: 1.45; }
+.archive-meta > span { font-size: 10px; }
+.strength-top { font-size: 11px; }
+.strength-card > div:nth-child(2) > p:first-child { font-size: 10px; }
+.strength-card .strength-copy { font-size: 15px; }
+.strength-tags span { font-size: 9px; }
+.contact-top { font-size: 10px; }
+.contact-title > p { font-size: 11px; }
+.contact-bottom { font-size: 10px; }
+.case-header { font-size: 11px; }
+.case-label { font-size: 11px; }
+.case-en { font-size: 11px; line-height: 1.5; }
+.case-intro dt, .case-method span { font-size: 10px; }
+.case-intro dd { font-size: 13px; }
+.case-method strong { font-size: 17px; }
+.case-image-frame figcaption, .pages-status, .case-pages figcaption { font-size: 10px; line-height: 1.5; }
+.pages-status strong { font-size: 14px; }
+.case-footer span { font-size: 10px; }
+.case-footer > a { font-size: 13px; }
+.modal-kicker, .modal-english, .modal-content dt { font-size: 10px; }
+.modal-summary { font-size: 16px; }
+.modal-content dd { font-size: 13px; }
+
+@media (max-width: 760px) {
+  .overline { font-size: 10px; }
+  .site-header nav { display: none; }
+  .contact-pill { font-size: 11px; }
+  .hero-eyebrow { font-size: 9px; }
+  .hero-role { font-size: 12px; }
+  .hero-footer > p { font-size: 10px; }
+  .section-rail p { font-size: 11px; }
+  .profile-copy > p { font-size: 16px; }
+  .profile-copy .intro { font-size: 25px; }
+  .contact-list b, .contact-list a { font-size: 12px; letter-spacing: .04em; }
+  .profile-stats span { font-size: 10px; }
+  .work-heading > p { font-size: 14px; }
+  .media-frame-note { font-size: 8px; }
+  .cover-kicker { font-size: 9px; }
+  .cover-identity em, .archive-media .cover-identity em { font-size: 9px; }
+  .cover-identity small, .archive-media .cover-identity small { font-size: 8px; }
+  .project-meta h3 { font-size: 24px; }
+  .project-meta p, .project-meta span, .project-meta time { font-size: 9px; }
+  .archive-filters button { font-size: 12px; }
+  .archive-meta p, .archive-meta > span { font-size: 9px; }
+  .strength-card .strength-copy { font-size: 14px; }
+  .contact-bottom { font-size: 9px; }
+  .case-header { font-size: 9px; }
+  .case-label, .case-en { font-size: 10px; }
+  .case-intro dd { font-size: 12px; }
+  .modal-summary { font-size: 15px; }
+}
