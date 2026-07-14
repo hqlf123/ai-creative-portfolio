@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 
-type ProjectGroup = "横屏商业广告" | "竖屏抖音爆款" | "漫剧作品" | "商业详情" | "品牌全案" | "平面设计";
+type ProjectGroup = "横屏商业广告" | "竖屏抖音爆款" | "自媒体资讯内容" | "漫剧作品" | "商业详情" | "品牌全案" | "平面设计";
 type MediaType = "video" | "image" | "pages";
 type CoverFormat = "landscape" | "portrait" | "vertical";
 
@@ -42,6 +42,8 @@ const projects: Project[] = [
     index: "01",
     title: "声场之外",
     english: "HEADPHONE COMMERCIAL FILM",
+    listingTitle: "高端头戴耳机产品广告",
+    listingEnglish: "PREMIUM HEADPHONE PRODUCT FILM",
     category: "AI 动态影像 / 产品广告",
     group: "横屏商业广告",
     year: "2026",
@@ -59,6 +61,8 @@ const projects: Project[] = [
     index: "02",
     title: "钢铁人格",
     english: "ORIGINAL MECHA TOY",
+    listingTitle: "原创机甲玩具概念广告",
+    listingEnglish: "ORIGINAL MECHA TOY CONCEPT FILM",
     category: "概念设计 / AI 广告",
     group: "横屏商业广告",
     year: "2026",
@@ -76,6 +80,8 @@ const projects: Project[] = [
     index: "03",
     title: "住进秋天",
     english: "SHISHANJU RETREAT FILM",
+    listingTitle: "柿山居民宿品牌形象片",
+    listingEnglish: "SHISHANJU HOMESTAY BRAND FILM",
     category: "空间叙事 / 民宿广告",
     group: "横屏商业广告",
     year: "2026",
@@ -220,6 +226,8 @@ const projects: Project[] = [
     index: "11",
     title: "轻奢触感",
     english: "LEGWEAR COMMERCIAL",
+    listingTitle: "轻奢裤袜产品短片",
+    listingEnglish: "PREMIUM LEGWEAR PRODUCT FILM",
     category: "时尚产品 / 短视频广告",
     group: "横屏商业广告",
     year: "2026",
@@ -236,6 +244,8 @@ const projects: Project[] = [
     index: "12",
     title: "一键升级",
     english: "GAME UA CREATIVE",
+    listingTitle: "游戏 UA 竖屏买量广告",
+    listingEnglish: "GAME UA VERTICAL PERFORMANCE AD",
     category: "游戏买量 / 效果广告",
     group: "竖屏抖音爆款",
     year: "2026",
@@ -253,6 +263,8 @@ const projects: Project[] = [
     index: "13",
     title: "随身能量",
     english: "POWER BANK SOCIAL AD",
+    listingTitle: "充电宝社交平台竖屏广告",
+    listingEnglish: "POWER BANK VERTICAL SOCIAL AD",
     category: "数码产品 / 社交广告",
     group: "竖屏抖音爆款",
     year: "2026",
@@ -270,6 +282,8 @@ const projects: Project[] = [
     index: "14",
     title: "一口上头",
     english: "SNACK FOOD SHORT AD",
+    listingTitle: "零食产品竖屏效果广告",
+    listingEnglish: "SNACK FOOD VERTICAL PERFORMANCE AD",
     category: "食品饮料 / 效果广告",
     group: "竖屏抖音爆款",
     year: "2026",
@@ -303,6 +317,8 @@ const projects: Project[] = [
     index: "16",
     title: "口袋小斗",
     english: "POCKET FIGHTER CAMPAIGN",
+    listingTitle: "怀旧掌机竖屏产品广告",
+    listingEnglish: "RETRO HANDHELD VERTICAL PRODUCT AD",
     category: "怀旧数码 / 产品广告",
     group: "竖屏抖音爆款",
     year: "2026",
@@ -320,6 +336,8 @@ const projects: Project[] = [
     index: "17",
     title: "风野牧旅",
     english: "WILDERNESS JOURNEY",
+    listingTitle: "旷野文旅氛围短片",
+    listingEnglish: "WILDERNESS TRAVEL MOOD FILM",
     category: "文旅影像 / 人群适配",
     group: "横屏商业广告",
     year: "2026",
@@ -336,6 +354,8 @@ const projects: Project[] = [
     index: "18",
     title: "奶奶的小故事",
     english: "A WARM GRANDMA STORY",
+    listingTitle: "温情家庭竖屏叙事短片",
+    listingEnglish: "WARM FAMILY VERTICAL STORY FILM",
     category: "情感叙事 / 抖音短片",
     group: "竖屏抖音爆款",
     year: "2026",
@@ -353,8 +373,10 @@ const projects: Project[] = [
     index: "19",
     title: "AI 时代观察",
     english: "AI NEWS EDITORIAL",
+    listingTitle: "AI 时代自媒体资讯视频",
+    listingEnglish: "AI NEWS SELF-MEDIA EDITORIAL",
     category: "资讯内容 / 自媒体视频",
-    group: "横屏商业广告",
+    group: "自媒体资讯内容",
     year: "2026",
     cover: asset("ai-news-poster.jpg"),
     coverFormat: "landscape",
@@ -385,6 +407,8 @@ const projects: Project[] = [
     index: "21",
     title: "青提气泡",
     english: "GREEN GRAPE SODA",
+    listingTitle: "青提气泡饮料产品广告",
+    listingEnglish: "GREEN GRAPE SODA PRODUCT FILM",
     category: "食品饮料 / 产品广告",
     group: "横屏商业广告",
     year: "2026",
@@ -401,6 +425,8 @@ const projects: Project[] = [
     index: "22",
     title: "饺个朋友品牌片",
     english: "DUMPLING BRAND FILM",
+    listingTitle: "饺个朋友品牌 IP 动态短片",
+    listingEnglish: "DUMPLING BRAND IP FILM",
     category: "品牌 IP / 动态广告",
     group: "横屏商业广告",
     year: "2024",
@@ -421,7 +447,7 @@ const strengths = [
   { number: "04", title: "内容策划传播", english: "CONTENT & MEDIA", copy: "把媒体编辑、新闻写作与短视频运营经验转化为清晰、有叙事力、能被传播的视觉内容。", tags: ["EDITORIAL", "COPY", "SOCIAL", "OPERATION"] },
 ];
 
-const filters: ProjectGroup[] = ["横屏商业广告", "竖屏抖音爆款", "漫剧作品", "商业详情", "品牌全案", "平面设计"];
+const filters: ProjectGroup[] = ["横屏商业广告", "竖屏抖音爆款", "自媒体资讯内容", "漫剧作品", "商业详情", "品牌全案", "平面设计"];
 
 const rememberPortfolioPosition = () => {
   sessionStorage.setItem("portfolio:return-y", String(window.scrollY));
@@ -459,6 +485,7 @@ function coverPreviewLabel(project: Project, previewing: boolean) {
 }
 
 function coverTypeLabel(project: Project) {
+  if (project.group === "自媒体资讯内容") return "EDITORIAL CONTENT";
   if (project.media === "video") return project.coverFormat === "vertical" ? "VERTICAL FILM" : "MOTION FILM";
   if (project.media === "pages") return `COMPLETE CASE · ${project.pageCount}P`;
   if (project.long) return "LONGFORM DESIGN";
