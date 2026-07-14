@@ -113,20 +113,33 @@ img, video { display: block; max-width: 100%; }
 .project-card.is-wide { grid-column: span 12; }
 .project-card:nth-child(4) { grid-column: span 5; }
 .project-card:nth-child(5) { grid-column: span 7; padding-top: 0; }
-.project-card:nth-child(6) { grid-column: span 12; }
+.project-card:nth-child(6) { grid-column: 4 / span 6; }
 .project-media { display: block; width: 100%; position: relative; aspect-ratio: 16 / 9; cursor: pointer; text-align: left; }
-.project-card.is-wide .project-media { aspect-ratio: 16 / 9; }
-.project-card.project-phone-detail .project-media { aspect-ratio: 16 / 9; padding: 0; }
-.project-card:nth-child(5) .project-media { aspect-ratio: 16 / 9; }
-.project-card:nth-child(6) .project-media { aspect-ratio: 1.25; }
-.media-stage { isolation: isolate; overflow: hidden; padding: clamp(14px, 1.25vw, 24px); border: 1px solid rgba(16,18,16,.5); background: radial-gradient(circle at 50% 42%, #2b302d 0%, #171a18 52%, #0d0f0e 100%); box-shadow: 0 18px 45px rgba(12,14,12,.14); transition: border-color .3s ease, box-shadow .3s ease, background .3s ease; }
-.media-stage::before { content: ""; position: absolute; z-index: 2; inset: 7px; border: 1px solid rgba(255,255,255,.12); pointer-events: none; }
-.media-stage::after { content: ""; position: absolute; z-index: 1; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,.07), transparent 18%, transparent 78%, rgba(201,255,54,.06)); pointer-events: none; }
+.media-stage.cover-landscape { aspect-ratio: 16 / 9; }
+.media-stage.cover-portrait { aspect-ratio: 3 / 4; }
+.media-stage.cover-vertical { aspect-ratio: 9 / 16; }
+.project-card.project-magazine-cover .project-media,
+.archive-card.archive-magazine-cover .archive-media { aspect-ratio: 2 / 3; }
+.archive-card.archive-book-cover .archive-media { aspect-ratio: 1600 / 1095; }
+.media-stage { isolation: isolate; overflow: hidden; padding: 0; border: 1px solid rgba(16,18,16,.5); background: #101311; box-shadow: 0 18px 45px rgba(12,14,12,.14); transition: border-color .3s ease, box-shadow .3s ease, background .3s ease; }
+.media-stage::before { content: ""; position: absolute; z-index: 5; inset: 7px; border: 1px solid rgba(255,255,255,.18); pointer-events: none; transition: border-color .3s ease; }
+.media-stage::after { content: ""; position: absolute; z-index: 4; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,.08), transparent 18%, transparent 72%, rgba(201,255,54,.08)); pointer-events: none; }
 .media-stage:hover, .media-stage:focus-visible { border-color: rgba(17,19,16,.9); box-shadow: 0 24px 62px rgba(12,14,12,.24); outline: none; }
-.media-stage .media-artwork { position: relative; z-index: 1; width: 100%; height: 100%; object-fit: contain; object-position: center; background: transparent; filter: saturate(.96) contrast(1.01); box-shadow: 0 12px 34px rgba(0,0,0,.24); transition: filter .35s ease; }
-.media-stage:hover .media-artwork { filter: saturate(1) contrast(1.02); }
-.media-frame-note { position: absolute; z-index: 3; top: 11px; right: 12px; padding: 5px 7px; color: rgba(255,255,255,.64); background: rgba(8,10,9,.72); backdrop-filter: blur(8px); font: 7px/1 "SFMono-Regular", Consolas, monospace; letter-spacing: .12em; }
-.project-index, .play-badge, .open-project { position: absolute; z-index: 2; }
+.media-stage:hover::before, .media-stage:focus-visible::before { border-color: rgba(201,255,54,.42); }
+.media-stage .media-artwork,
+.media-stage .media-secondary-artwork,
+.media-stage .media-video-preview { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; background: #101311; filter: saturate(.94) contrast(1.02); transition: opacity .38s ease, filter .38s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+.media-stage .media-secondary-artwork { z-index: 2; opacity: 0; object-position: center top; }
+.media-stage .media-video-preview { z-index: 3; opacity: 0; transform: scale(1.018); }
+.media-stage.is-previewing .media-secondary-artwork,
+.media-stage.is-previewing .media-video-preview { opacity: 1; transform: scale(1); }
+.media-stage.is-previewing .media-artwork { filter: saturate(1) contrast(1.04); transform: scale(1.018); }
+.media-preview-shade { position: absolute; z-index: 4; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(7,9,8,.08), transparent 40%, rgba(7,9,8,.42)); opacity: .62; transition: opacity .35s ease; }
+.media-stage.is-previewing .media-preview-shade { opacity: .32; }
+.media-stage.is-long-artwork.is-previewing .media-artwork { animation: cover-pan 7s ease-in-out infinite alternate; transform: none; }
+@keyframes cover-pan { from { object-position: center top; } to { object-position: center bottom; } }
+.media-frame-note { position: absolute; z-index: 6; top: 11px; right: 12px; padding: 6px 8px; color: rgba(255,255,255,.72); background: rgba(8,10,9,.76); backdrop-filter: blur(8px); font: 7px/1 "SFMono-Regular", Consolas, monospace; letter-spacing: .12em; }
+.project-index, .play-badge, .open-project { position: absolute; z-index: 6; }
 .project-index { left: 16px; top: 16px; padding: 8px 10px; color: white; background: rgba(8,10,9,.72); backdrop-filter: blur(8px); font: 8px "SFMono-Regular", Consolas, monospace; letter-spacing: .14em; }
 .play-badge { left: 16px; bottom: 16px; display: flex; align-items: center; gap: 9px; padding: 9px 12px; color: var(--dark); background: var(--signal); border-radius: 999px; font: 700 8px "SFMono-Regular", Consolas, monospace; letter-spacing: .1em; }
 .play-badge i { font-size: 7px; font-style: normal; }
@@ -153,12 +166,8 @@ img, video { display: block; max-width: 100%; }
 .archive-filters sup { margin-left: 7px; color: #858a83; font: 8px "SFMono-Regular", Consolas, monospace; }
 .archive-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 70px 18px; }
 .archive-card { min-width: 0; }
-.archive-media { display: block; position: relative; aspect-ratio: 4 / 3; }
-.archive-card.is-portrait .archive-media { aspect-ratio: .78; }
-.archive-media.media-image.is-long-artwork, .archive-media.media-pages { aspect-ratio: 4 / 3; }
-.archive-card.archive-phone-detail .archive-media,
-.archive-card.archive-wilderness-journey .archive-media { aspect-ratio: 16 / 9; padding: 0; }
-.archive-number, .archive-type, .archive-arrow { position: absolute; z-index: 2; }
+.archive-media { display: block; position: relative; }
+.archive-number, .archive-type, .archive-arrow { position: absolute; z-index: 6; }
 .archive-number { top: 14px; left: 14px; color: #fff; font: 9px "SFMono-Regular", Consolas, monospace; }
 .archive-type { left: 14px; bottom: 15px; color: #fff; font: 700 8px "SFMono-Regular", Consolas, monospace; letter-spacing: .13em; }
 .archive-arrow { right: 14px; bottom: 14px; width: 42px; height: 42px; display: grid; place-items: center; color: #101210; background: var(--signal); border-radius: 50%; transform: scale(.9); transition: transform .25s; }
@@ -372,8 +381,6 @@ img, video { display: block; max-width: 100%; }
   .work-heading h2 { font-size: 68px; }
   .project-grid { display: block; }
   .project-card, .project-card.is-wide, .project-card:nth-child(4), .project-card:nth-child(5), .project-card:nth-child(6) { padding-top: 0; margin-bottom: 60px; }
-  .project-media, .project-card.is-wide .project-media, .project-card:nth-child(5) .project-media, .project-card:nth-child(6) .project-media { aspect-ratio: 1.18; }
-  .project-card.project-phone-detail .project-media { aspect-ratio: 16 / 9; padding: 0; }
   .open-project { transform: none; }
   .project-meta { grid-template-columns: 1fr; }
   .project-meta > div:last-child { border-top: 1px solid rgba(17,19,16,.16); padding-top: 12px; }
@@ -385,10 +392,7 @@ img, video { display: block; max-width: 100%; }
   .archive-heading > strong { font-size: 64px; }
   .archive-filters { margin: 38px 0 28px; }
   .archive-grid { grid-template-columns: 1fr; gap: 54px; }
-  .archive-card.is-portrait .archive-media, .archive-media, .archive-media.media-image.is-long-artwork, .archive-media.media-pages { aspect-ratio: 1; }
-  .media-stage { padding: 12px; }
-  .archive-card.archive-phone-detail .archive-media,
-  .archive-card.archive-wilderness-journey .archive-media { aspect-ratio: 16 / 9; padding: 0; }
+  .media-frame-note { font-size: 6px; }
   .strength-grid { grid-template-columns: 1fr; }
   .strength-card { min-height: 390px; }
   .contact-inner { padding-top: 28px; }

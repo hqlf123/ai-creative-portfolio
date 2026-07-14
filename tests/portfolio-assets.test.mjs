@@ -106,27 +106,57 @@ test("all 22 projects are registered in the portfolio", () => {
   }
 });
 
-test("portfolio artwork is always rendered without cropping", () => {
+test("full case artwork is always rendered without cropping", () => {
   const source = fs.readFileSync(path.join(projectRoot, "app", "page.tsx"), "utf8");
   const styles = fs.readFileSync(path.join(projectRoot, "app", "globals.css"), "utf8");
 
-  assert.ok(source.includes('className="media-artwork"'), "Featured artwork must use the full-frame class");
-  assert.ok(styles.includes(".media-stage .media-artwork"), "Missing shared artwork frame styles");
-  assert.match(styles, /\.media-stage \.media-artwork\s*\{[^}]*object-fit:\s*contain/s);
+  assert.ok(source.includes('className="media-artwork"'), "Every cover must use the shared artwork class");
   assert.match(styles, /\.case-image-frame img\s*\{[^}]*object-fit:\s*contain/s);
   assert.match(styles, /\.case-pages img\s*\{[^}]*object-fit:\s*contain/s);
 });
 
-test("landscape covers fit their cards without empty portrait stages", () => {
+test("all 22 projects have an intentional cover orientation", () => {
   const source = fs.readFileSync(path.join(projectRoot, "app", "page.tsx"), "utf8");
   const styles = fs.readFileSync(path.join(projectRoot, "app", "globals.css"), "utf8");
   const wilderness = source.match(/id: "wilderness-journey"[\s\S]*?deliverable:/)?.[0] ?? "";
+  const formats = [...source.matchAll(/coverFormat: "(landscape|portrait|vertical)"/g)].map((match) => match[1]);
 
   assert.ok(!wilderness.includes("portrait: true"), "Wilderness Journey must open and display as landscape");
+  assert.ok(wilderness.includes('coverFormat: "landscape"'), "Wilderness Journey needs a landscape cover");
+  assert.equal(formats.length, 22, "Every project needs a cover format");
+  assert.equal(formats.filter((format) => format === "landscape").length, 13);
+  assert.equal(formats.filter((format) => format === "portrait").length, 4);
+  assert.equal(formats.filter((format) => format === "vertical").length, 5);
   assert.ok(source.includes("project-${project.id}"), "Featured cards need stable project-specific classes");
   assert.ok(source.includes("archive-${project.id}"), "Archive cards need stable project-specific classes");
-  assert.match(styles, /\.project-card\.project-phone-detail \.project-media\s*\{[^}]*aspect-ratio:\s*16 \/ 9;[^}]*padding:\s*0;/s);
-  assert.match(styles, /\.archive-card\.archive-wilderness-journey \.archive-media\s*\{[^}]*aspect-ratio:\s*16 \/ 9;[^}]*padding:\s*0;/s);
+  assert.match(styles, /\.media-stage\.cover-landscape\s*\{[^}]*aspect-ratio:\s*16 \/ 9;/s);
+  assert.match(styles, /\.media-stage\.cover-portrait\s*\{[^}]*aspect-ratio:\s*3 \/ 4;/s);
+  assert.match(styles, /\.media-stage\.cover-vertical\s*\{[^}]*aspect-ratio:\s*9 \/ 16;/s);
+  assert.match(styles, /\.media-stage\s*\{[^}]*padding:\s*0;/s);
+  assert.match(styles, /\.media-stage \.media-artwork,[\s\S]*?object-fit:\s*cover;/s);
+});
+
+test("cover hover previews support video, image, and page projects", () => {
+  const source = fs.readFileSync(path.join(projectRoot, "app", "page.tsx"), "utf8");
+  const styles = fs.readFileSync(path.join(projectRoot, "app", "globals.css"), "utf8");
+
+  assert.ok(source.includes("function useCoverPreview"), "Missing shared hover preview behavior");
+  assert.ok(source.includes('className="media-video-preview"'), "Video cards need an inline preview layer");
+  assert.ok(source.includes("muted"), "Video previews must be muted");
+  assert.ok(source.includes("playsInline"), "Video previews must play inline");
+  assert.ok(source.includes('preload="none"'), "Video previews must not preload every full film");
+  assert.ok(source.includes("media-secondary-artwork"), "Image and page projects need a secondary preview layer");
+  assert.ok(source.includes("onMouseEnter: startPreview"), "Desktop hover must start previews");
+  assert.match(styles, /\.media-stage\.is-previewing \.media-video-preview\s*\{[^}]*opacity:\s*1;/s);
+  assert.match(styles, /\.media-stage\.is-long-artwork\.is-previewing \.media-artwork\s*\{[^}]*animation:\s*cover-pan/s);
+});
+
+test("the portfolio has a dedicated social cover", () => {
+  const html = fs.readFileSync(path.join(projectRoot, "github", "index.html"), "utf8");
+
+  assertFile(path.join(projectRoot, "public", "og.png"));
+  assertFile(path.join(projectRoot, "docs", "og.png"));
+  assert.ok(html.includes("https://hqlf123.github.io/ai-creative-portfolio/og.png"));
 });
 
 test("portfolio categories are complete and returning preserves context", () => {

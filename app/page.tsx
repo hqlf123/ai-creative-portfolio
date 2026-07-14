@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 
 type ProjectGroup = "横屏商业广告" | "竖屏抖音爆款" | "漫剧作品" | "商业详情" | "品牌全案" | "平面设计";
 type MediaType = "video" | "image" | "pages";
+type CoverFormat = "landscape" | "portrait" | "vertical";
 
 type Project = {
   id: string;
@@ -14,6 +15,7 @@ type Project = {
   group: ProjectGroup;
   year: string;
   cover: string;
+  coverFormat: CoverFormat;
   media: MediaType;
   source?: string;
   pagePrefix?: string;
@@ -39,6 +41,7 @@ const projects: Project[] = [
     group: "横屏商业广告",
     year: "2026",
     cover: asset("hero-headphones-poster.jpg"),
+    coverFormat: "landscape",
     media: "video",
     source: asset("hero-headphones.mp4"),
     featured: true,
@@ -55,6 +58,7 @@ const projects: Project[] = [
     group: "横屏商业广告",
     year: "2026",
     cover: asset("mecha-toy-poster.jpg"),
+    coverFormat: "landscape",
     media: "video",
     source: asset("mecha-toy.mp4"),
     featured: true,
@@ -71,6 +75,7 @@ const projects: Project[] = [
     group: "横屏商业广告",
     year: "2026",
     cover: asset("shishanju-poster.jpg"),
+    coverFormat: "landscape",
     media: "video",
     source: asset("shishanju.mp4"),
     featured: true,
@@ -87,6 +92,7 @@ const projects: Project[] = [
     group: "商业详情",
     year: "2026",
     cover: asset("phone-v2-hero.png"),
+    coverFormat: "landscape",
     media: "image",
     featured: true,
     position: "center top",
@@ -103,6 +109,7 @@ const projects: Project[] = [
     group: "品牌全案",
     year: "2024",
     cover: asset("dumpling-ip-cover.webp"),
+    coverFormat: "landscape",
     media: "pages",
     pagePrefix: "dumpling-ip",
     pageCount: 17,
@@ -120,6 +127,7 @@ const projects: Project[] = [
     group: "平面设计",
     year: "2026",
     cover: asset("magazine-cover.webp"),
+    coverFormat: "portrait",
     media: "image",
     featured: true,
     long: true,
@@ -137,6 +145,7 @@ const projects: Project[] = [
     group: "商业详情",
     year: "2026",
     cover: asset("coldx-cover.webp"),
+    coverFormat: "portrait",
     media: "pages",
     pagePrefix: "coldx",
     pageCount: 11,
@@ -153,6 +162,7 @@ const projects: Project[] = [
     group: "商业详情",
     year: "2026",
     cover: asset("mouse-detail.webp"),
+    coverFormat: "portrait",
     media: "image",
     long: true,
     position: "center top",
@@ -169,6 +179,7 @@ const projects: Project[] = [
     group: "商业详情",
     year: "2026",
     cover: asset("homestay-visual.webp"),
+    coverFormat: "portrait",
     media: "image",
     long: true,
     position: "center top",
@@ -185,6 +196,7 @@ const projects: Project[] = [
     group: "平面设计",
     year: "2026",
     cover: asset("book-cover.webp"),
+    coverFormat: "landscape",
     media: "image",
     summary: "以墨绿、橙色和静坐人物形成克制的精神气质，让东方内观主题在当代书籍语境中成立。",
     role: "艺术指导 · 插画 · 版式设计",
@@ -199,6 +211,7 @@ const projects: Project[] = [
     group: "横屏商业广告",
     year: "2026",
     cover: asset("hosiery-poster.jpg"),
+    coverFormat: "landscape",
     media: "video",
     source: asset("hosiery.mp4"),
     summary: "通过开箱、材质与触感细节建立轻奢氛围，在短时长内完成产品质感表达。",
@@ -214,6 +227,7 @@ const projects: Project[] = [
     group: "竖屏抖音爆款",
     year: "2026",
     cover: asset("game-wholesale-poster.jpg"),
+    coverFormat: "vertical",
     media: "video",
     source: asset("game-wholesale.mp4"),
     portrait: true,
@@ -230,6 +244,7 @@ const projects: Project[] = [
     group: "竖屏抖音爆款",
     year: "2026",
     cover: asset("power-bank-poster.jpg"),
+    coverFormat: "vertical",
     media: "video",
     source: asset("power-bank.mp4"),
     portrait: true,
@@ -246,6 +261,7 @@ const projects: Project[] = [
     group: "竖屏抖音爆款",
     year: "2026",
     cover: asset("chicken-feet-poster.jpg"),
+    coverFormat: "vertical",
     media: "video",
     source: asset("chicken-feet.mp4"),
     portrait: true,
@@ -262,6 +278,7 @@ const projects: Project[] = [
     group: "漫剧作品",
     year: "2026",
     cover: asset("hanging-sword-poster.jpg"),
+    coverFormat: "landscape",
     media: "video",
     source: asset("hanging-sword.mp4"),
     summary: "以荒漠、悬剑与江湖危机建立武侠世界观，完成长时叙事、镜头衔接与氛围统一。",
@@ -277,6 +294,7 @@ const projects: Project[] = [
     group: "竖屏抖音爆款",
     year: "2026",
     cover: asset("pocket-fighter-poster.jpg"),
+    coverFormat: "vertical",
     media: "video",
     source: asset("pocket-fighter.mp4"),
     portrait: true,
@@ -293,6 +311,7 @@ const projects: Project[] = [
     group: "横屏商业广告",
     year: "2026",
     cover: asset("wilderness-journey-poster.jpg"),
+    coverFormat: "landscape",
     media: "video",
     source: asset("wilderness-journey.mp4"),
     summary: "以第一视角自然行走和舒缓节奏适配中年受众，传递远离喧嚣、回到旷野的旅行感受。",
@@ -308,6 +327,7 @@ const projects: Project[] = [
     group: "竖屏抖音爆款",
     year: "2026",
     cover: asset("warm-grandma-poster.jpg"),
+    coverFormat: "vertical",
     media: "video",
     source: asset("warm-grandma.mp4"),
     portrait: true,
@@ -324,6 +344,7 @@ const projects: Project[] = [
     group: "横屏商业广告",
     year: "2026",
     cover: asset("ai-news-poster.jpg"),
+    coverFormat: "landscape",
     media: "video",
     source: asset("ai-news.mp4"),
     summary: "以报刊拼贴、资料画面和信息字幕构成新闻语法，提升复杂议题的观看节奏与可信感。",
@@ -339,6 +360,7 @@ const projects: Project[] = [
     group: "漫剧作品",
     year: "2026",
     cover: asset("fantasy-arena-poster.jpg"),
+    coverFormat: "landscape",
     media: "video",
     source: asset("fantasy-arena.mp4"),
     summary: "围绕废土竞技与机械生命建立高强度视觉世界，通过长时镜头组织强化电影化沉浸感。",
@@ -354,6 +376,7 @@ const projects: Project[] = [
     group: "横屏商业广告",
     year: "2026",
     cover: asset("green-soda-poster.jpg"),
+    coverFormat: "landscape",
     media: "video",
     source: asset("green-soda.mp4"),
     summary: "用水汽、青提与罐身特写建立清爽口感，将色彩和声音节奏集中在一支短时产品片中。",
@@ -369,6 +392,7 @@ const projects: Project[] = [
     group: "横屏商业广告",
     year: "2024",
     cover: asset("dumpling-brand-poster.jpg"),
+    coverFormat: "landscape",
     media: "video",
     source: asset("dumpling-brand.mp4"),
     summary: "让品牌 IP 从静态设定进入真实产品与餐饮场景，完成角色亲和力和品牌记忆的动态延展。",
@@ -394,12 +418,118 @@ function Arrow() {
   return <span aria-hidden="true">↗</span>;
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function coverFormatLabel(format: CoverFormat) {
+  if (format === "vertical") return "9:16 VERTICAL";
+  if (format === "portrait") return "PORTRAIT";
+  return "16:9 LANDSCAPE";
+}
+
+function coverPreviewLabel(project: Project, previewing: boolean) {
+  if (!previewing) return `HOVER PREVIEW · ${coverFormatLabel(project.coverFormat)}`;
+  if (project.media === "video") return "LIVE PREVIEW · MUTED";
+  if (project.media === "pages") return "PAGE PREVIEW · OPEN CASE";
+  return "DETAIL PREVIEW · OPEN CASE";
+}
+
+function useCoverPreview(project: Project) {
+  const [previewing, setPreviewing] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || project.media !== "video") return;
+
+    if (previewing) {
+      const playback = video.play();
+      playback?.catch(() => undefined);
+      return;
+    }
+
+    video.pause();
+    video.currentTime = 0;
+  }, [previewing, project.media]);
+
+  const startPreview = () => setPreviewing(true);
+  const stopPreview = () => setPreviewing(false);
+  const continuePlayback = () => {
+    if (!previewing || !videoRef.current) return;
+    videoRef.current.play().catch(() => undefined);
+  };
+
+  return {
+    previewing,
+    videoRef,
+    continuePlayback,
+    previewEvents: {
+      onMouseEnter: startPreview,
+      onMouseLeave: stopPreview,
+      onFocus: startPreview,
+      onBlur: stopPreview,
+    },
+  };
+}
+
+function CoverArtwork({
+  project,
+  previewing,
+  videoRef,
+  onCanPlay,
+}: {
+  project: Project;
+  previewing: boolean;
+  videoRef: RefObject<HTMLVideoElement | null>;
+  onCanPlay: () => void;
+}) {
+  const pagePreview = project.pagePrefix && (project.pageCount ?? 0) > 1
+    ? asset(`case-pages/${project.pagePrefix}-02.webp`)
+    : undefined;
+  const secondaryPreview = project.id === "phone-detail" ? asset("phone-v2-camera.png") : pagePreview;
+
   return (
-    <article className={`project-card project-${project.id} ${project.id === "headphones" ? "is-wide" : ""}`}>
-      <a className={`project-media media-stage media-${project.media} ${project.long ? "is-long-artwork" : ""}`} href={`#case/${project.id}`} onClick={rememberPortfolioPosition} aria-label={`查看完整项目：${project.title}`}>
-        <img className="media-artwork" src={project.cover} alt={`${project.title}项目封面，完整画面无裁切`} style={{ objectPosition: project.position }} />
-        <span className="media-frame-note" aria-hidden="true">FULL FRAME · NO CROP</span>
+    <>
+      <img
+        className="media-artwork"
+        src={project.cover}
+        alt={`${project.title}项目封面`}
+        style={{ objectPosition: project.position }}
+        loading="lazy"
+        decoding="async"
+      />
+      {secondaryPreview && (
+        <img className="media-secondary-artwork" src={secondaryPreview} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+      )}
+      {project.media === "video" && project.source && (
+        <video
+          ref={videoRef}
+          className="media-video-preview"
+          src={previewing ? project.source : undefined}
+          poster={project.cover}
+          muted
+          loop
+          playsInline
+          preload="none"
+          aria-hidden="true"
+          onCanPlay={onCanPlay}
+        />
+      )}
+      <span className="media-preview-shade" aria-hidden="true" />
+    </>
+  );
+}
+
+function ProjectCard({ project }: { project: Project }) {
+  const preview = useCoverPreview(project);
+  return (
+    <article className={`project-card project-${project.id} cover-${project.coverFormat} ${project.id === "headphones" ? "is-wide" : ""}`}>
+      <a
+        className={`project-media media-stage cover-${project.coverFormat} media-${project.media} ${project.long ? "is-long-artwork" : ""} ${preview.previewing ? "is-previewing" : ""}`}
+        href={`#case/${project.id}`}
+        onClick={rememberPortfolioPosition}
+        aria-label={`预览并查看完整项目：${project.title}`}
+        {...preview.previewEvents}
+      >
+        <CoverArtwork project={project} previewing={preview.previewing} videoRef={preview.videoRef} onCanPlay={preview.continuePlayback} />
+        <span className="media-frame-note" aria-hidden="true">{coverPreviewLabel(project, preview.previewing)}</span>
         <span className="project-index">CASE / {project.index}</span>
         {project.media === "video" && <span className="play-badge"><i>▶</i> PLAY FULL FILM</span>}
         {project.media === "pages" && <span className="play-badge"><i>＋</i> ALL {project.pageCount} PAGES</span>}
@@ -415,11 +545,18 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 function ArchiveCard({ project }: { project: Project }) {
+  const preview = useCoverPreview(project);
   return (
-    <article className={`archive-card archive-${project.id} ${project.portrait ? "is-portrait" : ""}`}>
-      <a className={`archive-media media-stage media-${project.media} ${project.long ? "is-long-artwork" : ""}`} href={`#case/${project.id}`} onClick={rememberPortfolioPosition} aria-label={`打开完整项目：${project.title}`}>
-        <img className="media-artwork" src={project.cover} alt={`${project.title}项目封面，完整画面无裁切`} style={{ objectPosition: project.position }} />
-        <span className="media-frame-note" aria-hidden="true">FULL FRAME</span>
+    <article className={`archive-card archive-${project.id} cover-${project.coverFormat}`}>
+      <a
+        className={`archive-media media-stage cover-${project.coverFormat} media-${project.media} ${project.long ? "is-long-artwork" : ""} ${preview.previewing ? "is-previewing" : ""}`}
+        href={`#case/${project.id}`}
+        onClick={rememberPortfolioPosition}
+        aria-label={`预览并打开完整项目：${project.title}`}
+        {...preview.previewEvents}
+      >
+        <CoverArtwork project={project} previewing={preview.previewing} videoRef={preview.videoRef} onCanPlay={preview.continuePlayback} />
+        <span className="media-frame-note" aria-hidden="true">{coverPreviewLabel(project, preview.previewing)}</span>
         <span className="archive-number">{project.index}</span>
         <span className="archive-type">{project.media === "video" ? "FULL FILM" : project.media === "pages" ? `${project.pageCount} PAGES` : "FULL IMAGE"}</span>
         <span className="archive-arrow"><Arrow /></span>
