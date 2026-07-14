@@ -151,6 +151,19 @@ test("cover hover previews support video, image, and page projects", () => {
   assert.match(styles, /\.media-stage\.is-long-artwork\.is-previewing \.media-artwork\s*\{[^}]*animation:\s*cover-pan/s);
 });
 
+test("every card renders a visible editorial cover identity", () => {
+  const source = fs.readFileSync(path.join(projectRoot, "app", "page.tsx"), "utf8");
+  const styles = fs.readFileSync(path.join(projectRoot, "app", "globals.css"), "utf8");
+
+  assert.ok(source.includes("function CoverIdentity"), "Missing shared cover identity component");
+  assert.ok(source.includes("<strong>{project.title}</strong>"), "Covers must show each project title");
+  assert.ok(source.includes("<em>{project.english}</em>"), "Covers must show each English project name");
+  assert.ok(source.includes("<small>{project.category}</small>"), "Covers must show each project category");
+  assert.equal((source.match(/<CoverIdentity project=\{project\} \/>/g) ?? []).length, 2, "Featured and archive cards both need cover identities");
+  assert.match(styles, /\.cover-identity\s*\{[^}]*background:\s*linear-gradient/s);
+  assert.match(styles, /\.media-stage\.is-previewing \.cover-identity\s*\{[^}]*opacity:\s*0;/s);
+});
+
 test("the portfolio has a dedicated social cover", () => {
   const html = fs.readFileSync(path.join(projectRoot, "github", "index.html"), "utf8");
 

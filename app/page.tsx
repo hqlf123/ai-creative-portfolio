@@ -431,6 +431,24 @@ function coverPreviewLabel(project: Project, previewing: boolean) {
   return "DETAIL PREVIEW · OPEN CASE";
 }
 
+function coverTypeLabel(project: Project) {
+  if (project.media === "video") return project.coverFormat === "vertical" ? "VERTICAL FILM" : "MOTION FILM";
+  if (project.media === "pages") return `COMPLETE CASE · ${project.pageCount}P`;
+  if (project.long) return "LONGFORM DESIGN";
+  return "VISUAL DESIGN";
+}
+
+function CoverIdentity({ project }: { project: Project }) {
+  return (
+    <span className="cover-identity" aria-hidden="true">
+      <span className="cover-kicker"><i>{coverTypeLabel(project)}</i><b>{project.year}</b></span>
+      <strong>{project.title}</strong>
+      <em>{project.english}</em>
+      <small>{project.category}</small>
+    </span>
+  );
+}
+
 function useCoverPreview(project: Project) {
   const [previewing, setPreviewing] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -529,11 +547,9 @@ function ProjectCard({ project }: { project: Project }) {
         {...preview.previewEvents}
       >
         <CoverArtwork project={project} previewing={preview.previewing} videoRef={preview.videoRef} onCanPlay={preview.continuePlayback} />
+        <CoverIdentity project={project} />
         <span className="media-frame-note" aria-hidden="true">{coverPreviewLabel(project, preview.previewing)}</span>
         <span className="project-index">CASE / {project.index}</span>
-        {project.media === "video" && <span className="play-badge"><i>▶</i> PLAY FULL FILM</span>}
-        {project.media === "pages" && <span className="play-badge"><i>＋</i> ALL {project.pageCount} PAGES</span>}
-        {project.media === "image" && project.long && <span className="play-badge"><i>↓</i> FULL LENGTH</span>}
         <span className="open-project">VIEW COMPLETE CASE <Arrow /></span>
       </a>
       <div className="project-meta">
@@ -556,9 +572,9 @@ function ArchiveCard({ project }: { project: Project }) {
         {...preview.previewEvents}
       >
         <CoverArtwork project={project} previewing={preview.previewing} videoRef={preview.videoRef} onCanPlay={preview.continuePlayback} />
+        <CoverIdentity project={project} />
         <span className="media-frame-note" aria-hidden="true">{coverPreviewLabel(project, preview.previewing)}</span>
         <span className="archive-number">{project.index}</span>
-        <span className="archive-type">{project.media === "video" ? "FULL FILM" : project.media === "pages" ? `${project.pageCount} PAGES` : "FULL IMAGE"}</span>
         <span className="archive-arrow"><Arrow /></span>
       </a>
       <div className="archive-meta">
