@@ -411,18 +411,6 @@ const strengths = [
   { number: "04", title: "内容策划传播", english: "CONTENT & MEDIA", copy: "把媒体编辑、新闻写作与短视频运营经验转化为清晰、有叙事力、能被传播的视觉内容。", tags: ["EDITORIAL", "COPY", "SOCIAL", "OPERATION"] },
 ];
 
-const experience = [
-  { period: "2024.05 — 至今", company: "湖南日报融媒体传播有限公司", role: "AIGC 编辑", description: "负责企业、科技、产业及新闻稿件撰写，从资料梳理到结构化成稿，持续将复杂信息转译成清晰内容。" },
-  { period: "2022.08 — 2023.06", company: "华声在线 · 湘报严选部门", role: "内容 / 直播运营", description: "完成《新湖南》公众号短视频拍摄与后期，并负责直播中控、商城运营、产品与节日文案及抖音助农直播。" },
-  { period: "2021.07 — 2021.10", company: "湖南卫视金鹰卡通频道", role: "后期剪辑 / 花字 / 字幕", description: "参与《童趣大冒险》后期制作，在真实栏目流程中完成剪辑、花字与字幕相关工作。" },
-];
-
-const toolGroups = [
-  ["图像与视频生成", "Midjourney · Stable Diffusion · ComfyUI · FLUX · ImageGen · 即梦 · 可灵 · Runway · Vidu · 海螺 AI"],
-  ["大模型与智能体", "ChatGPT · Claude · Gemini · Grok · Kimi · DeepSeek · 豆包 · Codex"],
-  ["设计与后期", "Photoshop · Premiere Pro · DaVinci Resolve · 剪映 · Cinema 4D"],
-];
-
 const filters: ProjectGroup[] = ["横屏商业广告", "竖屏抖音爆款", "漫剧作品", "商业详情", "品牌全案", "平面设计"];
 
 const rememberPortfolioPosition = () => {
@@ -839,7 +827,7 @@ function PortfolioHome() {
       <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
         <div className="header-inner">
           <a className="brand" href="#top" aria-label="返回首页"><AvatarIdentity /></a>
-          <nav aria-label="主导航"><a href="#work"><span>01</span> 精选</a><a href="#archive"><span>02</span> 分类作品</a><a href="#experience"><span>03</span> 经历</a><a href="#profile"><span>04</span> 关于</a></nav>
+          <nav aria-label="主导航"><a href="#work"><span>01</span> 精选</a><a href="#archive"><span>02</span> 分类作品</a><a href="#strengths"><span>03</span> 优势</a><a href="#profile"><span>04</span> 关于</a></nav>
           <a className="contact-pill" href="#contact">联系合作 <Arrow /></a>
         </div>
         <div className="page-progress" style={{ width: `${progress}%` }} />
@@ -910,31 +898,9 @@ function PortfolioHome() {
         </div>
       </section>
 
-      <section className="experience section" id="experience">
-        <div className="shell experience-shell">
-          <div className="section-rail light"><span>04</span><p>EXPERIENCE<br />经历与工具</p></div>
-          <div className="experience-main">
-            <div className="experience-heading"><p className="overline">EDITORIAL ROOTS / GENERATIVE FUTURE</p><h2>真实内容经验，<br /><span>驱动新一代视觉创作。</span></h2></div>
-            <div className="career-list">
-              {experience.map((item, index) => (
-                <article className="career-item" key={item.company}>
-                  <span className="career-number">0{index + 1}</span>
-                  <time>{item.period}</time>
-                  <div><h3>{item.company}</h3><p className="career-role">{item.role}</p><p>{item.description}</p></div>
-                </article>
-              ))}
-            </div>
-            <div className="experience-bottom">
-              <article className="education-card"><p className="overline">EDUCATION & RECOGNITION</p><h3>西南石油大学</h3><p>广播电视编导 · 本科 · 学士学位<br />2018 — 2023</p><div className="award-line"><strong>2020</strong><span>四川省大学生新媒体创意大赛<br />二等奖 × 1 · 三等奖 × 1</span></div><div className="award-line"><strong>06</strong><span>篇文章刊载于“新湖南”网站<br />企业 · 科技 · 产业内容</span></div></article>
-              <article className="tools-card"><p className="overline">SELECTED TOOLKIT</p>{toolGroups.map(([label, tools]) => <div key={label}><h3>{label}</h3><p>{tools}</p></div>)}</article>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <footer className="contact" id="contact">
         <div className="contact-grid" aria-hidden="true" />
-        <div className="contact-inner shell"><div className="contact-top"><span><i /> OPEN FOR COLLABORATION</span><span>LUO TIANXIANG / CHINA</span></div><div className="contact-title"><p>HAVE A PROJECT IN MIND?</p><h2>让下一个想法，<br /><em>成为真实作品。</em></h2></div><a className="contact-email" href="mailto:1158190818@qq.com"><span>1158190818@QQ.COM</span><Arrow /></a><div className="contact-bottom"><span>© 2026 罗天翔 · AIGC VISUAL DESIGNER</span><div><a href="#top">BACK TO TOP ↑</a><a href="#work">WORKS</a><a href="#experience">EXPERIENCE</a></div><a href="tel:+8618229693585">+86 182 2969 3585</a></div></div>
+        <div className="contact-inner shell"><div className="contact-top"><span><i /> OPEN FOR COLLABORATION</span><span>LUO TIANXIANG / CHINA</span></div><div className="contact-title"><p>HAVE A PROJECT IN MIND?</p><h2>让下一个想法，<br /><em>成为真实作品。</em></h2></div><a className="contact-email" href="mailto:1158190818@qq.com"><span>1158190818@QQ.COM</span><Arrow /></a><div className="contact-bottom"><span>© 2026 罗天翔 · AIGC VISUAL DESIGNER</span><div><a href="#top">BACK TO TOP ↑</a><a href="#work">WORKS</a><a href="#strengths">CAPABILITIES</a></div><a href="tel:+8618229693585">+86 182 2969 3585</a></div></div>
       </footer>
     </main>
   );
