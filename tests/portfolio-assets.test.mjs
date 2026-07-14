@@ -117,11 +117,23 @@ test("portfolio artwork is always rendered without cropping", () => {
   assert.match(styles, /\.case-pages img\s*\{[^}]*object-fit:\s*contain/s);
 });
 
+test("landscape covers fit their cards without empty portrait stages", () => {
+  const source = fs.readFileSync(path.join(projectRoot, "app", "page.tsx"), "utf8");
+  const styles = fs.readFileSync(path.join(projectRoot, "app", "globals.css"), "utf8");
+  const wilderness = source.match(/id: "wilderness-journey"[\s\S]*?deliverable:/)?.[0] ?? "";
+
+  assert.ok(!wilderness.includes("portrait: true"), "Wilderness Journey must open and display as landscape");
+  assert.ok(source.includes("project-${project.id}"), "Featured cards need stable project-specific classes");
+  assert.ok(source.includes("archive-${project.id}"), "Archive cards need stable project-specific classes");
+  assert.match(styles, /\.project-card\.project-phone-detail \.project-media\s*\{[^}]*aspect-ratio:\s*16 \/ 9;[^}]*padding:\s*0;/s);
+  assert.match(styles, /\.archive-card\.archive-wilderness-journey \.archive-media\s*\{[^}]*aspect-ratio:\s*16 \/ 9;[^}]*padding:\s*0;/s);
+});
+
 test("portfolio categories are complete and returning preserves context", () => {
   const source = fs.readFileSync(path.join(projectRoot, "app", "page.tsx"), "utf8");
   const expectedCounts = {
-    "横屏商业广告": 7,
-    "竖屏抖音爆款": 6,
+    "横屏商业广告": 8,
+    "竖屏抖音爆款": 5,
     "漫剧作品": 2,
     "商业详情": 4,
     "品牌全案": 1,

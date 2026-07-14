@@ -290,15 +290,14 @@ const projects: Project[] = [
     title: "风野牧旅",
     english: "WILDERNESS JOURNEY",
     category: "文旅影像 / 人群适配",
-    group: "竖屏抖音爆款",
+    group: "横屏商业广告",
     year: "2026",
     cover: asset("wilderness-journey-poster.jpg"),
     media: "video",
     source: asset("wilderness-journey.mp4"),
-    portrait: true,
     summary: "以第一视角自然行走和舒缓节奏适配中年受众，传递远离喧嚣、回到旷野的旅行感受。",
     role: "受众适配 · 画面设计 · 成片",
-    deliverable: "53 秒竖屏文旅影像",
+    deliverable: "53 秒横屏文旅影像",
   },
   {
     id: "warm-grandma",
@@ -397,7 +396,7 @@ function Arrow() {
 
 function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className={`project-card ${project.id === "headphones" ? "is-wide" : ""}`}>
+    <article className={`project-card project-${project.id} ${project.id === "headphones" ? "is-wide" : ""}`}>
       <a className={`project-media media-stage media-${project.media} ${project.long ? "is-long-artwork" : ""}`} href={`#case/${project.id}`} onClick={rememberPortfolioPosition} aria-label={`查看完整项目：${project.title}`}>
         <img className="media-artwork" src={project.cover} alt={`${project.title}项目封面，完整画面无裁切`} style={{ objectPosition: project.position }} />
         <span className="media-frame-note" aria-hidden="true">FULL FRAME · NO CROP</span>
@@ -417,7 +416,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 function ArchiveCard({ project }: { project: Project }) {
   return (
-    <article className={`archive-card ${project.portrait ? "is-portrait" : ""}`}>
+    <article className={`archive-card archive-${project.id} ${project.portrait ? "is-portrait" : ""}`}>
       <a className={`archive-media media-stage media-${project.media} ${project.long ? "is-long-artwork" : ""}`} href={`#case/${project.id}`} onClick={rememberPortfolioPosition} aria-label={`打开完整项目：${project.title}`}>
         <img className="media-artwork" src={project.cover} alt={`${project.title}项目封面，完整画面无裁切`} style={{ objectPosition: project.position }} />
         <span className="media-frame-note" aria-hidden="true">FULL FRAME</span>
