@@ -948,7 +948,7 @@ function PortfolioHome() {
         <div className="shell work-shell">
           <div className="section-rail light"><span>02</span><p>SELECTED<br />WORKS</p></div>
           <div className="work-main">
-            <div className="work-heading"><div><p className="overline">CURATED PROJECTS / 2024—2026</p><h2 className="motion-title">精选项目</h2></div><p>先从六个代表项目进入完整案例，<br />每张卡片均通往独立展示场景。</p></div>
+            <div className="work-heading"><div><p className="overline">CURATED PROJECTS / 2024—2026</p><h2 className="motion-title">精选项目</h2></div></div>
             <div className="project-grid">{featuredProjects.map((project) => <ProjectCard key={project.id} project={project} />)}</div>
 
             <section className="archive" id="archive">
