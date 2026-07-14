@@ -814,20 +814,16 @@ function PortfolioHome() {
     const sections = sectionIds
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => Boolean(section));
-    const revealTargets = document.querySelectorAll<HTMLElement>(".section, .contact");
-    revealTargets.forEach((target) => target.classList.add("reveal-section"));
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
           if (sectionIds.includes(entry.target.id)) setActiveSection(entry.target.id);
         }
       });
     }, { rootMargin: "-22% 0px -54%", threshold: .08 });
 
     sections.forEach((section) => observer.observe(section));
-    revealTargets.forEach((target) => observer.observe(target));
     return () => observer.disconnect();
   }, []);
 
