@@ -1055,3 +1055,244 @@ body:has(a:hover, button:hover) ::selection { background: white; }
   .motion-title::before { width: 72%; opacity: .45; }
   .motion-title::after { opacity: .25; scale: 1; }
 }
+
+/* MOBILE EXPERIENCE — dedicated one-hand layout */
+.mobile-nav { display: none; }
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 86px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body { overflow-x: clip; }
+  main { overflow-x: clip; }
+  a, button { touch-action: manipulation; }
+
+  .mobile-nav {
+    position: fixed;
+    z-index: 110;
+    left: 10px;
+    right: 10px;
+    bottom: max(8px, env(safe-area-inset-bottom));
+    min-height: 58px;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 3px;
+    color: #bcecff;
+    background: rgba(2, 18, 57, .97);
+    border: 1px solid rgba(100, 220, 255, .52);
+    box-shadow: 0 16px 44px rgba(0, 8, 42, .46), inset 0 0 0 1px rgba(31, 105, 235, .28);
+    clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
+  }
+
+  .mobile-nav a {
+    min-width: 0;
+    min-height: 46px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    color: #a8cce7;
+    font: 900 11px/1 var(--sans);
+    transition: color .2s ease, background .2s ease;
+  }
+
+  .mobile-nav a span {
+    color: #51dfff;
+    font: 800 8px/1 var(--mono);
+    letter-spacing: .08em;
+  }
+
+  .mobile-nav a.active {
+    color: white;
+    background: linear-gradient(135deg, rgba(23, 104, 255, .82), rgba(54, 201, 244, .28));
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+  }
+
+  .shell, .header-inner { width: calc(100% - 28px); }
+  .section { padding-block: 82px; }
+
+  .site-header, .site-header.is-scrolled {
+    height: 68px;
+    background: rgba(2, 18, 57, .97);
+    backdrop-filter: none;
+  }
+
+  .site-header .avatar-thumb { width: 44px; height: 44px; flex-basis: 44px; }
+  .contact-pill {
+    min-width: 108px;
+    min-height: 44px;
+    padding: 11px 14px;
+    gap: 10px;
+    font-size: 12px;
+  }
+
+  .hero, .hero-content { min-height: 100dvh; }
+  .hero-content { padding-top: 94px; padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
+  .hero-eyebrow { padding: 12px 4px; font-size: 9px; letter-spacing: .1em; }
+  .hero-title-wrap { margin: auto 0 44px; }
+  .hero-role {
+    width: auto;
+    max-width: 100%;
+    margin-bottom: 22px;
+    padding: 9px 11px;
+    font-size: 12px;
+    line-height: 1.45;
+    letter-spacing: .04em;
+    text-wrap: balance;
+  }
+  .hero h1 { max-width: 100%; font-size: clamp(62px, 20vw, 88px); line-height: .82; }
+  .hero h1 em { transform: translateX(2vw) skewX(-6deg); }
+  .hero-footer { grid-template-columns: minmax(0, 1fr) auto; gap: 14px; padding-top: 18px; }
+  .hero-footer > p { font-size: 9px; line-height: 1.55; letter-spacing: .08em; }
+  .scroll-cue { gap: 10px; font-size: 10px; }
+  .scroll-cue i { width: 46px; height: 46px; }
+
+  .section-rail { margin-bottom: 38px; padding-bottom: 14px; }
+  .profile-heading h2, .strength-heading h2 {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 42px;
+    font-size: clamp(40px, 12.5vw, 52px);
+    line-height: 1.04;
+    overflow-wrap: anywhere;
+  }
+  .profile-body { gap: 38px; }
+  .profile-portrait { width: 100%; max-width: 520px; }
+  .profile-portrait figcaption { inset: auto 9px 9px; gap: 8px; font-size: 8px; letter-spacing: .05em; }
+  .profile-copy .intro { font-size: 25px; line-height: 1.45; }
+  .profile-copy > p { font-size: 16px; line-height: 1.78; }
+  .contact-list { margin-top: 36px; }
+  .contact-list div { grid-template-columns: 82px minmax(0, 1fr); gap: 8px; padding: 17px 0; }
+  .contact-list b, .contact-list a, .wechat-list-button { min-width: 0; overflow-wrap: anywhere; }
+  .resume-link { min-height: 48px; padding: 14px 18px; }
+  .profile-stats { margin-top: 54px; }
+  .profile-stats div { min-height: 120px; padding: 16px 14px; }
+  .profile-stats strong { font-size: 46px; }
+
+  .work-heading { margin-bottom: 42px; }
+  .work-heading h2 { font-size: clamp(58px, 18vw, 74px); }
+  .project-card, .project-card.is-wide, .project-card:nth-child(4), .project-card:nth-child(5), .project-card:nth-child(6) { margin-bottom: 48px; }
+  .project-meta { margin-top: 12px; padding: 15px 12px 13px; gap: 12px; }
+  .project-meta h3 { font-size: clamp(23px, 7vw, 29px); line-height: 1.12; text-wrap: balance; overflow-wrap: anywhere; }
+  .project-meta p, .project-meta span, .project-meta time { line-height: 1.45; letter-spacing: .08em; }
+  .project-meta > div:last-child { gap: 14px; }
+  .open-project { min-height: 46px; right: 12px; bottom: 12px; padding: 12px 15px; }
+
+  .archive { margin-top: 82px; padding-top: 44px; }
+  .archive-heading { gap: 14px; align-items: flex-end; }
+  .archive-heading h2 { font-size: clamp(50px, 15.5vw, 64px); }
+  .archive-heading > strong { flex: 0 0 auto; font-size: 54px; }
+  .archive-filters {
+    margin: 34px -14px 28px;
+    padding: 0 14px 8px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+  .archive-filters::-webkit-scrollbar { display: none; }
+  .archive-filters button {
+    flex: 0 0 auto;
+    min-height: 46px;
+    padding: 12px 16px;
+    scroll-snap-align: start;
+    white-space: nowrap;
+  }
+  .archive-filters button:hover, .archive-filters button.active { transform: none; }
+  .archive-grid { gap: 46px; }
+  .archive-meta { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; padding: 14px 10px 0; }
+  .archive-meta h3 { font-size: clamp(22px, 7vw, 28px); line-height: 1.12; text-wrap: balance; overflow-wrap: anywhere; }
+  .archive-meta p { overflow-wrap: anywhere; letter-spacing: .08em; }
+  .archive-meta > span { justify-self: start; padding: 6px 9px; color: #164f8e; background: rgba(23, 104, 255, .1); }
+  .archive-arrow { width: 48px; height: 48px; }
+
+  .strength-grid { gap: 14px; }
+  .strength-card { min-height: 370px; padding: 24px; }
+  .strength-card h3 { font-size: 36px; }
+  .strength-card .strength-copy { font-size: 15px; line-height: 1.72; }
+
+  .contact { min-height: 100dvh; }
+  .contact-inner { min-height: 100dvh; padding: 28px 0 calc(92px + env(safe-area-inset-bottom)); }
+  .contact-title { margin: auto 0 42px; }
+  .contact-title > p { margin-bottom: 16px; }
+  .contact h2 { max-width: 100%; font-size: clamp(49px, 14.8vw, 62px); line-height: .98; overflow-wrap: anywhere; }
+  .contact-actions { width: 100%; }
+  .contact-email { min-height: 78px; padding: 20px 14px; font-size: clamp(17px, 5vw, 22px); letter-spacing: -.04em; }
+  .wechat-contact { min-height: 96px; padding: 20px; }
+  .wechat-contact b { font-size: 11px; }
+  .contact-bottom { padding-top: 22px; }
+
+  .case-header { height: 64px; padding-inline: 14px; backdrop-filter: none; }
+  .case-back, .case-header > a:last-child { min-width: 44px; min-height: 44px; padding: 10px 12px; }
+  .case-hero { padding-top: 62px; padding-bottom: 68px; }
+  .case-label { gap: 16px; font-size: 10px; letter-spacing: .1em; }
+  .case-hero h1 { max-width: 100%; margin-top: 48px; font-size: clamp(50px, 16vw, 76px); line-height: .88; overflow-wrap: anywhere; }
+  .case-en { overflow-wrap: anywhere; letter-spacing: .12em; }
+  .case-intro { margin-top: 46px; }
+  .case-intro > p { margin-bottom: 38px; font-size: 19px; line-height: 1.55; }
+  .case-method { margin-top: 48px; }
+  .case-method div { min-height: 96px; padding: 18px; }
+  .case-work { padding: 14px 10px 74px; }
+  .case-video-frame video { width: 100%; max-height: 78dvh; }
+  .case-video-frame.is-portrait video { max-height: 78dvh; }
+  .case-image-frame figcaption, .case-pages figcaption { overflow-wrap: anywhere; }
+  .case-footer { min-height: 420px; padding-top: 58px; padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+  .case-footer h2 { max-width: 100%; margin-bottom: 42px; font-size: clamp(48px, 15vw, 70px); overflow-wrap: anywhere; }
+  .case-footer > a { min-height: 48px; }
+
+  .phone-v2-hero-visual > img { min-height: 300px; object-fit: cover; object-position: 68% center; }
+  .phone-v2-copy { margin-top: -18%; padding: 26px 20px 38px; }
+  .phone-v2-copy h2, .phone-v2-copy h3 { font-size: clamp(39px, 12vw, 49px); }
+  .phone-v2-specs div { padding: 16px 14px; }
+  .phone-v2-panel, .phone-v2-system-grid article, .phone-v2-feature-grid article, .phone-v2-footer-grid article { padding: 36px 20px; }
+  .phone-v2-panel h3, .phone-v2-system-grid h3, .phone-v2-feature-grid h3, .phone-v2-footer-grid h3 { font-size: 34px; }
+  .phone-v2-numbers, .phone-v2-metrics { gap: 18px; }
+  .phone-v2-numbers strong { font-size: 48px; }
+  .phone-v2-footer-grid dl div { grid-template-columns: 94px minmax(0, 1fr); gap: 12px; }
+
+  .wechat-modal-backdrop { padding: 8px; align-items: end; }
+  .wechat-modal {
+    width: 100%;
+    max-height: calc(100dvh - 16px);
+    padding: 18px 16px calc(18px + env(safe-area-inset-bottom));
+    overflow-x: hidden;
+    clip-path: polygon(0 0, 94% 0, 100% 5%, 100% 100%, 0 100%);
+  }
+  .wechat-modal-heading h2 { font-size: 42px; }
+  .wechat-qr-link { padding: 7px; }
+  .wechat-qr-link img { max-height: 58dvh; }
+  .wechat-modal-note { margin-top: 12px; font-size: 10px; }
+}
+
+@media (max-width: 380px) {
+  .shell, .header-inner { width: calc(100% - 22px); }
+  .contact-pill { min-width: 100px; padding-inline: 11px; }
+  .hero h1 { font-size: clamp(58px, 19.2vw, 73px); }
+  .hero-role { font-size: 11px; }
+  .profile-heading h2, .strength-heading h2 { font-size: 39px; }
+  .contact-list div { grid-template-columns: 72px minmax(0, 1fr); }
+  .profile-stats div { padding-inline: 10px; }
+  .profile-stats strong { font-size: 42px; }
+  .archive-heading > strong { display: none; }
+  .cover-identity, .archive-media .cover-identity { padding-inline: 15px; }
+  .cover-identity strong, .archive-media .cover-identity strong { font-size: 28px; }
+  .media-frame-note { display: none; }
+  .case-hero h1 { font-size: clamp(47px, 15.5vw, 59px); }
+  .phone-v2-lenses { grid-template-columns: 1fr; }
+  .wechat-contact { gap: 12px; }
+  .wechat-contact > span { font-size: 25px; }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .project-card:hover,
+  .project-card:hover .project-media,
+  .archive-card:hover .archive-media,
+  .strength-card:hover { transform: none; filter: none; }
+}

@@ -865,13 +865,27 @@ function PortfolioHome() {
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => Boolean(section));
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          if (sectionIds.includes(entry.target.id)) setActiveSection(entry.target.id);
+    let activeFrame = 0;
+    const updateActiveSection = () => {
+      if (activeFrame) return;
+      activeFrame = requestAnimationFrame(() => {
+        activeFrame = 0;
+        if (window.scrollY < window.innerHeight * .55) {
+          setActiveSection("work");
+          return;
         }
+
+        const marker = window.innerHeight * .3;
+        const containing = sections.filter((section) => {
+          const rect = section.getBoundingClientRect();
+          return rect.top <= marker && rect.bottom > marker;
+        });
+        const active = containing.at(-1) ?? sections.toSorted((first, second) => (
+          Math.abs(first.getBoundingClientRect().top - marker) - Math.abs(second.getBoundingClientRect().top - marker)
+        ))[0];
+        if (active && sectionIds.includes(active.id)) setActiveSection(active.id);
       });
-    }, { rootMargin: "-22% 0px -54%", threshold: .08 });
+    };
 
     const titles = document.querySelectorAll<HTMLElement>(".motion-title");
     const titleObserver = new IntersectionObserver((entries) => {
@@ -882,10 +896,14 @@ function PortfolioHome() {
       });
     }, { rootMargin: "0px 0px -12%", threshold: .18 });
 
-    sections.forEach((section) => observer.observe(section));
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
     titles.forEach((title) => titleObserver.observe(title));
     return () => {
-      observer.disconnect();
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+      cancelAnimationFrame(activeFrame);
       titleObserver.disconnect();
     };
   }, []);
@@ -938,6 +956,14 @@ function PortfolioHome() {
         </div>
         <div className="page-progress" style={{ width: `${progress}%` }} />
       </header>
+
+      <nav className="mobile-nav" aria-label="手机快捷导航">
+        <a className={activeSection === "work" ? "active" : ""} href="#work"><span>01</span>作品</a>
+        <a className={activeSection === "archive" ? "active" : ""} href="#archive"><span>02</span>分类</a>
+        <a className={activeSection === "strengths" ? "active" : ""} href="#strengths"><span>03</span>优势</a>
+        <a className={activeSection === "profile" ? "active" : ""} href="#profile"><span>04</span>关于</a>
+        <a className={activeSection === "contact" ? "active" : ""} href="#contact"><span>05</span>联系</a>
+      </nav>
 
       <section className="hero" id="top">
         <video className="hero-video" src={asset("hero-headphones.mp4")} poster={asset("hero-headphones-poster.jpg")} autoPlay muted loop playsInline preload="metadata" />
