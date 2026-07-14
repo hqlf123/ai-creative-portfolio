@@ -776,6 +776,7 @@ function CaseScene({ project }: { project: Project }) {
 function PortfolioHome() {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState("work");
   const [filter, setFilter] = useState<ProjectGroup>(() => {
     if (typeof window === "undefined") return filters[0];
     const saved = sessionStorage.getItem("portfolio:filter") as ProjectGroup | null;
@@ -809,6 +810,38 @@ function PortfolioHome() {
   }, [filter]);
 
   useEffect(() => {
+    const sectionIds = ["profile", "work", "archive", "strengths", "contact"];
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => Boolean(section));
+    const revealTargets = document.querySelectorAll<HTMLElement>(".section, .contact");
+    revealTargets.forEach((target) => target.classList.add("reveal-section"));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          if (sectionIds.includes(entry.target.id)) setActiveSection(entry.target.id);
+        }
+      });
+    }, { rootMargin: "-22% 0px -54%", threshold: .08 });
+
+    sections.forEach((section) => observer.observe(section));
+    revealTargets.forEach((target) => observer.observe(target));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+    const onPointerMove = (event: PointerEvent) => {
+      document.documentElement.style.setProperty("--pointer-x", `${event.clientX}px`);
+      document.documentElement.style.setProperty("--pointer-y", `${event.clientY}px`);
+    };
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    return () => window.removeEventListener("pointermove", onPointerMove);
+  }, []);
+
+  useEffect(() => {
     const savedY = Number(sessionStorage.getItem("portfolio:return-y"));
     if (!Number.isFinite(savedY) || savedY <= 0) return;
     const firstFrame = requestAnimationFrame(() => window.scrollTo(0, savedY));
@@ -827,7 +860,7 @@ function PortfolioHome() {
       <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
         <div className="header-inner">
           <a className="brand" href="#top" aria-label="返回首页"><AvatarIdentity /></a>
-          <nav aria-label="主导航"><a href="#work"><span>01</span> 精选</a><a href="#archive"><span>02</span> 分类作品</a><a href="#strengths"><span>03</span> 优势</a><a href="#profile"><span>04</span> 关于</a></nav>
+          <nav aria-label="主导航"><a className={activeSection === "work" ? "active" : ""} href="#work"><span>01</span> 精选</a><a className={activeSection === "archive" ? "active" : ""} href="#archive"><span>02</span> 分类作品</a><a className={activeSection === "strengths" ? "active" : ""} href="#strengths"><span>03</span> 优势</a><a className={activeSection === "profile" ? "active" : ""} href="#profile"><span>04</span> 关于</a></nav>
           <a className="contact-pill" href="#contact">联系合作 <Arrow /></a>
         </div>
         <div className="page-progress" style={{ width: `${progress}%` }} />
@@ -879,7 +912,7 @@ function PortfolioHome() {
               </div>
               <div className="archive-filters" role="group" aria-label="按类别筛选作品">
                 {filters.map((item) => (
-                  <button key={item} className={filter === item ? "active" : ""} onClick={() => setFilter(item)}>
+                  <button key={item} className={filter === item ? "active" : ""} aria-pressed={filter === item} onClick={() => setFilter(item)}>
                     {item}<sup>{projects.filter((project) => project.group === item).length}</sup>
                   </button>
                 ))}
