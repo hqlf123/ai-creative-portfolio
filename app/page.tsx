@@ -777,6 +777,7 @@ function PortfolioHome() {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
   const [activeSection, setActiveSection] = useState("work");
+  const [wechatOpen, setWechatOpen] = useState(false);
   const [filter, setFilter] = useState<ProjectGroup>(() => {
     if (typeof window === "undefined") return filters[0];
     const saved = sessionStorage.getItem("portfolio:filter") as ProjectGroup | null;
@@ -838,6 +839,20 @@ function PortfolioHome() {
   }, []);
 
   useEffect(() => {
+    if (!wechatOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setWechatOpen(false);
+    };
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [wechatOpen]);
+
+  useEffect(() => {
     const savedY = Number(sessionStorage.getItem("portfolio:return-y"));
     if (!Number.isFinite(savedY) || savedY <= 0) return;
     const firstFrame = requestAnimationFrame(() => window.scrollTo(0, savedY));
@@ -886,7 +901,7 @@ function PortfolioHome() {
             <div className="profile-copy">
               <p className="intro">我是罗天翔，一名拥有广播电视编导背景的 AIGC 视觉创作者。</p>
               <p>我把导演式的叙事判断、商业视觉的信息组织与生成式 AI 的制作效率放进同一条工作流。从创意提案、脚本分镜、角色场景到剪辑调色，我关心的不只是画面是否惊艳，更在意它是否准确、完整并真正可交付。</p>
-              <div className="contact-list"><div><span>NAME</span><b>罗天翔 / LUO TIANXIANG</b></div><div><span>EDUCATION</span><b>西南石油大学 · 广播电视编导</b></div><div><span>EMAIL</span><a href="mailto:1158190818@qq.com">1158190818@QQ.COM <Arrow /></a></div><div><span>PHONE</span><a href="tel:+8618229693585">182 2969 3585 <Arrow /></a></div></div>
+              <div className="contact-list"><div><span>NAME</span><b>罗天翔 / LUO TIANXIANG</b></div><div><span>EDUCATION</span><b>西南石油大学 · 广播电视编导</b></div><div><span>EMAIL</span><a href="mailto:1158190818@qq.com">1158190818@QQ.COM <Arrow /></a></div><div><span>PHONE</span><a href="tel:+8618229693585">182 2969 3585 <Arrow /></a></div><div><span>WECHAT</span><button type="button" className="wechat-list-button" onClick={() => setWechatOpen(true)}>LTX · 点击打开二维码 <Arrow /></button></div></div>
               <a className="resume-link" href={`${import.meta.env.BASE_URL}luo-tianxiang-resume.pdf`} target="_blank" rel="noreferrer">查看完整简历 PDF <Arrow /></a>
             </div>
           </div>
@@ -929,8 +944,21 @@ function PortfolioHome() {
 
       <footer className="contact" id="contact">
         <div className="contact-grid" aria-hidden="true" />
-        <div className="contact-inner shell"><div className="contact-top"><span><i /> OPEN FOR COLLABORATION</span><span>LUO TIANXIANG / CHINA</span></div><div className="contact-title"><p>HAVE A PROJECT IN MIND?</p><h2>让下一个想法，<br /><em>成为真实作品。</em></h2></div><a className="contact-email" href="mailto:1158190818@qq.com"><span>1158190818@QQ.COM</span><Arrow /></a><div className="contact-bottom"><span>© 2026 罗天翔 · AIGC VISUAL DESIGNER</span><div><a href="#top">BACK TO TOP ↑</a><a href="#work">WORKS</a><a href="#strengths">CAPABILITIES</a></div><a href="tel:+8618229693585">+86 182 2969 3585</a></div></div>
+        <div className="contact-inner shell"><div className="contact-top"><span><i /> OPEN FOR COLLABORATION</span><span>LUO TIANXIANG / CHINA</span></div><div className="contact-title"><p>HAVE A PROJECT IN MIND?</p><h2>让下一个想法，<br /><em>成为真实作品。</em></h2></div><div className="contact-actions"><a className="contact-email" href="mailto:1158190818@qq.com"><span>1158190818@QQ.COM</span><Arrow /></a><button type="button" className="wechat-contact" onClick={() => setWechatOpen(true)}><span><small>WECHAT</small>LTX</span><b>打开二维码 <Arrow /></b></button></div><div className="contact-bottom"><span>© 2026 罗天翔 · AIGC VISUAL DESIGNER</span><div><a href="#top">BACK TO TOP ↑</a><a href="#work">WORKS</a><a href="#strengths">CAPABILITIES</a></div><a href="tel:+8618229693585">+86 182 2969 3585</a></div></div>
       </footer>
+
+      {wechatOpen && (
+        <div className="wechat-modal-backdrop" role="presentation" onClick={() => setWechatOpen(false)}>
+          <section className="wechat-modal" role="dialog" aria-modal="true" aria-labelledby="wechat-title" onClick={(event) => event.stopPropagation()}>
+            <button type="button" className="wechat-modal-close" onClick={() => setWechatOpen(false)} aria-label="关闭微信二维码">×</button>
+            <div className="wechat-modal-heading"><p>WECHAT CONTACT / 微信联系</p><h2 id="wechat-title">添加微信<br /><span>LTX</span></h2></div>
+            <a className="wechat-qr-link" href={asset("wechat-ltx-qr.png")} target="_blank" rel="noreferrer" aria-label="在新窗口打开微信二维码原图">
+              <img src={asset("wechat-ltx-qr.png")} alt="罗天翔微信二维码，微信号 LTX" />
+            </a>
+            <p className="wechat-modal-note">扫描二维码添加好友 · 点击二维码可打开原图</p>
+          </section>
+        </div>
+      )}
     </main>
   );
 }
