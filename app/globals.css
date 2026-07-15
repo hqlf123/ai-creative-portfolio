@@ -1360,6 +1360,7 @@ body:has(a:hover, button:hover) ::selection { background: white; }
 
 .workflow-cases { padding-top: 110px; padding-bottom: 150px; }
 .workflow-case-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.workflow-case-grid.is-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .workflow-case-card { min-width: 0; color: inherit; text-decoration: none; border: 1px solid rgba(101, 223, 255, .24); background: linear-gradient(145deg, rgba(9,55,137,.82), rgba(3,25,73,.92)); transition: transform .3s, border-color .3s; }
 .workflow-case-card:hover { transform: translateY(-9px); border-color: #65dfff; }
 .workflow-case-media { aspect-ratio: 16 / 10; overflow: hidden; position: relative; background: #061332; }
@@ -1409,6 +1410,7 @@ body:has(a:hover, button:hover) ::selection { background: white; }
   .workflow-step-copy h3 { font-size: 34px; }
   .workflow-step-outputs { margin-top: 24px; justify-content: flex-start; }
   .workflow-case-grid { grid-template-columns: 1fr; }
+  .workflow-case-grid.is-two { grid-template-columns: 1fr; }
   .workflow-case-copy { min-height: 230px; }
   .workflow-footer { min-height: 190px; align-items: flex-start; justify-content: center; flex-direction: column; }
   .workflow-footer > span { order: 3; }

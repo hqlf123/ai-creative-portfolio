@@ -554,7 +554,7 @@ const workflows: Workflow[] = [
       { number: "05", phase: "POST", title: "剪辑、声音与调色", detail: "统一镜头节奏、空间声场、画面色调与特效强度，让不同模型的输出成为同一支作品。", outputs: ["精剪", "声音设计", "调色版"] },
       { number: "06", phase: "QC", title: "审片与多平台交付", detail: "检查穿帮、字幕、安全区、码率和平台比例，保留母版并输出可直接发布的版本。", outputs: ["QC 清单", "母版", "平台版本"] },
     ],
-    caseIds: ["fantasy-arena", "hanging-sword", "green-soda"],
+    caseIds: ["fantasy-arena", "hanging-sword"],
     featuredCaseId: "fantasy-arena",
   },
   {
@@ -956,7 +956,7 @@ function WorkflowScene({ workflow }: { workflow: Workflow }) {
           <p>PROOF / SELECTED CASES</p>
           <h2 id="workflow-cases-title">对应作品案例</h2>
         </div>
-        <div className="workflow-case-grid">
+        <div className={`workflow-case-grid ${workflowProjects.length === 2 ? "is-two" : ""}`}>
           {workflowProjects.map((project) => (
             <a className="workflow-case-card" href={`#case/${project.id}`} key={project.id}>
               <div className="workflow-case-media"><img src={project.cover} alt={`${project.listingTitle ?? project.title}项目封面`} /><span>{project.coverLabel}</span></div>
