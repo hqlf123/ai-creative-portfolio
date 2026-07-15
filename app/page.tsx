@@ -32,6 +32,27 @@ type Project = {
   deliverable: string;
 };
 
+type WorkflowStep = {
+  number: string;
+  phase: string;
+  title: string;
+  detail: string;
+  outputs: string[];
+};
+
+type Workflow = {
+  id: string;
+  number: string;
+  title: string;
+  english: string;
+  eyebrow: string;
+  intro: string;
+  result: string;
+  steps: WorkflowStep[];
+  caseIds: string[];
+  featuredCaseId?: string;
+};
+
 const portfolioMediaCdn = "https://hqlf123.github.io/ai-creative-portfolio/assets/";
 const asset = (filename: string) => filename.endsWith(".mp4")
   ? `${portfolioMediaCdn}${filename}`
@@ -480,6 +501,82 @@ const strengths = [
   { number: "04", title: "内容策划传播", english: "CONTENT & MEDIA", copy: "把媒体编辑、新闻写作与短视频运营经验转化为清晰、有叙事力、能被传播的视觉内容。", tags: ["EDITORIAL", "COPY", "SOCIAL", "OPERATION"] },
 ];
 
+const workflows: Workflow[] = [
+  {
+    id: "direction",
+    number: "01",
+    title: "AI 编导全流程",
+    english: "AI CREATIVE DIRECTION",
+    eyebrow: "FROM BRIEF TO FINAL CUT",
+    intro: "把模糊需求拆成一条可执行的导演路径：先确定受众、卖点与情绪，再用脚本、分镜和镜头节奏约束每一次生成，最终形成完整成片。",
+    result: "让生成不再是随机试图，而是围绕同一导演意图逐镜推进。",
+    steps: [
+      { number: "01", phase: "BRIEF", title: "需求与目标拆解", detail: "确认受众、传播场景、核心卖点、片长比例与最终行动，让创意从业务问题出发。", outputs: ["需求清单", "受众画像", "交付规格"] },
+      { number: "02", phase: "SCRIPT", title: "概念与脚本结构", detail: "提炼一句话创意，设计开场钩子、情绪转折和结尾记忆点，形成可拍摄的节奏段落。", outputs: ["创意主张", "脚本", "节奏表"] },
+      { number: "03", phase: "STORYBOARD", title: "分镜与镜头设计", detail: "逐镜确定景别、机位、运镜、时长与转场，提前验证叙事是否清晰、镜头是否可生成。", outputs: ["分镜表", "镜头清单", "运镜说明"] },
+      { number: "04", phase: "VISUAL", title: "角色与场景定调", detail: "建立角色、道具、环境和光影基准，用关键帧锁定世界观及视觉一致性。", outputs: ["风格板", "角色设定", "关键帧"] },
+      { number: "05", phase: "MOTION", title: "逐镜生成与调度", detail: "按镜头测试动作、镜头运动和首尾帧衔接，筛选可用素材并修正连续性。", outputs: ["动态镜头", "备选版本", "连续性检查"] },
+      { number: "06", phase: "FINAL CUT", title: "剪辑、声音与成片", detail: "完成节奏剪辑、音效配乐、字幕、调色与审片，并输出适配不同平台的最终版本。", outputs: ["母版成片", "横竖版", "审片记录"] },
+    ],
+    caseIds: ["mecha", "shishanju-film", "headphones"],
+  },
+  {
+    id: "commercial",
+    number: "02",
+    title: "商业视觉落地",
+    english: "COMMERCIAL CRAFT",
+    eyebrow: "FROM SELLING POINT TO SYSTEM",
+    intro: "从产品卖点和转化目标出发，把信息梳理为有先后、有证据、有记忆点的视觉系统，并延展到详情页、品牌 IP、主视觉与动态内容。",
+    result: "让好看的画面同时承担说明、说服与品牌识别。",
+    steps: [
+      { number: "01", phase: "STRATEGY", title: "卖点与人群定位", detail: "区分核心卖点、辅助利益点和信任证据，明确用户为什么停留、为什么相信、为什么行动。", outputs: ["卖点地图", "竞品观察", "沟通优先级"] },
+      { number: "02", phase: "STRUCTURE", title: "信息层级规划", detail: "搭建首屏冲击、场景代入、功能解释、细节证明与行动收束的完整浏览路径。", outputs: ["信息架构", "页面线框", "内容清单"] },
+      { number: "03", phase: "SYSTEM", title: "视觉语言建立", detail: "确定色彩、字体、构图、材质、光影和图形规范，让多个页面与物料保持同一品牌语气。", outputs: ["视觉方向", "版式规则", "风格规范"] },
+      { number: "04", phase: "PRODUCTION", title: "产品与场景制图", detail: "围绕产品特征生成主视觉、功能场景和细节特写，并统一透视、材质和光源逻辑。", outputs: ["主视觉", "产品特写", "场景图"] },
+      { number: "05", phase: "EXTENSION", title: "页面与传播延展", detail: "把核心视觉拆解为详情页、海报、社交媒体和动态短片，保证不同触点的识别一致。", outputs: ["详情页", "传播物料", "动态版本"] },
+      { number: "06", phase: "REVIEW", title: "商业表达审校", detail: "复核信息准确性、阅读节奏、产品可辨识度和行动引导，完成可直接使用的交付包。", outputs: ["内容审校", "终稿", "交付清单"] },
+    ],
+    caseIds: ["phone-detail", "dumpling-ip", "shishanju-visual"],
+  },
+  {
+    id: "production",
+    number: "03",
+    title: "AIGC 制作交付",
+    english: "AIGC PRODUCTION",
+    eyebrow: "FROM GENERATION TO DELIVERY",
+    intro: "把复杂创作拆成可管理的资产与节点：角色、场景、武器、动作、镜头、声音彼此关联，经过一致性控制和多轮审片后汇入最终成片。",
+    result: "从单张好图升级为可复用、可追踪、可稳定交付的生产管线。",
+    steps: [
+      { number: "01", phase: "ASSET MAP", title: "资产拆分与任务建图", detail: "把项目拆为角色、道具、环境、镜头和声音资产，建立依赖关系与版本优先级。", outputs: ["资产表", "节点关系", "版本计划"] },
+      { number: "02", phase: "STYLE BIBLE", title: "提示词与视觉基准", detail: "固定世界观、材质、光线、色彩和镜头语言，形成可重复调用的风格基准。", outputs: ["提示词库", "风格圣经", "反向约束"] },
+      { number: "03", phase: "CONSISTENCY", title: "角色场景一致性", detail: "通过多视图、参考图与关键特征锁定主体，在不同动作、景别和环境中保持身份稳定。", outputs: ["角色设定", "场景设定", "一致性样片"] },
+      { number: "04", phase: "GENERATION", title: "生图与视频节点生成", detail: "按镜头分支生成素材，保留有效迭代和首尾帧关系，逐步汇聚到可剪辑镜头。", outputs: ["图像节点", "视频节点", "镜头备选"] },
+      { number: "05", phase: "POST", title: "剪辑、声音与调色", detail: "统一镜头节奏、空间声场、画面色调与特效强度，让不同模型的输出成为同一支作品。", outputs: ["精剪", "声音设计", "调色版"] },
+      { number: "06", phase: "QC", title: "审片与多平台交付", detail: "检查穿帮、字幕、安全区、码率和平台比例，保留母版并输出可直接发布的版本。", outputs: ["QC 清单", "母版", "平台版本"] },
+    ],
+    caseIds: ["fantasy-arena", "hanging-sword", "green-soda"],
+    featuredCaseId: "fantasy-arena",
+  },
+  {
+    id: "content",
+    number: "04",
+    title: "内容策划传播",
+    english: "CONTENT & MEDIA",
+    eyebrow: "FROM TOPIC TO DISTRIBUTION",
+    intro: "把媒体编辑、新闻写作和短视频运营经验转成一套内容生产方法：先找到值得传播的角度，再设计钩子、叙事、包装和发布版本。",
+    result: "让内容既讲清楚，也更容易被看见、被理解和被转发。",
+    steps: [
+      { number: "01", phase: "INSIGHT", title: "选题与受众洞察", detail: "判断信息价值、情绪价值与目标人群，找到适合当前平台的内容切口。", outputs: ["选题池", "受众判断", "传播角度"] },
+      { number: "02", phase: "HOOK", title: "标题与开场钩子", detail: "用矛盾、结果、利益或情绪建立前几秒注意力，同时避免标题与内容脱节。", outputs: ["标题组", "前三秒", "封面文案"] },
+      { number: "03", phase: "STORY", title: "脚本与信息节奏", detail: "把事实、观点和情绪组织成清晰段落，用画面变化持续承接信息。", outputs: ["口播稿", "画面脚本", "节奏节点"] },
+      { number: "04", phase: "FORMAT", title: "视觉包装与制作", detail: "根据资讯、故事、种草或买量目标选择画幅、字幕、配音、音乐和画面风格。", outputs: ["视觉模板", "配音字幕", "成片"] },
+      { number: "05", phase: "PUBLISH", title: "平台适配与发布包", detail: "针对不同渠道调整时长、标题、封面、安全区和行动引导，形成可直接发布的素材包。", outputs: ["横竖版本", "标题封面", "发布文案"] },
+      { number: "06", phase: "ITERATE", title: "反馈复盘与迭代", detail: "根据完播、停留、互动和转化信号复盘内容结构，沉淀下一轮可复用方法。", outputs: ["复盘记录", "优化假设", "模板沉淀"] },
+    ],
+    caseIds: ["ai-news", "warm-grandma", "game-wholesale"],
+  },
+];
+
 const filters: ProjectGroup[] = ["横屏商业广告", "竖屏抖音爆款", "自媒体资讯内容", "漫剧作品", "商业详情", "品牌全案", "平面设计"];
 
 const readSessionValue = (key: string) => {
@@ -777,6 +874,104 @@ function PhoneDetailPage() {
         <article><p className="phone-v2-kicker">IN THE BOX</p><h3>包装清单</h3><p>手机主机 · 充电器 · 数据线 · SIM 卡针 · 保护壳 · 说明书</p><div className="phone-v2-colors"><span>曜石黑</span><span>星河银</span><span>冰川蓝</span><span>极光金</span></div></article>
       </section>
     </div>
+  );
+}
+
+function WorkflowScene({ workflow }: { workflow: Workflow }) {
+  const workflowProjects = workflow.caseIds
+    .map((id) => projects.find((project) => project.id === id))
+    .filter((project): project is Project => Boolean(project));
+
+  useEffect(() => {
+    document.title = `${workflow.title} — 作品集工作流`;
+    window.scrollTo(0, 0);
+    return () => {
+      document.title = "罗天翔 — AIGC 视觉设计作品集";
+    };
+  }, [workflow]);
+
+  return (
+    <main className={`workflow-scene workflow-${workflow.id}`}>
+      <header className="case-header workflow-header">
+        <a href={`${import.meta.env.BASE_URL}#strengths`} className="case-back"><b aria-hidden="true">←</b><span>返回四项能力 / WORKFLOW {workflow.number}</span></a>
+        <a href={`${import.meta.env.BASE_URL}#top`} className="case-brand" aria-label="返回罗天翔作品集首页"><AvatarIdentity /></a>
+        <a href="#workflow-cases">对应案例 <Arrow /></a>
+      </header>
+
+      <section className="workflow-hero shell">
+        <div className="workflow-hero-index" aria-hidden="true">{workflow.number}</div>
+        <div className="workflow-hero-copy">
+          <p className="workflow-kicker">{workflow.eyebrow}</p>
+          <h1>{workflow.title}</h1>
+          <p className="workflow-english">{workflow.english}</p>
+          <p className="workflow-intro">{workflow.intro}</p>
+          <div className="workflow-result"><span>WORKFLOW OUTCOME</span><strong>{workflow.result}</strong></div>
+        </div>
+        <div className="workflow-hero-count"><strong>{String(workflow.steps.length).padStart(2, "0")}</strong><span>PRODUCTION<br />STAGES</span></div>
+      </section>
+
+      {workflow.featuredCaseId === "fantasy-arena" && (
+        <section className="workflow-feature shell" aria-labelledby="featured-workflow-title">
+          <div className="workflow-feature-heading">
+            <div><span>FEATURED WORKFLOW / REAL PROJECT</span><h2 id="featured-workflow-title">真实节点全景</h2></div>
+            <p>用两套真实项目工作流呈现从资产设定到镜头成片的完整生产关系：科幻机甲与东方仙侠，各自保持角色、场景和叙事的一致性。</p>
+          </div>
+          <div className="workflow-feature-grid">
+            <article>
+              <div><span>01 / SCI-FI MECHA</span><h3>虚幻竞技场</h3><p>机甲三视图、武器、废墟场景、战斗动作、特效节点与镜头汇流。</p></div>
+              <a className="workflow-board" href="#case/fantasy-arena" aria-label="查看虚幻竞技场完整成片">
+                <img src={asset("workflows/fantasy-arena-workflow.png")} alt="虚幻竞技场真实 AIGC 制作工作流画布，包含角色、场景、镜头与视频节点" />
+                <span><b>10% ZOOM / COMPLETE NODE MAP</b><strong>查看完整成片 <Arrow /></strong></span>
+              </a>
+            </article>
+            <article>
+              <div><span>02 / ORIENTAL FANTASY</span><h3>悬剑劫</h3><p>人物多视图、仙剑道具、荒漠天门、剧情分支、火焰特效与成片节点。</p></div>
+              <a className="workflow-board" href="#case/hanging-sword" aria-label="查看悬剑劫完整成片">
+                <img src={asset("workflows/hanging-sword-workflow.png")} alt="悬剑劫真实 AIGC 制作工作流画布，包含人物、仙剑、场景、剧情与特效节点" />
+                <span><b>10% ZOOM / COMPLETE NODE MAP</b><strong>查看完整成片 <Arrow /></strong></span>
+              </a>
+            </article>
+          </div>
+        </section>
+      )}
+
+      <section className="workflow-process shell" aria-labelledby="workflow-process-title">
+        <div className="workflow-section-heading">
+          <p>PROCESS / STEP BY STEP</p>
+          <h2 id="workflow-process-title">我的工作流程</h2>
+        </div>
+        <ol className="workflow-steps">
+          {workflow.steps.map((step) => (
+            <li key={step.number}>
+              <div className="workflow-step-number"><span>{step.number}</span><i>{step.phase}</i></div>
+              <div className="workflow-step-copy"><h3>{step.title}</h3><p>{step.detail}</p></div>
+              <div className="workflow-step-outputs">{step.outputs.map((output) => <span key={output}>{output}</span>)}</div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="workflow-cases shell" id="workflow-cases" aria-labelledby="workflow-cases-title">
+        <div className="workflow-section-heading">
+          <p>PROOF / SELECTED CASES</p>
+          <h2 id="workflow-cases-title">对应作品案例</h2>
+        </div>
+        <div className="workflow-case-grid">
+          {workflowProjects.map((project) => (
+            <a className="workflow-case-card" href={`#case/${project.id}`} key={project.id}>
+              <div className="workflow-case-media"><img src={project.cover} alt={`${project.listingTitle ?? project.title}项目封面`} /><span>{project.coverLabel}</span></div>
+              <div className="workflow-case-copy"><span>CASE / {project.index}</span><h3>{project.listingTitle ?? project.title}</h3><p>{project.listingEnglish ?? project.english}</p><b>查看完整项目 <Arrow /></b></div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <footer className="workflow-footer shell">
+        <a href={`${import.meta.env.BASE_URL}#strengths`}>← 返回四项能力</a>
+        <span>{workflow.english} · LUO TIANXIANG</span>
+        <a href="mailto:1158190818@qq.com">联系合作 <Arrow /></a>
+      </footer>
+    </main>
   );
 }
 
@@ -1098,7 +1293,7 @@ function PortfolioHome() {
         <div className="section-rail"><span>03</span><p>WHY ME<br />个人优势</p></div>
         <div className="strength-main">
           <div className="strength-heading"><p className="overline">CAPABILITIES / NOT JUST TOOLS</p><h2 className="motion-title">从想法到被看见<br /><span>再到真正落地</span></h2></div>
-          <div className="strength-grid">{strengths.map((item) => <article className="strength-card" key={item.number}><div className="strength-top"><span>{item.number}</span><i>✦</i></div><div><p>{item.english}</p><h3>{item.title}</h3><div className="card-line" /><p className="strength-copy">{item.copy}</p></div><div className="strength-tags">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></article>)}</div>
+          <div className="strength-grid">{strengths.map((item, index) => <a className="strength-card" href={`#workflow/${workflows[index].id}`} onClick={rememberPortfolioPosition} aria-label={`打开${item.title}作品集工作流`} key={item.number}><div className="strength-top"><span>{item.number}</span><i>✦</i></div><div><p>{item.english}</p><h3>{item.title}</h3><div className="card-line" /><p className="strength-copy">{item.copy}</p></div><div className="strength-card-footer"><div className="strength-tags">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div><b>VIEW WORKFLOW <Arrow /></b></div></a>)}</div>
         </div>
       </section>
 
@@ -1125,14 +1320,22 @@ function PortfolioHome() {
 
 export default function Home() {
   const [caseId, setCaseId] = useState("");
+  const [workflowId, setWorkflowId] = useState("");
 
   useEffect(() => {
-    const onHashChange = () => setCaseId(window.location.hash.startsWith("#case/") ? window.location.hash.slice(6) : "");
+    const onHashChange = () => {
+      const hash = window.location.hash;
+      setCaseId(hash.startsWith("#case/") ? hash.slice(6) : "");
+      setWorkflowId(hash.startsWith("#workflow/") ? hash.slice(10) : "");
+    };
     onHashChange();
     window.addEventListener("hashchange", onHashChange);
     return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
 
   const project = projects.find((item) => item.id === caseId);
-  return project ? <CaseScene project={project} /> : <PortfolioHome />;
+  const workflow = workflows.find((item) => item.id === workflowId);
+  if (project) return <CaseScene project={project} />;
+  if (workflow) return <WorkflowScene workflow={workflow} />;
+  return <PortfolioHome />;
 }
