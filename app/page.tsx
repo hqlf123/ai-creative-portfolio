@@ -575,7 +575,8 @@ const workflows: Workflow[] = [
       { number: "05", phase: "PUBLISH", title: "平台适配与发布包", detail: "针对不同渠道调整时长、标题、封面、安全区和行动引导，形成可直接发布的素材包。", outputs: ["横竖版本", "标题封面", "发布文案"] },
       { number: "06", phase: "ITERATE", title: "反馈复盘与迭代", detail: "根据完播、停留、互动和转化信号复盘内容结构，沉淀下一轮可复用方法。", outputs: ["复盘记录", "优化假设", "模板沉淀"] },
     ],
-    caseIds: ["ai-news", "warm-grandma", "game-wholesale"],
+    caseIds: ["pocket-fighter", "ai-news", "warm-grandma"],
+    featuredCaseId: "pocket-fighter",
   },
 ];
 
@@ -941,6 +942,82 @@ function WorkflowScene({ workflow }: { workflow: Workflow }) {
         </section>
       )}
 
+      {workflow.featuredCaseId === "headphones" && (
+        <section className="workflow-feature workflow-mecha-feature shell" aria-labelledby="mecha-workflow-title">
+          <div className="workflow-feature-heading">
+            <div><span>FEATURED WORKFLOW / JIMENG AI</span><h2 id="mecha-workflow-title">机甲玩具反转广告</h2></div>
+            <p>从“机甲大战虫族”的电影感开场切入，在最紧张的节点揭晓桌面模型身份；再用关节可动、设定还原与武器扩展完成卖点证明，形成一条可直接传播的玩具广告。</p>
+          </div>
+
+          <div className="mecha-workflow-hero">
+            <a className="mecha-hero-image" href="#case/mecha" aria-label="查看原创机甲玩具广告完整成片">
+              <img src={asset("workflows/mecha/desk-scene.webp")} alt="书桌上的浅灰机甲模型与虫族模型，背景为废墟战场" />
+              <span><b>REALITY REVEAL / DESKTOP TWIST</b><strong>查看完整成片 <Arrow /></strong></span>
+            </a>
+            <div className="mecha-workflow-meta" aria-label="项目数据">
+              <div><strong>36s</strong><span>MASTER FILM</span></div>
+              <div><strong>16</strong><span>STORYBOARD SHOTS</span></div>
+              <div><strong>03</strong><span>CORE CLIPS</span></div>
+              <div><strong>10</strong><span>REFERENCE ASSETS</span></div>
+              <div><strong>16:9</strong><span>FORMAT</span></div>
+            </div>
+          </div>
+
+          <div className="mecha-story-arc" aria-label="广告叙事结构">
+            <article><span>01 / HOOK</span><strong>战斗钩子</strong><p>外星虫谷夜战制造危机与停留理由。</p></article>
+            <i aria-hidden="true">→</i>
+            <article><span>02 / TWIST</span><strong>书桌反转</strong><p>战场被揭晓为模型玩家的桌面世界。</p></article>
+            <i aria-hidden="true">→</i>
+            <article><span>03 / PROOF</span><strong>卖点证明</strong><p>还原度、关节可动与武器配件逐一呈现。</p></article>
+            <i aria-hidden="true">→</i>
+            <article><span>04 / CTA</span><strong>成品收束</strong><p>英雄姿态与核心标识完成下单号召。</p></article>
+          </div>
+
+          <div className="mecha-stage-heading"><span>PROCESS / 09 STAGES REFINED TO 07</span><h3>从需求到成片</h3></div>
+          <ol className="mecha-stage-list">
+            <li><span>01</span><div><b>创意发散与方向确认</b><p>从经典反转、幽默反差、科技产品与食品安全四条路线中，确定机甲拼装玩具广告；锁定模型爱好者与青少年玩家。</p></div><em>方向提案 / 受众 / 营销目标</em></li>
+            <li><span>02</span><div><b>内容大纲与卖点结构</b><p>建立“紧张战斗—绝境反转—产品展示—行动号召”，聚焦设定还原、关节可动和武器扩展三项卖点。</p></div><em>叙事弧 / 卖点排序</em></li>
+            <li><span>03</span><div><b>完整剧本与分镜拆解</b><p>四场景剧本进一步拆成 16 个镜头，并按生成时长组织为 11 秒、12 秒、13 秒三段核心 Clip。</p></div><em>脚本 / 16 镜 / 3 CLIPS</em></li>
+            <li><span>04</span><div><b>素材挖掘与资产系统</b><p>把角色、产品、武器与场景分类管理，用三视图和多配置参考锁定机甲、虫族及配件的一致性。</p></div><em>10 REFERENCE ASSETS</em></li>
+            <li><span>05</span><div><b>参考图生成与一致性校验</b><p>完成机甲标准版、持剑版、全武器版、虫族、战场与书桌成品场景，逐项检查造型和空间关系。</p></div><em>CHARACTER / PROP / SCENE</em></li>
+            <li><span>06</span><div><b>图生视频与定向迭代</b><p>重做书桌反转后的片段，去除人物与画面文字，增加更多机甲 Pose、正侧脸特写和结尾推镜。</p></div><em>IMAGE TO VIDEO / ITERATION</em></li>
+            <li><span>07</span><div><b>剪辑、声音与最终交付</b><p>按战斗、揭秘、武器展示的节奏完成拼接，配置科技感 BGM 与机械音效，并输出横版广告成片。</p></div><em>EDIT / SOUND / FINAL FILM</em></li>
+          </ol>
+
+          <div className="mecha-stage-heading"><span>ASSET SYSTEM / USER-PROVIDED REFERENCES</span><h3>10 项制作资产</h3></div>
+          <div className="mecha-asset-grid">
+            <figure className="is-wide"><img src={asset("workflows/mecha/mecha-three-view.webp")} alt="浅灰色机甲正面、侧面和俯视三视图" /><figcaption><span>PRODUCT / MASTER</span><strong>机甲标准配置三视图</strong></figcaption></figure>
+            <figure><img src={asset("workflows/mecha/insect-views.webp")} alt="巨型虫族正面、侧面和背面三视图" /><figcaption><span>CHARACTER</span><strong>巨型虫族三视图</strong></figcaption></figure>
+            <figure><img src={asset("workflows/mecha/mecha-sword-views.webp")} alt="持蓝色光束剑的机甲多视图" /><figcaption><span>PRODUCT VARIANT</span><strong>光束剑配置</strong></figcaption></figure>
+            <figure className="is-wide"><img src={asset("workflows/mecha/mecha-weapon-kit.webp")} alt="机甲、步枪、光束剑、盾牌和导弹模块的全武器配置" /><figcaption><span>PRODUCT VARIANT</span><strong>全武器展示版</strong></figcaption></figure>
+            <figure><img src={asset("workflows/mecha/rifle.webp")} alt="机甲巨型黑色步枪" /><figcaption><span>PROP</span><strong>巨型步枪</strong></figcaption></figure>
+            <figure><img src={asset("workflows/mecha/beam-sword.webp")} alt="蓝色发光机甲光束剑" /><figcaption><span>PROP</span><strong>光束剑</strong></figcaption></figure>
+            <figure><img src={asset("workflows/mecha/mecha-raw-model.webp")} alt="用户提供的原始蓝灰机甲设计参考" /><figcaption><span>SOURCE DESIGN</span><strong>原始机甲设定</strong></figcaption></figure>
+            <figure className="is-wide"><img src={asset("workflows/mecha/battlefield.webp")} alt="烟雾笼罩的废墟战场场景" /><figcaption><span>OPENING SCENE</span><strong>外星虫谷战场</strong></figcaption></figure>
+            <figure><img src={asset("workflows/mecha/desk-scene.webp")} alt="机甲模型与虫族模型对峙的玩家书桌" /><figcaption><span>REVEAL SCENE</span><strong>模型玩家书桌</strong></figcaption></figure>
+            <figure className="is-logo"><img src={asset("workflows/mecha/soulcore.webp")} alt="青色发光的机甲魂核标识" /><figcaption><span>IDENTITY</span><strong>机甲魂核标识</strong></figcaption></figure>
+          </div>
+
+          <div className="mecha-stage-heading"><span>IMAGE-TO-VIDEO / CLIP PLAN</span><h3>三段核心生成</h3></div>
+          <div className="mecha-clip-grid">
+            <article><span>CLIP 01 / 11s</span><strong>开场战斗反转</strong><p>机甲与虫族在废墟中交锋，以强冲突建立前三秒钩子，镜头最终揭晓桌面模型世界。</p></article>
+            <article><span>CLIP 02 / 12s</span><strong>揭秘关节展示</strong><p>去除真人，只围绕机甲完成多 Pose 展示，用关节动作证明模型的高可动性。</p></article>
+            <article><span>CLIP 03 / 13s</span><strong>武器展示收尾</strong><p>步枪、光束剑与完整配置依次登场，结尾追加推镜和英雄定格完成产品记忆。</p></article>
+          </div>
+
+          <div className="mecha-iteration-panel">
+            <div><span>ITERATION LOG / WHAT CHANGED</span><h3>不是一次生成，而是定向修正</h3></div>
+            <ul>
+              <li><b>01</b><p>替换为最终书桌场景，重做后两段并移除画面文字。</p></li>
+              <li><b>02</b><p>删除男性人物，让镜头完全服务机甲产品与 Pose。</p></li>
+              <li><b>03</b><p>为结尾 5 秒增加推进运镜，强化成品展示的到达感。</p></li>
+              <li><b>04</b><p>补充正脸、侧身与近景特写，提升剪辑节奏和可选镜头密度。</p></li>
+            </ul>
+          </div>
+          <a className="mecha-final-link" href="#case/mecha"><span>FINAL DELIVERY / ORIGINAL MECHA TOY CONCEPT FILM</span><strong>查看最终成片 <Arrow /></strong></a>
+        </section>
+      )}
+
       {workflow.featuredCaseId === "phone-detail" && (
         <section className="workflow-feature workflow-phone-feature shell" aria-labelledby="phone-workflow-title">
           <div className="workflow-feature-heading">
@@ -994,6 +1071,92 @@ function WorkflowScene({ workflow }: { workflow: Workflow }) {
                 <span><b>10% ZOOM / COMPLETE NODE MAP</b><strong>查看完整成片 <Arrow /></strong></span>
               </a>
             </article>
+          </div>
+        </section>
+      )}
+
+      {workflow.featuredCaseId === "pocket-fighter" && (
+        <section className="workflow-feature workflow-pocket-feature shell" aria-labelledby="pocket-workflow-title">
+          <div className="workflow-feature-heading">
+            <div><span>FEATURED WORKFLOW / UGC MARKETING</span><h2 id="pocket-workflow-title">华强北掌机种草视频</h2></div>
+            <p>把一句“华强北的掌机小玩意”分流为 15 秒 UGC 种草路线：先建立可信的数码达人，再用用户商品图锁定外观，通过动态屏幕、口播节奏和局部重生成逐步提高产品真实感。</p>
+          </div>
+
+          <div className="pocket-reference-grid">
+            <figure className="pocket-creator-card">
+              <img src={asset("workflows/pocket-fighter/creator-reference.webp")} alt="25岁左右、戴黑框眼镜的中国男性数码达人自拍参考图" />
+              <figcaption><span>01 / CREATOR REFERENCE</span><strong>可信达人与真实书桌</strong><p>25 岁数码测评达人 · 手机自拍感 · 自然窗光 · 4:5 人物参考</p></figcaption>
+            </figure>
+            <div className="pocket-reference-arrow" aria-hidden="true">+</div>
+            <figure className="pocket-product-card">
+              <img src={asset("workflows/pocket-fighter/product-reference.webp")} alt="奶白机身、酒红按键和黑色十字键的复古掌机产品参考图" />
+              <figcaption><span>02 / PRODUCT REFERENCE</span><strong>锁定真实商品外观</strong><p>奶白机身 · 酒红按键 · 黑色十字键 · 3×3 像素游戏界面</p></figcaption>
+            </figure>
+            <div className="pocket-reference-arrow" aria-hidden="true">→</div>
+            <a className="pocket-delivery-card" href="#case/pocket-fighter">
+              <span>03 / FINAL DELIVERY</span><b>15s</b><strong>UGC<br />种草短片</strong><p>9:16 · 达人口播 · 产品演示 · 情绪收尾</p><em>查看完整成片 <Arrow /></em>
+            </a>
+          </div>
+
+          <div className="pocket-pipeline" aria-label="华强北掌机营销视频制作流程">
+            <div><span>01</span><b>意图理解</b><small>模糊需求</small></div><i>→</i>
+            <div><span>02</span><b>UGC 分流</b><small>种草转化</small></div><i>→</i>
+            <div><span>03</span><b>达人定调</b><small>人物参考</small></div><i>→</i>
+            <div><span>04</span><b>商品锁定</b><small>用户产品图</small></div><i>→</i>
+            <div><span>05</span><b>脚本生成</b><small>口播与分镜</small></div><i>→</i>
+            <div><span>06</span><b>局部迭代</b><small>动态与动作</small></div>
+          </div>
+
+          <div className="pocket-section-heading"><span>PROMPT ANATOMY / CREATOR PORTRAIT</span><h3>达人参考图如何写</h3></div>
+          <div className="pocket-prompt-grid">
+            <article><span>SUBJECT</span><strong>人物身份</strong><p>25 岁左右中国男性数码达人，短碎发、黑框眼镜、深灰卫衣，自然微笑并直视镜头。</p></article>
+            <article><span>ENVIRONMENT</span><strong>生活场景</strong><p>电脑、机械键盘、线材、手办与咖啡杯共同建立“不刻意整理”的真实书桌。</p></article>
+            <article><span>CAMERA</span><strong>手机质感</strong><p>4:5 肩部以上近景、前置自拍透视和轻微广角畸变，避免商业棚拍感。</p></article>
+            <article><span>LIGHT & SKIN</span><strong>自然细节</strong><p>窗帘过滤后的柔和窗光，保留毛孔、肤色变化与眼下纹理，不过曝、不油亮。</p></article>
+            <article><span>NEGATIVE RULES</span><strong>隔离商品</strong><p>人物阶段不生成商品或疑似重复道具；服装与背景只承担中性场景，不替代产品参考。</p></article>
+          </div>
+          <blockquote className="pocket-prompt-excerpt">
+            <span>CORE PROMPT / EXCERPT</span>
+            <p>“像普通手机随手拍，清晰但不商业摄影；肤质真实，不要美颜过度、塑料皮、文字水印。本次只生成达人本人和中性真实场景，后续商品外观以用户提供的商品图为准。”</p>
+          </blockquote>
+
+          <div className="pocket-section-heading"><span>15-SECOND CONTENT TEMPLATE</span><h3>种草视频节奏</h3></div>
+          <div className="pocket-timeline">
+            <article><span>00—03s</span><b>HOOK</b><strong>拿产品出场</strong><p>用“小到可以放进口袋”快速建立尺寸利益点。</p></article>
+            <article><span>03—06s</span><b>LOOK</b><strong>外观与质感</strong><p>展示奶白机身、经典按键与便携形态。</p></article>
+            <article><span>06—09s</span><b>PLAY</b><strong>动态游戏界面</strong><p>明确屏幕必须播放像素游戏，而不是静态图标。</p></article>
+            <article><span>09—12s</span><b>TOUCH</b><strong>手部把玩特写</strong><p>通过翻转、按键与握持建立真实使用感。</p></article>
+            <article><span>12—15s</span><b>CTA</b><strong>情绪与口号</strong><p>“从怀旧到自由，口袋小斗，开机就斗。”</p></article>
+          </div>
+
+          <div className="pocket-iteration-grid">
+            <div className="pocket-version-list">
+              <span>FULL VERSION / V1—V4</span>
+              <h3>整片迭代</h3>
+              <ol>
+                <li><b>V1</b><p>只有达人图，商品被默认成黑色掌机；确认产品图必须上传。</p></li>
+                <li><b>V2</b><p>加入用户商品图，锁定奶白机身与酒红按键。</p></li>
+                <li><b>V3</b><p>把“屏幕显示动态像素游戏”写入每个相关镜头。</p></li>
+                <li><b>V4</b><p>替换全部台词，并重新分配镜头时长与卖点节奏。</p></li>
+              </ol>
+            </div>
+            <div className="pocket-version-list">
+              <span>LOCAL REGEN / 09—12s</span>
+              <h3>局部六轮</h3>
+              <ol>
+                <li><b>01</b><p>射击操作 → 摆弄机器，先修正动作方向。</p></li>
+                <li><b>02</b><p>翻转与按键动作连续优化，减少表演僵硬。</p></li>
+                <li><b>03</b><p>加入对应口播，让动作与台词同步。</p></li>
+                <li><b>04</b><p>最终收束为纯手部特写，把注意力还给产品。</p></li>
+              </ol>
+            </div>
+          </div>
+
+          <div className="pocket-learnings">
+            <article><span>RULE 01</span><strong>商品图必传</strong><p>人物参考解决“谁来讲”，产品参考解决“讲的是什么”，两者不可互相替代。</p></article>
+            <article><span>RULE 02</span><strong>动态必须写死</strong><p>掌机与手机类内容要明确屏幕动画、游戏类型和动作状态，避免生成静态 UI。</p></article>
+            <article><span>RULE 03</span><strong>台词进入分镜</strong><p>口播不是后贴文案，需要与每个镜头的动作、时间和卖点同步设计。</p></article>
+            <article><span>RULE 04</span><strong>优先局部重做</strong><p>问题集中在单段时，用满足最低时长的局部生成替代整片重跑，提升迭代效率。</p></article>
           </div>
         </section>
       )}
