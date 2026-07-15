@@ -13,6 +13,7 @@ type Project = {
   english: string;
   listingTitle?: string;
   listingEnglish?: string;
+  coverLabel: string;
   category: string;
   group: ProjectGroup;
   year: string;
@@ -44,6 +45,7 @@ const projects: Project[] = [
     english: "HEADPHONE COMMERCIAL FILM",
     listingTitle: "高端头戴耳机产品广告",
     listingEnglish: "PREMIUM HEADPHONE PRODUCT FILM",
+    coverLabel: "PRODUCT FILM",
     category: "AI 动态影像 / 产品广告",
     group: "横屏商业广告",
     year: "2026",
@@ -63,6 +65,7 @@ const projects: Project[] = [
     english: "ORIGINAL MECHA TOY",
     listingTitle: "原创机甲玩具概念广告",
     listingEnglish: "ORIGINAL MECHA TOY CONCEPT FILM",
+    coverLabel: "CONCEPT FILM",
     category: "概念设计 / AI 广告",
     group: "横屏商业广告",
     year: "2026",
@@ -82,6 +85,7 @@ const projects: Project[] = [
     english: "SHISHANJU RETREAT FILM",
     listingTitle: "柿山居民宿品牌形象片",
     listingEnglish: "SHISHANJU HOMESTAY BRAND FILM",
+    coverLabel: "BRAND FILM",
     category: "空间叙事 / 民宿广告",
     group: "横屏商业广告",
     year: "2026",
@@ -101,6 +105,7 @@ const projects: Project[] = [
     english: "VITARA X1 PRO",
     listingTitle: "VITARA X1 Pro 旗舰手机详情",
     listingEnglish: "FLAGSHIP SMARTPHONE PRODUCT DETAIL",
+    coverLabel: "E-COMMERCE DETAIL",
     category: "电商视觉 / 手机详情页",
     group: "商业详情",
     year: "2026",
@@ -118,6 +123,9 @@ const projects: Project[] = [
     index: "05",
     title: "饺个朋友",
     english: "BRAND IP SYSTEM",
+    listingTitle: "饺个朋友品牌 IP 全案",
+    listingEnglish: "DUMPLING BRAND IP SYSTEM",
+    coverLabel: "BRAND IP SYSTEM",
     category: "品牌设计 / IP 全案",
     group: "品牌全案",
     year: "2024",
@@ -136,6 +144,9 @@ const projects: Project[] = [
     index: "06",
     title: "事事如意",
     english: "EDITORIAL COVER STUDY",
+    listingTitle: "事事如意东方杂志封面",
+    listingEnglish: "ORIENTAL EDITORIAL COVER DESIGN",
+    coverLabel: "EDITORIAL DESIGN",
     category: "平面设计 / 杂志封面",
     group: "平面设计",
     year: "2026",
@@ -156,6 +167,7 @@ const projects: Project[] = [
     english: "COLD-X PRODUCT DETAIL",
     listingTitle: "Cold-X 冷萃咖啡机详情",
     listingEnglish: "COLD BREW COFFEE MAKER PRODUCT DETAIL",
+    coverLabel: "E-COMMERCE DETAIL",
     category: "电商视觉 / 产品详情页",
     group: "商业详情",
     year: "2026",
@@ -175,6 +187,7 @@ const projects: Project[] = [
     english: "AURORA M7 DETAIL PAGE",
     listingTitle: "AURORA M7 无线鼠标详情",
     listingEnglish: "WIRELESS MOUSE PRODUCT DETAIL",
+    coverLabel: "E-COMMERCE DETAIL",
     category: "电商视觉 / 鼠标详情页",
     group: "商业详情",
     year: "2026",
@@ -194,6 +207,7 @@ const projects: Project[] = [
     english: "HOMESTAY VISUAL PROPOSAL",
     listingTitle: "柿山居民宿视觉提案",
     listingEnglish: "SHISHANJU HOMESTAY VISUAL PROPOSAL",
+    coverLabel: "VISUAL PROPOSAL",
     category: "品牌视觉 / 空间提案",
     group: "商业详情",
     year: "2026",
@@ -211,6 +225,9 @@ const projects: Project[] = [
     index: "10",
     title: "澄心",
     english: "BOOK COVER DESIGN",
+    listingTitle: "澄心东方书籍封面",
+    listingEnglish: "ORIENTAL BOOK COVER DESIGN",
+    coverLabel: "BOOK DESIGN",
     category: "平面设计 / 书籍封面",
     group: "平面设计",
     year: "2026",
@@ -228,6 +245,7 @@ const projects: Project[] = [
     english: "LEGWEAR COMMERCIAL",
     listingTitle: "轻奢裤袜产品短片",
     listingEnglish: "PREMIUM LEGWEAR PRODUCT FILM",
+    coverLabel: "FASHION FILM",
     category: "时尚产品 / 短视频广告",
     group: "横屏商业广告",
     year: "2026",
@@ -246,6 +264,7 @@ const projects: Project[] = [
     english: "GAME UA CREATIVE",
     listingTitle: "游戏 UA 竖屏买量广告",
     listingEnglish: "GAME UA VERTICAL PERFORMANCE AD",
+    coverLabel: "GAME UA CREATIVE",
     category: "游戏买量 / 效果广告",
     group: "竖屏抖音爆款",
     year: "2026",
@@ -265,6 +284,7 @@ const projects: Project[] = [
     english: "POWER BANK SOCIAL AD",
     listingTitle: "充电宝社交平台竖屏广告",
     listingEnglish: "POWER BANK VERTICAL SOCIAL AD",
+    coverLabel: "SOCIAL PRODUCT FILM",
     category: "数码产品 / 社交广告",
     group: "竖屏抖音爆款",
     year: "2026",
@@ -284,6 +304,7 @@ const projects: Project[] = [
     english: "SNACK FOOD SHORT AD",
     listingTitle: "零食产品竖屏效果广告",
     listingEnglish: "SNACK FOOD VERTICAL PERFORMANCE AD",
+    coverLabel: "FOOD PERFORMANCE AD",
     category: "食品饮料 / 效果广告",
     group: "竖屏抖音爆款",
     year: "2026",
@@ -301,6 +322,9 @@ const projects: Project[] = [
     index: "15",
     title: "悬剑劫",
     english: "WUXIA CINEMATIC",
+    listingTitle: "悬剑劫武侠概念长片",
+    listingEnglish: "WUXIA CINEMATIC CONCEPT FILM",
+    coverLabel: "WUXIA CONCEPT FILM",
     category: "叙事影像 / 武侠概念片",
     group: "漫剧作品",
     year: "2026",
@@ -319,6 +343,7 @@ const projects: Project[] = [
     english: "POCKET FIGHTER CAMPAIGN",
     listingTitle: "怀旧掌机竖屏产品广告",
     listingEnglish: "RETRO HANDHELD VERTICAL PRODUCT AD",
+    coverLabel: "SOCIAL PRODUCT FILM",
     category: "怀旧数码 / 产品广告",
     group: "竖屏抖音爆款",
     year: "2026",
@@ -338,6 +363,7 @@ const projects: Project[] = [
     english: "WILDERNESS JOURNEY",
     listingTitle: "旷野文旅氛围短片",
     listingEnglish: "WILDERNESS TRAVEL MOOD FILM",
+    coverLabel: "TRAVEL MOOD FILM",
     category: "文旅影像 / 人群适配",
     group: "横屏商业广告",
     year: "2026",
@@ -356,6 +382,7 @@ const projects: Project[] = [
     english: "A WARM GRANDMA STORY",
     listingTitle: "温情家庭竖屏叙事短片",
     listingEnglish: "WARM FAMILY VERTICAL STORY FILM",
+    coverLabel: "VERTICAL STORY FILM",
     category: "情感叙事 / 抖音短片",
     group: "竖屏抖音爆款",
     year: "2026",
@@ -375,6 +402,7 @@ const projects: Project[] = [
     english: "AI NEWS EDITORIAL",
     listingTitle: "AI 时代自媒体资讯视频",
     listingEnglish: "AI NEWS SELF-MEDIA EDITORIAL",
+    coverLabel: "EDITORIAL CONTENT",
     category: "资讯内容 / 自媒体视频",
     group: "自媒体资讯内容",
     year: "2026",
@@ -391,6 +419,9 @@ const projects: Project[] = [
     index: "20",
     title: "虚幻竞技场",
     english: "FANTASY ARENA",
+    listingTitle: "虚幻竞技场游戏概念长片",
+    listingEnglish: "FANTASY ARENA CINEMATIC CONCEPT FILM",
+    coverLabel: "CINEMATIC CONCEPT",
     category: "概念影像 / 游戏世界观",
     group: "漫剧作品",
     year: "2026",
@@ -409,6 +440,7 @@ const projects: Project[] = [
     english: "GREEN GRAPE SODA",
     listingTitle: "青提气泡饮料产品广告",
     listingEnglish: "GREEN GRAPE SODA PRODUCT FILM",
+    coverLabel: "BEVERAGE PRODUCT FILM",
     category: "食品饮料 / 产品广告",
     group: "横屏商业广告",
     year: "2026",
@@ -427,6 +459,7 @@ const projects: Project[] = [
     english: "DUMPLING BRAND FILM",
     listingTitle: "饺个朋友品牌 IP 动态短片",
     listingEnglish: "DUMPLING BRAND IP FILM",
+    coverLabel: "BRAND IP FILM",
     category: "品牌 IP / 动态广告",
     group: "横屏商业广告",
     year: "2024",
@@ -449,8 +482,32 @@ const strengths = [
 
 const filters: ProjectGroup[] = ["横屏商业广告", "竖屏抖音爆款", "自媒体资讯内容", "漫剧作品", "商业详情", "品牌全案", "平面设计"];
 
+const readSessionValue = (key: string) => {
+  try {
+    return window.sessionStorage.getItem(key);
+  } catch {
+    return null;
+  }
+};
+
+const writeSessionValue = (key: string, value: string) => {
+  try {
+    window.sessionStorage.setItem(key, value);
+  } catch {
+    // Browsing still works when storage is unavailable or blocked.
+  }
+};
+
+const removeSessionValue = (key: string) => {
+  try {
+    window.sessionStorage.removeItem(key);
+  } catch {
+    // Browsing still works when storage is unavailable or blocked.
+  }
+};
+
 const rememberPortfolioPosition = () => {
-  sessionStorage.setItem("portfolio:return-y", String(window.scrollY));
+  writeSessionValue("portfolio:return-y", String(window.scrollY));
 };
 
 function Arrow() {
@@ -485,11 +542,7 @@ function coverPreviewLabel(project: Project, previewing: boolean) {
 }
 
 function coverTypeLabel(project: Project) {
-  if (project.group === "自媒体资讯内容") return "EDITORIAL CONTENT";
-  if (project.media === "video") return project.coverFormat === "vertical" ? "VERTICAL FILM" : "MOTION FILM";
-  if (project.media === "pages") return `COMPLETE CASE · ${project.pageCount}P`;
-  if (project.long) return "LONGFORM DESIGN";
-  return "VISUAL DESIGN";
+  return project.coverLabel;
 }
 
 function CoverIdentity({ project }: { project: Project }) {
@@ -738,24 +791,31 @@ function CaseScene({ project }: { project: Project }) {
     document.title = `${project.title} — 完整案例`;
     window.scrollTo(0, 0);
     const titles = document.querySelectorAll<HTMLElement>(".motion-title");
-    const titleObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-title-visible");
-        titleObserver.unobserve(entry.target);
-      });
-    }, { rootMargin: "0px 0px -12%", threshold: .18 });
-    titles.forEach((title) => titleObserver.observe(title));
+    let titleObserver: IntersectionObserver | undefined;
+
+    if ("IntersectionObserver" in window) {
+      titleObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-title-visible");
+          titleObserver?.unobserve(entry.target);
+        });
+      }, { rootMargin: "0px 0px -12%", threshold: .18 });
+      titles.forEach((title) => titleObserver?.observe(title));
+    } else {
+      titles.forEach((title) => title.classList.add("is-title-visible"));
+    }
+
     return () => {
       document.title = "罗天翔 — AIGC 视觉设计作品集";
-      titleObserver.disconnect();
+      titleObserver?.disconnect();
     };
   }, [project]);
 
   return (
     <main className={`case-scene case-${project.media} case-${project.id}`}>
       <header className="case-header">
-        <a href={`${import.meta.env.BASE_URL}#archive`} className="case-back"><b aria-hidden="true">←</b><span>返回作品 / CASE {project.index}</span></a>
+        <a href={`${import.meta.env.BASE_URL}#archive`} className="case-back"><b aria-hidden="true">←</b><span>返回原浏览位置 / CASE {project.index}</span></a>
         <a href={`${import.meta.env.BASE_URL}#top`} className="case-brand" aria-label="返回罗天翔作品集首页"><AvatarIdentity /></a>
         <a href="#contact-case">联系合作 <Arrow /></a>
       </header>
@@ -764,6 +824,7 @@ function CaseScene({ project }: { project: Project }) {
         <div className="case-label"><span>{project.group}</span><span>{project.year}</span></div>
         <h1 className="motion-title">{project.title}</h1>
         <p className="case-en">{project.english}</p>
+        <p className="case-project-name"><span>PROJECT</span><strong>{project.listingTitle ?? project.title}</strong><b>{project.listingEnglish ?? project.english}</b></p>
         <div className="case-intro">
           <p>{project.summary}</p>
           <dl>
@@ -827,9 +888,10 @@ function PortfolioHome() {
   const [progress, setProgress] = useState(0);
   const [activeSection, setActiveSection] = useState("work");
   const [wechatOpen, setWechatOpen] = useState(false);
+  const wechatCloseRef = useRef<HTMLButtonElement>(null);
   const [filter, setFilter] = useState<ProjectGroup>(() => {
     if (typeof window === "undefined") return filters[0];
-    const saved = sessionStorage.getItem("portfolio:filter") as ProjectGroup | null;
+    const saved = readSessionValue("portfolio:filter") as ProjectGroup | null;
     return saved && filters.includes(saved) ? saved : filters[0];
   });
   const featuredProjects = projects.filter((project) => project.featured);
@@ -838,7 +900,7 @@ function PortfolioHome() {
     if (filter !== "商业详情") return filteredProjects;
 
     const detailOrder = ["shishanju-visual", "coldx-detail", "mouse-detail", "phone-detail"];
-    return filteredProjects.toSorted(
+    return [...filteredProjects].sort(
       (first, second) => detailOrder.indexOf(first.id) - detailOrder.indexOf(second.id),
     );
   }, [filter]);
@@ -856,7 +918,7 @@ function PortfolioHome() {
   }, []);
 
   useEffect(() => {
-    sessionStorage.setItem("portfolio:filter", filter);
+    writeSessionValue("portfolio:filter", filter);
   }, [filter]);
 
   useEffect(() => {
@@ -880,7 +942,7 @@ function PortfolioHome() {
           const rect = section.getBoundingClientRect();
           return rect.top <= marker && rect.bottom > marker;
         });
-        const active = containing.at(-1) ?? sections.toSorted((first, second) => (
+        const active = containing[containing.length - 1] ?? [...sections].sort((first, second) => (
           Math.abs(first.getBoundingClientRect().top - marker) - Math.abs(second.getBoundingClientRect().top - marker)
         ))[0];
         if (active && sectionIds.includes(active.id)) setActiveSection(active.id);
@@ -888,23 +950,28 @@ function PortfolioHome() {
     };
 
     const titles = document.querySelectorAll<HTMLElement>(".motion-title");
-    const titleObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-title-visible");
-        titleObserver.unobserve(entry.target);
-      });
-    }, { rootMargin: "0px 0px -12%", threshold: .18 });
+    let titleObserver: IntersectionObserver | undefined;
+    if ("IntersectionObserver" in window) {
+      titleObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-title-visible");
+          titleObserver?.unobserve(entry.target);
+        });
+      }, { rootMargin: "0px 0px -12%", threshold: .18 });
+    } else {
+      titles.forEach((title) => title.classList.add("is-title-visible"));
+    }
 
     updateActiveSection();
     window.addEventListener("scroll", updateActiveSection, { passive: true });
     window.addEventListener("resize", updateActiveSection);
-    titles.forEach((title) => titleObserver.observe(title));
+    titles.forEach((title) => titleObserver?.observe(title));
     return () => {
       window.removeEventListener("scroll", updateActiveSection);
       window.removeEventListener("resize", updateActiveSection);
       cancelAnimationFrame(activeFrame);
-      titleObserver.disconnect();
+      titleObserver?.disconnect();
     };
   }, []);
 
@@ -921,24 +988,28 @@ function PortfolioHome() {
   useEffect(() => {
     if (!wechatOpen) return;
     const previousOverflow = document.body.style.overflow;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setWechatOpen(false);
     };
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKeyDown);
+    const focusFrame = requestAnimationFrame(() => wechatCloseRef.current?.focus());
     return () => {
+      cancelAnimationFrame(focusFrame);
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
+      previousFocus?.focus();
     };
   }, [wechatOpen]);
 
   useEffect(() => {
-    const savedY = Number(sessionStorage.getItem("portfolio:return-y"));
+    const savedY = Number(readSessionValue("portfolio:return-y"));
     if (!Number.isFinite(savedY) || savedY <= 0) return;
     const firstFrame = requestAnimationFrame(() => window.scrollTo(0, savedY));
     const settle = window.setTimeout(() => {
       window.scrollTo(0, savedY);
-      sessionStorage.removeItem("portfolio:return-y");
+      removeSessionValue("portfolio:return-y");
     }, 180);
     return () => {
       cancelAnimationFrame(firstFrame);
@@ -1016,6 +1087,7 @@ function PortfolioHome() {
                   </button>
                 ))}
               </div>
+              <p className="sr-only" aria-live="polite">当前显示 {filter}，共 {archiveProjects.length} 个项目</p>
               <div className="archive-grid">{archiveProjects.map((project) => <ArchiveCard key={project.id} project={project} />)}</div>
             </section>
           </div>
@@ -1038,7 +1110,7 @@ function PortfolioHome() {
       {wechatOpen && (
         <div className="wechat-modal-backdrop" role="presentation" onClick={() => setWechatOpen(false)}>
           <section className="wechat-modal" role="dialog" aria-modal="true" aria-labelledby="wechat-title" onClick={(event) => event.stopPropagation()}>
-            <button type="button" className="wechat-modal-close" onClick={() => setWechatOpen(false)} aria-label="关闭微信二维码">×</button>
+            <button ref={wechatCloseRef} type="button" className="wechat-modal-close" onClick={() => setWechatOpen(false)} aria-label="关闭微信二维码">×</button>
             <div className="wechat-modal-heading"><p>WECHAT CONTACT / 微信联系</p><h2 className="motion-title is-title-visible" id="wechat-title">添加微信<br /><span>LTX</span></h2></div>
             <a className="wechat-qr-link" href={asset("wechat-ltx-qr.png")} target="_blank" rel="noreferrer" aria-label="在新窗口打开微信二维码原图">
               <img src={asset("wechat-ltx-qr.png")} alt="罗天翔微信二维码，微信号 LTX" />
@@ -1052,7 +1124,7 @@ function PortfolioHome() {
 }
 
 export default function Home() {
-  const [caseId, setCaseId] = useState(() => typeof window !== "undefined" && window.location.hash.startsWith("#case/") ? window.location.hash.slice(6) : "");
+  const [caseId, setCaseId] = useState("");
 
   useEffect(() => {
     const onHashChange = () => setCaseId(window.location.hash.startsWith("#case/") ? window.location.hash.slice(6) : "");
