@@ -1336,6 +1336,51 @@ body:has(a:hover, button:hover) ::selection { background: white; }
 .workflow-feature-grid article > div { padding: 8px 8px 24px; }
 .workflow-feature-grid h3 { margin: 12px 0 8px; font-family: var(--display); font-size: clamp(34px, 3.4vw, 62px); line-height: 1; }
 .workflow-feature-grid article > div > p { margin: 0; color: #9fc1d9; font-size: 14px; line-height: 1.65; }
+.headphones-workflow-layout { display: grid; grid-template-columns: minmax(0, 1fr) 160px; gap: 18px; align-items: stretch; }
+.headphones-workflow-layout .workflow-board img { aspect-ratio: 2.65 / 1; object-fit: contain; }
+.headphones-workflow-meta { display: grid; grid-template-rows: repeat(4, 1fr); gap: 8px; }
+.headphones-workflow-meta > div { display: flex; flex-direction: column; justify-content: center; padding: 14px; border: 1px solid rgba(101, 223, 255, .22); background: rgba(8, 43, 105, .56); }
+.headphones-workflow-meta strong { color: #65dfff; font: 900 34px/1 var(--display); }
+.headphones-workflow-meta span { margin-top: 7px; color: #84acd0; font: 800 8px "SFMono-Regular", Consolas, monospace; letter-spacing: .14em; }
+.headphones-act-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0 0; padding: 0; list-style: none; }
+.headphones-act-list li { min-height: 190px; padding: 24px; border: 1px solid rgba(101, 223, 255, .2); background: linear-gradient(145deg, rgba(9,55,137,.7), rgba(3,25,73,.88)); }
+.headphones-act-list span, .prompt-anatomy span { color: #65dfff; font: 800 9px "SFMono-Regular", Consolas, monospace; letter-spacing: .13em; }
+.headphones-act-list strong { display: block; margin-top: 28px; font-family: var(--display); font-size: 27px; line-height: 1.1; }
+.headphones-act-list p { margin: 16px 0 0; color: #9fc1d9; font-size: 13px; line-height: 1.7; }
+.prompt-anatomy { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 12px; border: 1px solid rgba(101, 223, 255, .2); }
+.prompt-anatomy article { min-height: 180px; padding: 24px; border-right: 1px solid rgba(101, 223, 255, .2); }
+.prompt-anatomy article:last-child { border-right: 0; }
+.prompt-anatomy h3 { margin: 26px 0 10px; font-family: var(--display); font-size: 28px; }
+.prompt-anatomy p { margin: 0; color: #9fc1d9; font-size: 13px; line-height: 1.7; }
+
+.image2-workflow { display: grid; grid-template-columns: minmax(170px, .8fr) 42px minmax(190px, .85fr) 42px minmax(320px, 1.5fr) 42px minmax(180px, .8fr); align-items: center; gap: 10px; padding: 30px; border: 1px solid rgba(101, 223, 255, .25); background-color: #061434; background-image: radial-gradient(rgba(101,223,255,.18) 1px, transparent 1px); background-size: 18px 18px; }
+.image2-node, .image2-output-group { min-width: 0; border: 1px solid rgba(101, 223, 255, .27); background: rgba(5, 28, 75, .95); box-shadow: 0 20px 40px rgba(0, 7, 30, .35); }
+.image2-node { display: block; padding: 14px; color: inherit; text-decoration: none; }
+.image2-node > span, .image2-output-group > span { display: block; margin-bottom: 12px; color: #65dfff; font: 800 8px "SFMono-Regular", Consolas, monospace; letter-spacing: .12em; }
+.image2-node > img { width: 100%; aspect-ratio: 1.2 / 1; object-fit: cover; display: block; }
+.image2-node h3 { margin: 18px 0 6px; font-family: var(--display); font-size: 25px; }
+.image2-node p { margin: 0; color: #91b6d3; font-size: 11px; line-height: 1.6; }
+.image2-connector { color: #65dfff; font: 900 27px/1 var(--display); text-align: center; font-style: normal; }
+.image2-prompt-core { aspect-ratio: 1.2 / 1; display: grid; place-content: center; gap: 8px; text-align: center; background: radial-gradient(circle at 50% 45%, rgba(101,223,255,.24), rgba(10,41,105,.25) 45%, #041536 76%); border: 1px solid rgba(101,223,255,.2); }
+.image2-prompt-core b { color: #fff; font: 900 36px/1 var(--display); }
+.image2-prompt-core em { color: #65dfff; font: 800 7px "SFMono-Regular", Consolas, monospace; letter-spacing: .12em; font-style: normal; }
+.image2-chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 12px; }
+.image2-chips small { padding: 5px 6px; color: #9bd8fb; border: 1px solid rgba(101,223,255,.2); font: 700 6px "SFMono-Regular", Consolas, monospace; }
+.image2-output-group { padding: 14px; }
+.image2-output-group > div { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.image2-output-group figure { margin: 0; position: relative; overflow: hidden; }
+.image2-output-group img { width: 100%; aspect-ratio: 1.4 / 1; display: block; object-fit: cover; }
+.image2-output-group figcaption { position: absolute; inset: auto 0 0; padding: 7px; color: #d9f3ff; background: linear-gradient(transparent, rgba(1,9,31,.92)); font: 700 7px "SFMono-Regular", Consolas, monospace; }
+.image2-delivery { padding: 18px; transition: border-color .25s, transform .25s; }
+.image2-delivery > strong { display: block; color: #fff; font: 900 38px/.84 var(--display); letter-spacing: -.04em; }
+.image2-delivery > b { display: block; margin-top: 22px; color: #65dfff; font-size: 11px; }
+.image2-delivery:hover { border-color: #65dfff; transform: translateY(-5px); }
+.image2-method { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 16px; border: 1px solid rgba(101,223,255,.2); }
+.image2-method > div { min-height: 150px; padding: 23px; border-right: 1px solid rgba(101,223,255,.2); }
+.image2-method > div:last-child { border-right: 0; }
+.image2-method span { color: #65dfff; font: 800 8px "SFMono-Regular", Consolas, monospace; letter-spacing: .13em; }
+.image2-method strong { display: block; margin-top: 20px; font-family: var(--display); font-size: 28px; }
+.image2-method p { margin: 10px 0 0; color: #9fc1d9; font-size: 12px; line-height: 1.65; }
 .workflow-board { display: block; color: inherit; text-decoration: none; border: 1px solid rgba(101, 223, 255, .18); background: #111; overflow: hidden; }
 .workflow-board img { width: 100%; aspect-ratio: 1.45 / 1; display: block; object-fit: contain; background: #111; transition: transform .6s cubic-bezier(.2,.8,.2,1), filter .4s; }
 .workflow-board > span { display: flex; justify-content: space-between; align-items: center; gap: 20px; min-height: 64px; padding: 14px 18px; background: #071d4d; border-top: 1px solid rgba(101, 223, 255, .2); }
@@ -1383,6 +1428,15 @@ body:has(a:hover, button:hover) ::selection { background: white; }
   .workflow-steps li { grid-template-columns: 130px minmax(0, 1fr); }
   .workflow-step-outputs { grid-column: 2; justify-content: flex-start; }
   .workflow-case-grid { grid-template-columns: 1fr 1fr; }
+  .headphones-workflow-layout { grid-template-columns: 1fr; }
+  .headphones-workflow-meta { grid-template-columns: repeat(4, 1fr); grid-template-rows: none; }
+  .prompt-anatomy { grid-template-columns: 1fr 1fr; }
+  .prompt-anatomy article:nth-child(2) { border-right: 0; }
+  .prompt-anatomy article:nth-child(-n+2) { border-bottom: 1px solid rgba(101, 223, 255, .2); }
+  .image2-workflow { grid-template-columns: 1fr; gap: 10px; }
+  .image2-connector { transform: rotate(90deg); }
+  .image2-node > img, .image2-prompt-core { aspect-ratio: 16 / 8; }
+  .image2-output-group > div { grid-template-columns: repeat(4, 1fr); }
 }
 
 @media (max-width: 760px) {
@@ -1400,6 +1454,18 @@ body:has(a:hover, button:hover) ::selection { background: white; }
   .workflow-feature-heading { display: block; }
   .workflow-feature-heading > p { margin-top: 28px; font-size: 15px; }
   .workflow-feature-grid > article { padding: 12px; }
+  .headphones-workflow-layout .workflow-board img { aspect-ratio: 1.35 / 1; }
+  .headphones-workflow-meta { grid-template-columns: 1fr 1fr; }
+  .headphones-act-list { grid-template-columns: 1fr; }
+  .prompt-anatomy { grid-template-columns: 1fr; }
+  .prompt-anatomy article { min-height: 0; border-right: 0; border-bottom: 1px solid rgba(101, 223, 255, .2); }
+  .prompt-anatomy article:last-child { border-bottom: 0; }
+  .image2-workflow { padding: 16px; }
+  .image2-node > img, .image2-prompt-core { aspect-ratio: 4 / 3; }
+  .image2-output-group > div { grid-template-columns: 1fr 1fr; }
+  .image2-method { grid-template-columns: 1fr; }
+  .image2-method > div { min-height: 0; border-right: 0; border-bottom: 1px solid rgba(101,223,255,.2); }
+  .image2-method > div:last-child { border-bottom: 0; }
   .workflow-board img { aspect-ratio: 1.35 / 1; }
   .workflow-board > span { align-items: flex-start; flex-direction: column; }
   .workflow-section-heading { display: block; margin-bottom: 36px; }

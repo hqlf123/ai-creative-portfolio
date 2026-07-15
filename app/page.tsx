@@ -519,6 +519,7 @@ const workflows: Workflow[] = [
       { number: "06", phase: "FINAL CUT", title: "剪辑、声音与成片", detail: "完成节奏剪辑、音效配乐、字幕、调色与审片，并输出适配不同平台的最终版本。", outputs: ["母版成片", "横竖版", "审片记录"] },
     ],
     caseIds: ["mecha", "shishanju-film", "headphones"],
+    featuredCaseId: "headphones",
   },
   {
     id: "commercial",
@@ -537,6 +538,7 @@ const workflows: Workflow[] = [
       { number: "06", phase: "REVIEW", title: "商业表达审校", detail: "复核信息准确性、阅读节奏、产品可辨识度和行动引导，完成可直接使用的交付包。", outputs: ["内容审校", "终稿", "交付清单"] },
     ],
     caseIds: ["phone-detail", "dumpling-ip", "shishanju-visual"],
+    featuredCaseId: "phone-detail",
   },
   {
     id: "production",
@@ -909,6 +911,67 @@ function WorkflowScene({ workflow }: { workflow: Workflow }) {
         </div>
         <div className="workflow-hero-count"><strong>{String(workflow.steps.length).padStart(2, "0")}</strong><span>PRODUCTION<br />STAGES</span></div>
       </section>
+
+      {workflow.featuredCaseId === "headphones" && (
+        <section className="workflow-feature workflow-headphones-feature shell" aria-labelledby="headphones-workflow-title">
+          <div className="workflow-feature-heading">
+            <div><span>FEATURED WORKFLOW / PROMPT TO FILM</span><h2 id="headphones-workflow-title">HIGH-X 耳机</h2></div>
+            <p>以产品结构、材质触感和沉浸听感为核心，把完整提示词拆成角色场景、七个镜头、声音拟音与英文字幕，形成 30 秒黑金台闭环广告。</p>
+          </div>
+          <div className="headphones-workflow-layout">
+            <a className="workflow-board" href="#case/headphones" aria-label="查看 HIGH-X 耳机完整广告">
+              <img src={asset("workflows/headphones-workflow.png")} alt="HIGH-X 耳机真实制作工作流，包含脚本、产品镜头、声音节点与成片结构" />
+              <span><b>PROMPT / SHOTS / AUDIO / FINAL FILM</b><strong>查看完整成片 <Arrow /></strong></span>
+            </a>
+            <div className="headphones-workflow-meta">
+              <div><strong>30s</strong><span>DURATION</span></div><div><strong>07</strong><span>SHOTS</span></div><div><strong>16:9</strong><span>FORMAT</span></div><div><strong>EN</strong><span>LANGUAGE</span></div>
+            </div>
+          </div>
+          <ol className="headphones-act-list">
+            <li><span>00:00—00:15</span><strong>黑金开场 · 零压呈现</strong><p>金色轮廓光、精密转轴、环形指示灯、羽毛拂过记忆海绵与头梁阻尼。</p></li>
+            <li><span>00:15—00:25</span><strong>振膜颤动 · 穿梭雪峰</strong><p>金色声波从发声单元荡开，镜头穿透振膜，无缝跃迁到北欧雪山森林。</p></li>
+            <li><span>00:25—00:30</span><strong>闭环回归 · 黑金定格</strong><p>从自然音场丝滑回到展示台，以 HIGH-X 与 Pure Sound. Absolute Quiet. 收束。</p></li>
+          </ol>
+          <div className="prompt-anatomy">
+            <article><span>01 / PRODUCT</span><h3>产品约束</h3><p>拉丝金属机身、太空记忆海绵、自适应头梁、可折叠结构。</p></article>
+            <article><span>02 / SCENE</span><h3>场景锁定</h3><p>黑金微距展示台与北欧雪山森林，分别承担工艺与听感隐喻。</p></article>
+            <article><span>03 / CAMERA</span><h3>镜头语言</h3><p>微距、焦点转移、材质特写、穿透振膜与首尾闭环转场。</p></article>
+            <article><span>04 / SOUND</span><h3>声音设计</h3><p>机械微音、织物 ASMR、低频心跳、空间音浪与冰雪环境声。</p></article>
+          </div>
+        </section>
+      )}
+
+      {workflow.featuredCaseId === "phone-detail" && (
+        <section className="workflow-feature workflow-phone-feature shell" aria-labelledby="phone-workflow-title">
+          <div className="workflow-feature-heading">
+            <div><span>FEATURED WORKFLOW / IMAGE 2</span><h2 id="phone-workflow-title">手机详情页</h2></div>
+            <p>以 Image 2 作为核心视觉生产工具：先锁定产品外形和旗舰科技语气，再生成四组功能画面，最终组合成有信息层级的 VITARA X1 Pro 详情页。</p>
+          </div>
+          <div className="image2-workflow" aria-label="VITARA X1 Pro Image 2 详情页制作工作流">
+            <article className="image2-node image2-input">
+              <span>01 / PRODUCT INPUT</span><img src={asset("phone-v2-hero.png")} alt="VITARA X1 Pro 产品首屏视觉" /><h3>产品定义</h3><p>钛金属机身 · 环形镜组 · 旗舰定位</p>
+            </article>
+            <i className="image2-connector" aria-hidden="true">→</i>
+            <article className="image2-node image2-prompt">
+              <span>02 / IMAGE 2 PROMPT</span><div className="image2-prompt-core"><b>IMAGE 2</b><em>REFERENCE + PROMPT</em></div><h3>提示词蓝图</h3><div className="image2-chips"><small>PRODUCT LOCK</small><small>LIGHTING</small><small>MATERIAL</small><small>CAMERA</small></div>
+            </article>
+            <i className="image2-connector" aria-hidden="true">→</i>
+            <div className="image2-output-group">
+              <span>03 / VISUAL MODULES</span>
+              <div><figure><img src={asset("phone-v2-hero.png")} alt="手机旗舰首屏" /><figcaption>旗舰首屏</figcaption></figure><figure><img src={asset("phone-v2-camera.png")} alt="手机影像系统视觉" /><figcaption>影像系统</figcaption></figure><figure><img src={asset("phone-v2-performance.png")} alt="手机性能视觉" /><figcaption>性能释放</figcaption></figure><figure><img src={asset("phone-v2-durability.png")} alt="手机耐用性视觉" /><figcaption>可靠耐用</figcaption></figure></div>
+            </div>
+            <i className="image2-connector" aria-hidden="true">→</i>
+            <a className="image2-node image2-delivery" href="#case/phone-detail">
+              <span>04 / PAGE DELIVERY</span><strong>FULL<br />DETAIL<br />PAGE</strong><h3>详情页交付</h3><p>卖点排序 · 文案层级 · 视觉节奏</p><b>查看完整项目 <Arrow /></b>
+            </a>
+          </div>
+          <div className="image2-method">
+            <div><span>REFERENCE</span><strong>先锁外形</strong><p>使用产品参考图稳定机身比例、镜头结构和材质识别。</p></div>
+            <div><span>GENERATE</span><strong>再做场景</strong><p>按功能卖点分别生成光影、空间与抽象科技视觉。</p></div>
+            <div><span>COMPOSE</span><strong>最后编排</strong><p>将生成资产纳入清晰的信息结构，而不是简单堆叠画面。</p></div>
+          </div>
+        </section>
+      )}
 
       {workflow.featuredCaseId === "fantasy-arena" && (
         <section className="workflow-feature shell" aria-labelledby="featured-workflow-title">
