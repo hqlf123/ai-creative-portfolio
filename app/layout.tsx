@@ -6,11 +6,11 @@ const siteUrl = "https://ai-creative-portfolio-2026.huiyu1.chatgpt.site";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "罗天翔 — AIGC 视觉设计作品集",
-  description: "罗天翔个人作品集：AI 视觉设计、AIGC 影像创作、新媒体内容与商业视觉。",
-  keywords: ["罗天翔", "AI视觉设计", "AIGC影像", "AI编导", "新媒体", "作品集"],
+  description: "罗天翔 AIGC 设计师作品集：AI 视觉设计、生成式影像、商业视觉与新媒体内容。",
+  keywords: ["罗天翔", "AIGC设计师", "AI视觉设计", "生成式影像", "商业视觉", "作品集"],
   openGraph: {
     title: "罗天翔 — AIGC 视觉设计作品集",
-    description: "AI 视觉设计 · AIGC 影像创作 · 新媒体内容 · AI 编导创作",
+    description: "AIGC 设计师 · AI 视觉设计 · 生成式影像 · 商业视觉",
     url: siteUrl,
     siteName: "罗天翔作品集",
     locale: "zh_CN",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "罗天翔 — AIGC 视觉设计作品集",
-    description: "AI 视觉设计 · AIGC 影像创作 · 新媒体内容",
+    description: "AIGC 设计师 · AI 视觉设计 · 生成式影像 · 商业视觉",
     images: ["/og.png"],
   },
 };

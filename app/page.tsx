@@ -495,7 +495,7 @@ const projects: Project[] = [
 ];
 
 const strengths = [
-  { number: "01", title: "AI 编导全流程", english: "AI CREATIVE DIRECTION", copy: "从需求拆解、脚本与分镜，到角色、场景、镜头调度和节奏剪辑，让每一次生成都服从明确的导演意图。", tags: ["SCRIPT", "STORYBOARD", "VIDEO GEN", "EDIT"] },
+  { number: "01", title: "AIGC 视觉全流程", english: "AIGC VISUAL DESIGN", copy: "从需求拆解、视觉策略与分镜，到角色、场景、动态生成和后期交付，把创意转化为完整、统一、可落地的视觉作品。", tags: ["STRATEGY", "STORYBOARD", "VIDEO GEN", "EDIT"] },
   { number: "02", title: "商业视觉落地", english: "COMMERCIAL CRAFT", copy: "围绕卖点、信息层级与转化目标，完成电商详情、品牌 IP、主视觉与动态延展。", tags: ["E-COMMERCE", "CAMPAIGN", "KEY VISUAL"] },
   { number: "03", title: "AIGC 制作交付", english: "AIGC PRODUCTION", copy: "覆盖提示词、角色与场景一致性、生图与视频生成、声音、调色、审片及多平台版本交付。", tags: ["IMAGE GEN", "VIDEO GEN", "SOUND", "QC"] },
   { number: "04", title: "内容策划传播", english: "CONTENT & MEDIA", copy: "把媒体编辑、新闻写作与短视频运营经验转化为清晰、有叙事力、能被传播的视觉内容。", tags: ["EDITORIAL", "COPY", "SOCIAL", "OPERATION"] },
@@ -505,11 +505,11 @@ const workflows: Workflow[] = [
   {
     id: "direction",
     number: "01",
-    title: "AI 编导全流程",
-    english: "AI CREATIVE DIRECTION",
-    eyebrow: "FROM BRIEF TO FINAL CUT",
-    intro: "把模糊需求拆成一条可执行的导演路径：先确定受众、卖点与情绪，再用脚本、分镜和镜头节奏约束每一次生成，最终形成完整成片。",
-    result: "让生成不再是随机试图，而是围绕同一导演意图逐镜推进。",
+    title: "AIGC 视觉全流程",
+    english: "AIGC VISUAL DESIGN",
+    eyebrow: "FROM BRIEF TO VISUAL DELIVERY",
+    intro: "把模糊需求转化为一套可执行的视觉方案：先确定受众、卖点与风格，再用脚本、分镜、视觉基准和镜头节奏控制生成，最终形成完整作品。",
+    result: "让生成不再是随机试图，而是围绕清晰的设计目标稳定推进。",
     steps: [
       { number: "01", phase: "BRIEF", title: "需求与目标拆解", detail: "确认受众、传播场景、核心卖点、片长比例与最终行动，让创意从业务问题出发。", outputs: ["需求清单", "受众画像", "交付规格"] },
       { number: "02", phase: "SCRIPT", title: "概念与脚本结构", detail: "提炼一句话创意，设计开场钩子、情绪转折和结尾记忆点，形成可拍摄的节奏段落。", outputs: ["创意主张", "脚本", "节奏表"] },
@@ -622,7 +622,7 @@ function AvatarIdentity() {
       </span>
       <span className="avatar-copy">
         <b>LUO TIANXIANG</b>
-        <small>AIGC VISUAL</small>
+        <small>AIGC DESIGNER</small>
       </span>
     </span>
   );
@@ -1255,7 +1255,7 @@ function CaseScene({ project }: { project: Project }) {
           </dl>
         </div>
         <div className="case-method" aria-label="项目方法">
-          <div><span>01 / DIRECTION</span><strong>需求拆解与创意导演</strong></div>
+          <div><span>01 / DESIGN</span><strong>需求拆解与视觉策略</strong></div>
           <div><span>02 / PRODUCTION</span><strong>AIGC 视觉与动态制作</strong></div>
           <div><span>03 / DELIVERY</span><strong>审片、优化与成品交付</strong></div>
         </div>
@@ -1462,7 +1462,7 @@ function PortfolioHome() {
         <div className="hero-shade" /><div className="hero-grid" aria-hidden="true" />
         <div className="hero-content shell">
           <div className="hero-eyebrow"><span><i /> COMPLETE PORTFOLIO · 22 PROJECTS</span><span>PORTFOLIO / 2026</span></div>
-          <div className="hero-title-wrap"><p className="hero-role">罗天翔 · AI 视觉设计 / AIGC 影像 / 新媒体内容</p><h1 className="motion-title">把想象<br /><em>导演成</em><br />真实</h1></div>
+          <div className="hero-title-wrap"><p className="hero-role">罗天翔 · AIGC 设计师 / AI 视觉 / 商业影像</p><h1 className="motion-title">把想象<br /><em>设计成</em><br />真实</h1></div>
           <div className="hero-footer">
             <p>DESIGNING WHAT PEOPLE FEEL<br />BEFORE THEY READ.</p>
             <div className="hero-disciplines"><span>15 FULL FILMS</span><span>28 PDF PAGES</span><span>5 COMPLETE ARTWORKS</span></div>
@@ -1475,13 +1475,13 @@ function PortfolioHome() {
       <section className="profile shell section" id="profile">
         <div className="section-rail"><span>01</span><p>PROFILE<br />个人经历</p></div>
         <div className="profile-main">
-          <div className="profile-heading"><p className="overline">BETWEEN IMAGINATION AND EXECUTION</p><h2 className="motion-title">在编导思维与生成技术之间<br /><span>创造可落地的视觉叙事</span></h2></div>
+          <div className="profile-heading"><p className="overline">BETWEEN IMAGINATION AND EXECUTION</p><h2 className="motion-title">在视觉设计与生成技术之间<br /><span>创造可落地的商业表达</span></h2></div>
           <div className="profile-body">
-            <figure className="profile-portrait"><img src={asset("luo-tianxiang-art-avatar.png")} alt="罗天翔的 AIGC 艺术头像" /><figcaption><span>LUO TIANXIANG / 罗天翔</span><span>AIGC VISUAL</span></figcaption></figure>
+            <figure className="profile-portrait"><img src={asset("luo-tianxiang-art-avatar.png")} alt="罗天翔的 AIGC 艺术头像" /><figcaption><span>LUO TIANXIANG / 罗天翔</span><span>AIGC DESIGNER</span></figcaption></figure>
             <div className="profile-copy">
-              <p className="intro">我是罗天翔，一名拥有广播电视编导背景的 AIGC 视觉创作者。</p>
-              <p>我把导演式的叙事判断、商业视觉的信息组织与生成式 AI 的制作效率放进同一条工作流。从创意提案、脚本分镜、角色场景到剪辑调色，我关心的不只是画面是否惊艳，更在意它是否准确、完整并真正可交付。</p>
-              <div className="contact-list"><div><span>NAME</span><b>罗天翔 / LUO TIANXIANG</b></div><div><span>EDUCATION</span><b>西南石油大学 · 广播电视编导</b></div><div><span>EMAIL</span><a href="mailto:1158190818@qq.com">1158190818@QQ.COM <Arrow /></a></div><div><span>PHONE</span><a href="tel:+8618229693585">182 2969 3585 <Arrow /></a></div><div><span>WECHAT</span><button type="button" className="wechat-list-button" onClick={() => setWechatOpen(true)}>LTX · 点击打开二维码 <Arrow /></button></div></div>
+              <p className="intro">我是罗天翔，一名专注商业视觉与生成式影像的 AIGC 设计师。</p>
+              <p>我把视觉设计判断、商业信息组织与生成式 AI 的制作效率放进同一条工作流。从创意提案、视觉设定、角色场景到动态剪辑，我关心的不只是画面是否吸引人，更在意品牌表达是否准确、视觉是否统一、成果是否真正可交付。</p>
+              <div className="contact-list"><div><span>NAME</span><b>罗天翔 / LUO TIANXIANG</b></div><div><span>POSITION</span><b>AIGC 设计师 / AIGC DESIGNER</b></div><div><span>EDUCATION</span><b>西南石油大学 · 广播电视编导</b></div><div><span>EMAIL</span><a href="mailto:1158190818@qq.com">1158190818@QQ.COM <Arrow /></a></div><div><span>PHONE</span><a href="tel:+8618229693585">182 2969 3585 <Arrow /></a></div><div><span>WECHAT</span><button type="button" className="wechat-list-button" onClick={() => setWechatOpen(true)}>LTX · 点击打开二维码 <Arrow /></button></div></div>
               <a className="resume-link" href={`${import.meta.env.BASE_URL}luo-tianxiang-resume.pdf`} target="_blank" rel="noreferrer">查看完整简历 PDF <Arrow /></a>
             </div>
           </div>
