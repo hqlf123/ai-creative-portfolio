@@ -1482,7 +1482,7 @@ function PortfolioHome() {
               <p className="intro">我是罗天翔，一名专注商业视觉与生成式影像的 AIGC 设计师。</p>
               <p>我把视觉设计判断、商业信息组织与生成式 AI 的制作效率放进同一条工作流。从创意提案、视觉设定、角色场景到动态剪辑，我关心的不只是画面是否吸引人，更在意品牌表达是否准确、视觉是否统一、成果是否真正可交付。</p>
               <div className="contact-list"><div><span>NAME</span><b>罗天翔 / LUO TIANXIANG</b></div><div><span>POSITION</span><b>AIGC 设计师 / AIGC DESIGNER</b></div><div><span>EDUCATION</span><b>西南石油大学 · 广播电视编导</b></div><div><span>EMAIL</span><a href="mailto:1158190818@qq.com">1158190818@QQ.COM <Arrow /></a></div><div><span>PHONE</span><a href="tel:+8618229693585">182 2969 3585 <Arrow /></a></div><div><span>WECHAT</span><button type="button" className="wechat-list-button" onClick={() => setWechatOpen(true)}>LTX · 点击打开二维码 <Arrow /></button></div></div>
-              <a className="resume-link" href={`${import.meta.env.BASE_URL}luo-tianxiang-resume.pdf`} target="_blank" rel="noreferrer">查看完整简历 PDF <Arrow /></a>
+              <a className="resume-link" href={`${import.meta.env.BASE_URL}luo-tianxiang-resume.pdf?v=20260716`} target="_blank" rel="noreferrer">查看最新简历 PDF <Arrow /></a>
             </div>
           </div>
           <div className="profile-stats"><div><strong>22</strong><span>完整项目<br />COMPLETE PROJECTS</span></div><div><strong>15</strong><span>动态影像<br />FULL FILMS</span></div><div><strong>28</strong><span>全案页面<br />PDF PAGES</span></div><div><strong>05</strong><span>完整视觉长图<br />FULL ARTWORKS</span></div></div>
