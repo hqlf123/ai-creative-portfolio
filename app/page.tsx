@@ -474,10 +474,10 @@ const projects: Project[] = [
   {
     id: "fantasy-arena",
     index: "20",
-    title: "虚幻竞技场",
-    english: "FANTASY ARENA",
-    listingTitle: "虚幻竞技场游戏概念长片",
-    listingEnglish: "FANTASY ARENA CINEMATIC CONCEPT FILM",
+    title: "烬土回响",
+    english: "ECHOES OF THE ASHEN WORLD",
+    listingTitle: "烬土回响 · 废土科幻漫剧",
+    listingEnglish: "ECHOES OF THE ASHEN WORLD / SCI-FI SHORT",
     coverLabel: "CINEMATIC CONCEPT",
     category: "概念影像 / 游戏世界观",
     group: "漫剧作品",
@@ -1094,9 +1094,9 @@ function WorkflowScene({ workflow }: { workflow: Workflow }) {
           </div>
           <div className="workflow-feature-grid">
             <article>
-              <div><span>01 / SCI-FI MECHA</span><h3>虚幻竞技场</h3><p>机甲三视图、武器、废墟场景、战斗动作、特效节点与镜头汇流。</p></div>
-              <a className="workflow-board" href="#case/fantasy-arena" aria-label="查看虚幻竞技场完整成片">
-                <img src={asset("workflows/fantasy-arena-workflow.png")} alt="虚幻竞技场真实 AIGC 制作工作流画布，包含角色、场景、镜头与视频节点" />
+              <div><span>01 / SCI-FI MECHA</span><h3>烬土回响</h3><p>机甲三视图、武器、废墟场景、战斗动作、特效节点与镜头汇流。</p></div>
+              <a className="workflow-board" href="#case/fantasy-arena" aria-label="查看烬土回响完整成片">
+                <img src={asset("workflows/fantasy-arena-workflow.png")} alt="烬土回响真实 AIGC 制作工作流画布，包含角色、场景、镜头与视频节点" />
                 <span><b>10% ZOOM / COMPLETE NODE MAP</b><strong>查看完整成片 <Arrow /></strong></span>
               </a>
             </article>
