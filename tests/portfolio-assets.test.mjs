@@ -184,7 +184,8 @@ test("portfolio categories are complete and returning preserves context", () => 
     "TVC": 4,
     "商单作品": 3,
     "漫剧作品": 2,
-    "视觉与设计": 12,
+    "品牌与文旅": 3,
+    "视觉与设计": 9,
   };
 
   assert.ok(!source.includes('["全部",'), "The removed all-category filter must not return");

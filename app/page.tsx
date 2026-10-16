@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 
-type ProjectGroup = "铺量广告" | "TVC" | "商单作品" | "漫剧作品" | "视觉与设计";
+type ProjectGroup = "铺量广告" | "TVC" | "商单作品" | "漫剧作品" | "品牌与文旅" | "视觉与设计";
 type MediaType = "video" | "image" | "pages";
 type CoverFormat = "landscape" | "portrait" | "vertical";
 
@@ -156,7 +156,7 @@ const projects: Project[] = [
     listingEnglish: "SHISHANJU HOMESTAY BRAND FILM",
     coverLabel: "BRAND FILM",
     category: "空间叙事 / 民宿广告",
-    group: "视觉与设计",
+    group: "品牌与文旅",
     year: "2026",
     cover: asset("shishanju-poster.jpg"),
     coverFormat: "landscape",
@@ -434,7 +434,7 @@ const projects: Project[] = [
     listingEnglish: "WILDERNESS TRAVEL MOOD FILM",
     coverLabel: "TRAVEL MOOD FILM",
     category: "文旅影像 / 人群适配",
-    group: "视觉与设计",
+    group: "品牌与文旅",
     year: "2026",
     cover: asset("wilderness-journey-poster.jpg"),
     coverFormat: "landscape",
@@ -530,7 +530,7 @@ const projects: Project[] = [
     listingEnglish: "DUMPLING BRAND IP FILM",
     coverLabel: "BRAND IP FILM",
     category: "品牌 IP / 动态广告",
-    group: "视觉与设计",
+    group: "品牌与文旅",
     year: "2024",
     cover: asset("dumpling-brand-poster.jpg"),
     coverFormat: "landscape",
@@ -628,7 +628,7 @@ const workflows: Workflow[] = [
   },
 ];
 
-const filters: ProjectGroup[] = ["铺量广告", "TVC", "商单作品", "漫剧作品", "视觉与设计"];
+const filters: ProjectGroup[] = ["铺量广告", "TVC", "商单作品", "漫剧作品", "品牌与文旅", "视觉与设计"];
 
 const readSessionValue = (key: string) => {
   try {
