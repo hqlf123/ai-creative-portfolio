@@ -181,13 +181,10 @@ test("the portfolio has a dedicated social cover", () => {
 test("portfolio categories are complete and returning preserves context", () => {
   const source = fs.readFileSync(path.join(projectRoot, "app", "page.tsx"), "utf8");
   const expectedCounts = {
-    "海外电商广告": 1,
+    "铺量广告": 5,
+    "TVC": 4,
     "汽车创意广告": 3,
-    "数码潮玩广告": 4,
-    "食品饮料广告": 2,
-    "时尚生活广告": 1,
     "文旅空间影像": 2,
-    "游戏买量广告": 1,
     "品牌 IP 动态": 1,
     "情感叙事短片": 1,
     "自媒体资讯内容": 1,

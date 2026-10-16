@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 
-type ProjectGroup = "海外电商广告" | "汽车创意广告" | "数码潮玩广告" | "食品饮料广告" | "时尚生活广告" | "文旅空间影像" | "游戏买量广告" | "品牌 IP 动态" | "情感叙事短片" | "自媒体资讯内容" | "漫剧作品" | "商业详情" | "品牌全案" | "平面设计";
+type ProjectGroup = "铺量广告" | "TVC" | "汽车创意广告" | "文旅空间影像" | "品牌 IP 动态" | "情感叙事短片" | "自媒体资讯内容" | "漫剧作品" | "商业详情" | "品牌全案" | "平面设计";
 type MediaType = "video" | "image" | "pages";
 type CoverFormat = "landscape" | "portrait" | "vertical";
 
@@ -65,7 +65,7 @@ const projects: Project[] = [
     listingTitle: "亚马逊海外电商 · 洗鞋袋场景广告",
     listingEnglish: "SHOE WASH BAG / OVERSEAS SOCIAL AD",
     coverLabel: "OVERSEAS E-COMMERCE", category: "海外电商 / 家居清洁 / 场景演示",
-    group: "海外电商广告", year: "2026",
+    group: "铺量广告", year: "2026",
     cover: asset("amazon-shoe-wash-poster.jpg"), coverFormat: "vertical",
     media: "video", source: asset("amazon-shoe-wash.mp4"), portrait: true,
     summary: "从家庭洗鞋难题切入，通过洗鞋袋装袋、机洗与清洁效果展示，串联生活情境、产品演示与英文行动引导。",
@@ -116,7 +116,7 @@ const projects: Project[] = [
     listingEnglish: "PREMIUM HEADPHONE PRODUCT FILM",
     coverLabel: "PRODUCT FILM",
     category: "AI 动态影像 / 产品广告",
-    group: "数码潮玩广告",
+    group: "TVC",
     year: "2026",
     cover: asset("hero-headphones-poster.jpg"),
     coverFormat: "landscape",
@@ -136,7 +136,7 @@ const projects: Project[] = [
     listingEnglish: "ORIGINAL MECHA TOY CONCEPT FILM",
     coverLabel: "CONCEPT FILM",
     category: "概念设计 / AI 广告",
-    group: "数码潮玩广告",
+    group: "TVC",
     year: "2026",
     cover: asset("mecha-toy-poster.jpg"),
     coverFormat: "landscape",
@@ -316,7 +316,7 @@ const projects: Project[] = [
     listingEnglish: "PREMIUM LEGWEAR PRODUCT FILM",
     coverLabel: "FASHION FILM",
     category: "时尚产品 / 短视频广告",
-    group: "时尚生活广告",
+    group: "TVC",
     year: "2026",
     cover: asset("hosiery-poster.jpg"),
     coverFormat: "landscape",
@@ -335,7 +335,7 @@ const projects: Project[] = [
     listingEnglish: "GAME UA VERTICAL PERFORMANCE AD",
     coverLabel: "GAME UA CREATIVE",
     category: "游戏买量 / 效果广告",
-    group: "游戏买量广告",
+    group: "铺量广告",
     year: "2026",
     cover: asset("game-wholesale-poster.jpg"),
     coverFormat: "vertical",
@@ -355,7 +355,7 @@ const projects: Project[] = [
     listingEnglish: "POWER BANK VERTICAL SOCIAL AD",
     coverLabel: "SOCIAL PRODUCT FILM",
     category: "数码产品 / 社交广告",
-    group: "数码潮玩广告",
+    group: "铺量广告",
     year: "2026",
     cover: asset("power-bank-poster.jpg"),
     coverFormat: "vertical",
@@ -371,11 +371,11 @@ const projects: Project[] = [
     index: "14",
     title: "一口上头",
     english: "SNACK FOOD SHORT AD",
-    listingTitle: "零食产品竖屏效果广告",
-    listingEnglish: "SNACK FOOD VERTICAL PERFORMANCE AD",
+    listingTitle: "一口上头 · 抖音竖屏铺量广告",
+    listingEnglish: "DOUYIN VERTICAL PERFORMANCE AD",
     coverLabel: "FOOD PERFORMANCE AD",
-    category: "食品饮料 / 效果广告",
-    group: "食品饮料广告",
+    category: "抖音铺量 / 食品零食 / 效果广告",
+    group: "铺量广告",
     year: "2026",
     cover: asset("chicken-feet-poster.jpg"),
     coverFormat: "vertical",
@@ -414,7 +414,7 @@ const projects: Project[] = [
     listingEnglish: "RETRO HANDHELD VERTICAL PRODUCT AD",
     coverLabel: "SOCIAL PRODUCT FILM",
     category: "怀旧数码 / 产品广告",
-    group: "数码潮玩广告",
+    group: "铺量广告",
     year: "2026",
     cover: asset("pocket-fighter-poster.jpg"),
     coverFormat: "vertical",
@@ -511,7 +511,7 @@ const projects: Project[] = [
     listingEnglish: "GREEN GRAPE SODA PRODUCT FILM",
     coverLabel: "BEVERAGE PRODUCT FILM",
     category: "食品饮料 / 产品广告",
-    group: "食品饮料广告",
+    group: "TVC",
     year: "2026",
     cover: asset("green-soda-poster.jpg"),
     coverFormat: "landscape",
@@ -628,7 +628,7 @@ const workflows: Workflow[] = [
   },
 ];
 
-const filters: ProjectGroup[] = ["海外电商广告", "汽车创意广告", "数码潮玩广告", "食品饮料广告", "时尚生活广告", "文旅空间影像", "游戏买量广告", "品牌 IP 动态", "情感叙事短片", "自媒体资讯内容", "漫剧作品", "商业详情", "品牌全案", "平面设计"];
+const filters: ProjectGroup[] = ["铺量广告", "TVC", "汽车创意广告", "文旅空间影像", "品牌 IP 动态", "情感叙事短片", "自媒体资讯内容", "漫剧作品", "商业详情", "品牌全案", "平面设计"];
 
 const readSessionValue = (key: string) => {
   try {
