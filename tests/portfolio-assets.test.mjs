@@ -182,7 +182,7 @@ test("portfolio categories are complete and returning preserves context", () => 
   const expectedCounts = {
     "铺量广告": 5,
     "TVC": 4,
-    "汽车创意广告": 2,
+    "漫剧作品": 2,
     "影视与内容": 7,
     "品牌与商业设计": 7,
   };

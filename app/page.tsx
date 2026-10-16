@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 
-type ProjectGroup = "铺量广告" | "TVC" | "汽车创意广告" | "影视与内容" | "品牌与商业设计";
+type ProjectGroup = "铺量广告" | "TVC" | "漫剧作品" | "影视与内容" | "品牌与商业设计";
 type MediaType = "video" | "image" | "pages";
 type CoverFormat = "landscape" | "portrait" | "vertical";
 
@@ -77,7 +77,7 @@ const projects: Project[] = [
     listingTitle: "奥特曼 × 小米澎程汽车 AI 广告",
     listingEnglish: "TOKUSATSU CHARACTERS / AUTOMOTIVE AI AD",
     coverLabel: "TOKUSATSU AI FILM", category: "汽车创意 / 特摄角色 / AI 广告",
-    group: "汽车创意广告", year: "2026",
+    group: "影视与内容", year: "2026",
     cover: asset("ultraman-xiaomi-pengcheng-poster.jpg"), coverFormat: "landscape",
     media: "video", source: asset("ultraman-xiaomi-pengcheng.mp4"),
     summary: "以奥特曼角色与战斗场景切入，将车辆外观、座舱体验和角色互动融入特摄风格的 AI 汽车广告。",
@@ -89,7 +89,7 @@ const projects: Project[] = [
     listingTitle: "早春晴朗 × 小米澎程汽车 · 短剧＋AI 广告",
     listingEnglish: "NARRATIVE SHORT DRAMA / AUTOMOTIVE AI AD",
     coverLabel: "BRANDED SHORT DRAMA", category: "汽车创意 / 短剧植入 / AI 广告",
-    group: "汽车创意广告", year: "2026",
+    group: "影视与内容", year: "2026",
     cover: asset("early-spring-xiaomi-pengcheng-poster.jpg"), coverFormat: "landscape",
     media: "video", source: asset("early-spring-xiaomi-pengcheng.mp4"),
     summary: "以“早春晴朗”都市短剧展开人物关系，将车内办公、休憩与宠物陪伴等生活场景融入叙事，结合 AI 广告呈现小米澎程的座舱空间与使用体验。",
@@ -383,7 +383,7 @@ const projects: Project[] = [
     listingEnglish: "WUXIA CINEMATIC CONCEPT FILM",
     coverLabel: "WUXIA CONCEPT FILM",
     category: "叙事影像 / 武侠概念片",
-    group: "影视与内容",
+    group: "漫剧作品",
     year: "2026",
     cover: asset("hanging-sword-cover-selected.jpg"),
     coverFormat: "landscape",
@@ -480,7 +480,7 @@ const projects: Project[] = [
     listingEnglish: "FANTASY ARENA CINEMATIC CONCEPT FILM",
     coverLabel: "CINEMATIC CONCEPT",
     category: "概念影像 / 游戏世界观",
-    group: "影视与内容",
+    group: "漫剧作品",
     year: "2026",
     cover: asset("fantasy-arena-cover-selected.jpg"),
     coverFormat: "landscape",
@@ -616,7 +616,7 @@ const workflows: Workflow[] = [
   },
 ];
 
-const filters: ProjectGroup[] = ["铺量广告", "TVC", "汽车创意广告", "影视与内容", "品牌与商业设计"];
+const filters: ProjectGroup[] = ["铺量广告", "TVC", "漫剧作品", "影视与内容", "品牌与商业设计"];
 
 const readSessionValue = (key: string) => {
   try {
