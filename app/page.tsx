@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 
-type ProjectGroup = "铺量广告" | "TVC" | "汽车创意广告" | "文旅空间影像" | "品牌 IP 动态" | "情感叙事短片" | "自媒体资讯内容" | "漫剧作品" | "商业详情" | "品牌全案" | "平面设计";
+type ProjectGroup = "铺量广告" | "TVC" | "汽车创意广告" | "影视与内容" | "品牌与商业设计";
 type MediaType = "video" | "image" | "pages";
 type CoverFormat = "landscape" | "portrait" | "vertical";
 
@@ -144,7 +144,7 @@ const projects: Project[] = [
     listingEnglish: "SHISHANJU HOMESTAY BRAND FILM",
     coverLabel: "BRAND FILM",
     category: "空间叙事 / 民宿广告",
-    group: "文旅空间影像",
+    group: "影视与内容",
     year: "2026",
     cover: asset("shishanju-poster.jpg"),
     coverFormat: "landscape",
@@ -164,7 +164,7 @@ const projects: Project[] = [
     listingEnglish: "FLAGSHIP SMARTPHONE PRODUCT DETAIL",
     coverLabel: "E-COMMERCE DETAIL",
     category: "电商视觉 / 手机详情页",
-    group: "商业详情",
+    group: "品牌与商业设计",
     year: "2026",
     cover: asset("phone-v2-hero.png"),
     coverFormat: "landscape",
@@ -184,7 +184,7 @@ const projects: Project[] = [
     listingEnglish: "DUMPLING BRAND IP SYSTEM",
     coverLabel: "BRAND IP SYSTEM",
     category: "品牌设计 / IP 全案",
-    group: "品牌全案",
+    group: "品牌与商业设计",
     year: "2024",
     cover: asset("dumpling-ip-cover.webp"),
     coverFormat: "landscape",
@@ -205,7 +205,7 @@ const projects: Project[] = [
     listingEnglish: "ORIENTAL EDITORIAL COVER DESIGN",
     coverLabel: "EDITORIAL DESIGN",
     category: "平面设计 / 杂志封面",
-    group: "平面设计",
+    group: "品牌与商业设计",
     year: "2026",
     cover: asset("magazine-cover.webp"),
     coverFormat: "portrait",
@@ -226,7 +226,7 @@ const projects: Project[] = [
     listingEnglish: "COLD BREW COFFEE MAKER PRODUCT DETAIL",
     coverLabel: "E-COMMERCE DETAIL",
     category: "电商视觉 / 产品详情页",
-    group: "商业详情",
+    group: "品牌与商业设计",
     year: "2026",
     cover: asset("coldx-cover.webp"),
     coverFormat: "portrait",
@@ -246,7 +246,7 @@ const projects: Project[] = [
     listingEnglish: "WIRELESS MOUSE PRODUCT DETAIL",
     coverLabel: "E-COMMERCE DETAIL",
     category: "电商视觉 / 鼠标详情页",
-    group: "商业详情",
+    group: "品牌与商业设计",
     year: "2026",
     cover: asset("mouse-detail.webp"),
     coverFormat: "portrait",
@@ -266,7 +266,7 @@ const projects: Project[] = [
     listingEnglish: "SHISHANJU HOMESTAY VISUAL PROPOSAL",
     coverLabel: "VISUAL PROPOSAL",
     category: "品牌视觉 / 空间提案",
-    group: "商业详情",
+    group: "品牌与商业设计",
     year: "2026",
     cover: asset("homestay-visual.webp"),
     coverFormat: "portrait",
@@ -286,7 +286,7 @@ const projects: Project[] = [
     listingEnglish: "ORIENTAL BOOK COVER DESIGN",
     coverLabel: "BOOK DESIGN",
     category: "平面设计 / 书籍封面",
-    group: "平面设计",
+    group: "品牌与商业设计",
     year: "2026",
     cover: asset("book-cover.webp"),
     coverFormat: "landscape",
@@ -383,7 +383,7 @@ const projects: Project[] = [
     listingEnglish: "WUXIA CINEMATIC CONCEPT FILM",
     coverLabel: "WUXIA CONCEPT FILM",
     category: "叙事影像 / 武侠概念片",
-    group: "漫剧作品",
+    group: "影视与内容",
     year: "2026",
     cover: asset("hanging-sword-cover-selected.jpg"),
     coverFormat: "landscape",
@@ -422,7 +422,7 @@ const projects: Project[] = [
     listingEnglish: "WILDERNESS TRAVEL MOOD FILM",
     coverLabel: "TRAVEL MOOD FILM",
     category: "文旅影像 / 人群适配",
-    group: "文旅空间影像",
+    group: "影视与内容",
     year: "2026",
     cover: asset("wilderness-journey-poster.jpg"),
     coverFormat: "landscape",
@@ -441,7 +441,7 @@ const projects: Project[] = [
     listingEnglish: "WARM FAMILY VERTICAL STORY FILM",
     coverLabel: "VERTICAL STORY FILM",
     category: "情感叙事 / 抖音短片",
-    group: "情感叙事短片",
+    group: "影视与内容",
     year: "2026",
     cover: asset("warm-grandma-poster.jpg"),
     coverFormat: "vertical",
@@ -461,7 +461,7 @@ const projects: Project[] = [
     listingEnglish: "AI NEWS SELF-MEDIA EDITORIAL",
     coverLabel: "EDITORIAL CONTENT",
     category: "资讯内容 / 自媒体视频",
-    group: "自媒体资讯内容",
+    group: "影视与内容",
     year: "2026",
     cover: asset("ai-news-poster.jpg"),
     coverFormat: "landscape",
@@ -480,7 +480,7 @@ const projects: Project[] = [
     listingEnglish: "FANTASY ARENA CINEMATIC CONCEPT FILM",
     coverLabel: "CINEMATIC CONCEPT",
     category: "概念影像 / 游戏世界观",
-    group: "漫剧作品",
+    group: "影视与内容",
     year: "2026",
     cover: asset("fantasy-arena-cover-selected.jpg"),
     coverFormat: "landscape",
@@ -518,7 +518,7 @@ const projects: Project[] = [
     listingEnglish: "DUMPLING BRAND IP FILM",
     coverLabel: "BRAND IP FILM",
     category: "品牌 IP / 动态广告",
-    group: "品牌 IP 动态",
+    group: "影视与内容",
     year: "2024",
     cover: asset("dumpling-brand-poster.jpg"),
     coverFormat: "landscape",
@@ -616,7 +616,7 @@ const workflows: Workflow[] = [
   },
 ];
 
-const filters: ProjectGroup[] = ["铺量广告", "TVC", "汽车创意广告", "文旅空间影像", "品牌 IP 动态", "情感叙事短片", "自媒体资讯内容", "漫剧作品", "商业详情", "品牌全案", "平面设计"];
+const filters: ProjectGroup[] = ["铺量广告", "TVC", "汽车创意广告", "影视与内容", "品牌与商业设计"];
 
 const readSessionValue = (key: string) => {
   try {
@@ -1340,8 +1340,6 @@ function CaseScene({ project }: { project: Project }) {
   );
 }
 
-const projectFormat = (project: Project) => project.media !== "video" ? "静态设计" : project.portrait ? "竖屏视频" : "横屏视频";
-
 function PortfolioHome() {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -1353,24 +1351,16 @@ function PortfolioHome() {
     const saved = readSessionValue("portfolio:filter") as ProjectGroup | null;
     return saved && filters.includes(saved) ? saved : filters[0];
   });
-  const [format, setFormat] = useState(() => {
-    if (typeof window === "undefined") return "全部形式";
-    const saved = readSessionValue("portfolio:format");
-    return saved && ["全部形式", "横屏视频", "竖屏视频", "静态设计"].includes(saved) ? saved : "全部形式";
-  });
-  const categoryProjects = projects.filter((project) => project.group === filter);
-  const availableFormats = ["全部形式", ...new Set(categoryProjects.map(projectFormat))];
-  const activeFormat = availableFormats.includes(format) ? format : "全部形式";
   const featuredProjects = projects.filter((project) => project.featured);
   const archiveProjects = useMemo(() => {
-    const filteredProjects = projects.filter((project) => project.group === filter && (activeFormat === "全部形式" || projectFormat(project) === activeFormat));
-    if (filter !== "商业详情") return filteredProjects;
+    const filteredProjects = projects.filter((project) => project.group === filter);
+    if (filter !== "品牌与商业设计") return filteredProjects;
 
-    const detailOrder = ["shishanju-visual", "coldx-detail", "mouse-detail", "phone-detail"];
+    const detailOrder = ["shishanju-visual", "coldx-detail", "mouse-detail", "phone-detail", "dumpling-ip", "magazine-cover", "book-cover"];
     return [...filteredProjects].sort(
       (first, second) => detailOrder.indexOf(first.id) - detailOrder.indexOf(second.id),
     );
-  }, [filter, activeFormat]);
+  }, [filter]);
 
   useEffect(() => {
     document.title = "罗天翔 — AIGC 视觉设计作品集";
@@ -1386,8 +1376,7 @@ function PortfolioHome() {
 
   useEffect(() => {
     writeSessionValue("portfolio:filter", filter);
-    writeSessionValue("portfolio:format", format);
-  }, [filter, format]);
+  }, [filter]);
 
   useEffect(() => {
     const sectionIds = ["profile", "work", "archive", "strengths", "contact"];
@@ -1550,16 +1539,12 @@ function PortfolioHome() {
               </div>
               <div className="archive-filters" role="group" aria-label="按类别筛选作品">
                 {filters.map((item) => (
-                  <button key={item} className={filter === item ? "active" : ""} aria-pressed={filter === item} onClick={() => { setFilter(item); setFormat("全部形式"); }}>
+                  <button key={item} className={filter === item ? "active" : ""} aria-pressed={filter === item} onClick={() => setFilter(item)}>
                     {item}<sup>{projects.filter((project) => project.group === item).length}</sup>
                   </button>
                 ))}
               </div>
-              <div className="archive-formats" role="group" aria-label="按作品形式筛选">
-                <span>作品形式</span>
-                {availableFormats.map((item) => <button type="button" key={item} className={activeFormat === item ? "active" : ""} aria-pressed={activeFormat === item} onClick={() => setFormat(item)}>{item}</button>)}
-              </div>
-              <p className="archive-result" aria-live="polite">{filter} · {activeFormat} · {archiveProjects.length} 个项目</p>
+              <p className="archive-result" aria-live="polite">{filter} · {archiveProjects.length} 个项目</p>
               <div className="archive-grid">{archiveProjects.map((project) => <ArchiveCard key={project.id} project={project} />)}</div>
             </section>
           </div>
