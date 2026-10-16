@@ -1557,7 +1557,7 @@ function PortfolioHome() {
                 ))}
               </div>
               <p className="archive-result" aria-live="polite">{filter} · {archiveProjects.length} 个项目</p>
-              <div className="archive-grid">{archiveProjects.map((project) => <ArchiveCard key={project.id} project={project} />)}</div>
+              <div className={`archive-grid${filter === "视觉与设计" ? " archive-grid--masonry" : ""}`}>{archiveProjects.map((project) => <ArchiveCard key={project.id} project={project} />)}</div>
             </section>
           </div>
         </div>

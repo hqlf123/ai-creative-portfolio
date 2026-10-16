@@ -1709,3 +1709,13 @@ h1, h2, h3 { text-wrap: balance; }
 }
 
 .archive-result { margin: 0 0 30px; color: #164f8e; font-size: 13px; }
+
+/* Mixed-format design works flow continuously without shared row heights. */
+.archive-grid--masonry { display: block; columns: 3; column-gap: 22px; }
+.archive-grid--masonry > .archive-card { display: inline-block; width: 100%; margin: 0 0 34px; break-inside: avoid; vertical-align: top; }
+.archive-grid--masonry .archive-meta { display: block; margin-top: 12px; padding: 14px 2px 0; }
+.archive-grid--masonry .archive-meta h3 { font-size: clamp(20px, 1.8vw, 25px); line-height: 1.35; transform: none; overflow-wrap: anywhere; }
+.archive-grid--masonry .archive-meta p { margin-top: 8px; font-size: 10px; line-height: 1.55; letter-spacing: .08em; }
+.archive-grid--masonry .archive-meta > span { display: none; }
+@media (max-width: 1100px) { .archive-grid--masonry { column-count: 2; } }
+@media (max-width: 700px) { .archive-grid--masonry { column-count: 1; } .archive-grid--masonry > .archive-card { margin-bottom: 28px; } }
