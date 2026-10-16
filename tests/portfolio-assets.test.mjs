@@ -11,6 +11,8 @@ const docsAssets = path.join(projectRoot, "docs", "assets");
 const videoSlugs = [
   "amazon-shoe-wash",
   "lol-xiaomi-pengcheng",
+  "ultraman-xiaomi-pengcheng",
+  "early-spring-xiaomi-pengcheng",
   "hero-headphones",
   "mecha-toy",
   "shishanju",
@@ -45,6 +47,7 @@ const phoneDetailAssets = [
 
 const projectIds = [
   "amazon-shoe-wash", "lol-xiaomi-pengcheng",
+  "ultraman-xiaomi-pengcheng", "early-spring-xiaomi-pengcheng",
   "headphones", "mecha", "shishanju-film", "phone-detail", "dumpling-ip", "magazine-cover",
   "coldx-detail", "mouse-detail", "shishanju-visual", "book-cover", "hosiery-film", "game-wholesale",
   "power-bank", "chicken-feet", "hanging-sword", "pocket-fighter", "wilderness-journey", "warm-grandma",
@@ -56,8 +59,8 @@ function assertFile(file) {
   assert.ok(fs.statSync(file).size > 0, `Empty file: ${file}`);
 }
 
-test("all 17 complete videos and posters are present in source and GitHub build", () => {
-  assert.equal(videoSlugs.length, 17);
+test("all 19 complete videos and posters are present in source and GitHub build", () => {
+  assert.equal(videoSlugs.length, 19);
   for (const slug of videoSlugs) {
     for (const suffix of [".mp4", "-poster.jpg"]) {
       assertFile(path.join(publicAssets, `${slug}${suffix}`));
@@ -101,9 +104,9 @@ test("PDF proposals contain every sequential page", () => {
   }
 });
 
-test("all 24 projects are registered in the portfolio", () => {
+test("all 26 projects are registered in the portfolio", () => {
   const source = fs.readFileSync(path.join(projectRoot, "app", "page.tsx"), "utf8");
-  assert.equal(projectIds.length, 24);
+  assert.equal(projectIds.length, 26);
   for (const id of projectIds) {
     assert.ok(source.includes(`id: "${id}"`), `Missing project registration: ${id}`);
   }
@@ -118,7 +121,7 @@ test("full case artwork is always rendered without cropping", () => {
   assert.match(styles, /\.case-pages img\s*\{[^}]*object-fit:\s*contain/s);
 });
 
-test("all 24 projects have an intentional cover orientation", () => {
+test("all 26 projects have an intentional cover orientation", () => {
   const source = fs.readFileSync(path.join(projectRoot, "app", "page.tsx"), "utf8");
   const styles = fs.readFileSync(path.join(projectRoot, "app", "globals.css"), "utf8");
   const wilderness = source.match(/id: "wilderness-journey"[\s\S]*?deliverable:/)?.[0] ?? "";
@@ -126,8 +129,8 @@ test("all 24 projects have an intentional cover orientation", () => {
 
   assert.ok(!wilderness.includes("portrait: true"), "Wilderness Journey must open and display as landscape");
   assert.ok(wilderness.includes('coverFormat: "landscape"'), "Wilderness Journey needs a landscape cover");
-  assert.equal(formats.length, 24, "Every project needs a cover format");
-  assert.equal(formats.filter((format) => format === "landscape").length, 14);
+  assert.equal(formats.length, 26, "Every project needs a cover format");
+  assert.equal(formats.filter((format) => format === "landscape").length, 16);
   assert.equal(formats.filter((format) => format === "portrait").length, 4);
   assert.equal(formats.filter((format) => format === "vertical").length, 6);
   assert.ok(source.includes("project-${project.id}"), "Featured cards need stable project-specific classes");
@@ -179,7 +182,7 @@ test("portfolio categories are complete and returning preserves context", () => 
   const source = fs.readFileSync(path.join(projectRoot, "app", "page.tsx"), "utf8");
   const expectedCounts = {
     "海外电商广告": 1,
-    "汽车创意广告": 1,
+    "汽车创意广告": 3,
     "数码潮玩广告": 4,
     "食品饮料广告": 2,
     "时尚生活广告": 1,
