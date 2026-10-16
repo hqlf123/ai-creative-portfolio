@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 
-type ProjectGroup = "铺量广告" | "TVC" | "漫剧作品" | "影视与内容" | "品牌与商业设计";
+type ProjectGroup = "铺量广告" | "TVC" | "商单作品" | "漫剧作品" | "视觉与设计";
 type MediaType = "video" | "image" | "pages";
 type CoverFormat = "landscape" | "portrait" | "vertical";
 
@@ -72,12 +72,24 @@ const projects: Project[] = [
     role: "海外电商广告创作", deliverable: "28 秒竖屏海外电商广告",
   },
   {
+    id: "lol-xiaomi-pengcheng", index: "26",
+    title: "英雄集结，一车全装", english: "LOL × XIAOMI PENGCHENG AI AD",
+    listingTitle: "LOL × 小米澎程汽车 AI 广告",
+    listingEnglish: "GAMING CHARACTERS / AUTOMOTIVE AI AD",
+    coverLabel: "AUTOMOTIVE AI FILM", category: "汽车创意 / 游戏角色 / AI 广告",
+    group: "商单作品", year: "2026",
+    cover: asset("lol-xiaomi-pengcheng-poster.jpg"), coverFormat: "landscape",
+    media: "video", source: asset("lol-xiaomi-pengcheng.mp4"),
+    summary: "将 LOL 角色置入汽车体验场景，以角色互动、多人乘坐与后备厢装载演绎空间卖点，落到“7 人 7 箱，一车全装”的创意表达。",
+    role: "AI 广告创作", deliverable: "44 秒横屏汽车 AI 广告",
+  },
+  {
     id: "ultraman-xiaomi-pengcheng", index: "24",
     title: "光之英雄的座驾", english: "ULTRAMAN × XIAOMI PENGCHENG AI AD",
     listingTitle: "奥特曼 × 小米澎程汽车 AI 广告",
     listingEnglish: "TOKUSATSU CHARACTERS / AUTOMOTIVE AI AD",
     coverLabel: "TOKUSATSU AI FILM", category: "汽车创意 / 特摄角色 / AI 广告",
-    group: "影视与内容", year: "2026",
+    group: "商单作品", year: "2026",
     cover: asset("ultraman-xiaomi-pengcheng-poster.jpg"), coverFormat: "landscape",
     media: "video", source: asset("ultraman-xiaomi-pengcheng.mp4"),
     summary: "以奥特曼角色与战斗场景切入，将车辆外观、座舱体验和角色互动融入特摄风格的 AI 汽车广告。",
@@ -89,7 +101,7 @@ const projects: Project[] = [
     listingTitle: "早春晴朗 × 小米澎程汽车 · 短剧＋AI 广告",
     listingEnglish: "NARRATIVE SHORT DRAMA / AUTOMOTIVE AI AD",
     coverLabel: "BRANDED SHORT DRAMA", category: "汽车创意 / 短剧植入 / AI 广告",
-    group: "影视与内容", year: "2026",
+    group: "商单作品", year: "2026",
     cover: asset("early-spring-xiaomi-pengcheng-poster.jpg"), coverFormat: "landscape",
     media: "video", source: asset("early-spring-xiaomi-pengcheng.mp4"),
     summary: "以“早春晴朗”都市短剧展开人物关系，将车内办公、休憩与宠物陪伴等生活场景融入叙事，结合 AI 广告呈现小米澎程的座舱空间与使用体验。",
@@ -144,7 +156,7 @@ const projects: Project[] = [
     listingEnglish: "SHISHANJU HOMESTAY BRAND FILM",
     coverLabel: "BRAND FILM",
     category: "空间叙事 / 民宿广告",
-    group: "影视与内容",
+    group: "视觉与设计",
     year: "2026",
     cover: asset("shishanju-poster.jpg"),
     coverFormat: "landscape",
@@ -164,7 +176,7 @@ const projects: Project[] = [
     listingEnglish: "FLAGSHIP SMARTPHONE PRODUCT DETAIL",
     coverLabel: "E-COMMERCE DETAIL",
     category: "电商视觉 / 手机详情页",
-    group: "品牌与商业设计",
+    group: "视觉与设计",
     year: "2026",
     cover: asset("phone-v2-hero.png"),
     coverFormat: "landscape",
@@ -184,7 +196,7 @@ const projects: Project[] = [
     listingEnglish: "DUMPLING BRAND IP SYSTEM",
     coverLabel: "BRAND IP SYSTEM",
     category: "品牌设计 / IP 全案",
-    group: "品牌与商业设计",
+    group: "视觉与设计",
     year: "2024",
     cover: asset("dumpling-ip-cover.webp"),
     coverFormat: "landscape",
@@ -205,7 +217,7 @@ const projects: Project[] = [
     listingEnglish: "ORIENTAL EDITORIAL COVER DESIGN",
     coverLabel: "EDITORIAL DESIGN",
     category: "平面设计 / 杂志封面",
-    group: "品牌与商业设计",
+    group: "视觉与设计",
     year: "2026",
     cover: asset("magazine-cover.webp"),
     coverFormat: "portrait",
@@ -226,7 +238,7 @@ const projects: Project[] = [
     listingEnglish: "COLD BREW COFFEE MAKER PRODUCT DETAIL",
     coverLabel: "E-COMMERCE DETAIL",
     category: "电商视觉 / 产品详情页",
-    group: "品牌与商业设计",
+    group: "视觉与设计",
     year: "2026",
     cover: asset("coldx-cover.webp"),
     coverFormat: "portrait",
@@ -246,7 +258,7 @@ const projects: Project[] = [
     listingEnglish: "WIRELESS MOUSE PRODUCT DETAIL",
     coverLabel: "E-COMMERCE DETAIL",
     category: "电商视觉 / 鼠标详情页",
-    group: "品牌与商业设计",
+    group: "视觉与设计",
     year: "2026",
     cover: asset("mouse-detail.webp"),
     coverFormat: "portrait",
@@ -266,7 +278,7 @@ const projects: Project[] = [
     listingEnglish: "SHISHANJU HOMESTAY VISUAL PROPOSAL",
     coverLabel: "VISUAL PROPOSAL",
     category: "品牌视觉 / 空间提案",
-    group: "品牌与商业设计",
+    group: "视觉与设计",
     year: "2026",
     cover: asset("homestay-visual.webp"),
     coverFormat: "portrait",
@@ -286,7 +298,7 @@ const projects: Project[] = [
     listingEnglish: "ORIENTAL BOOK COVER DESIGN",
     coverLabel: "BOOK DESIGN",
     category: "平面设计 / 书籍封面",
-    group: "品牌与商业设计",
+    group: "视觉与设计",
     year: "2026",
     cover: asset("book-cover.webp"),
     coverFormat: "landscape",
@@ -422,7 +434,7 @@ const projects: Project[] = [
     listingEnglish: "WILDERNESS TRAVEL MOOD FILM",
     coverLabel: "TRAVEL MOOD FILM",
     category: "文旅影像 / 人群适配",
-    group: "影视与内容",
+    group: "视觉与设计",
     year: "2026",
     cover: asset("wilderness-journey-poster.jpg"),
     coverFormat: "landscape",
@@ -441,7 +453,7 @@ const projects: Project[] = [
     listingEnglish: "WARM FAMILY VERTICAL STORY FILM",
     coverLabel: "VERTICAL STORY FILM",
     category: "情感叙事 / 抖音短片",
-    group: "影视与内容",
+    group: "视觉与设计",
     year: "2026",
     cover: asset("warm-grandma-poster.jpg"),
     coverFormat: "vertical",
@@ -461,7 +473,7 @@ const projects: Project[] = [
     listingEnglish: "AI NEWS SELF-MEDIA EDITORIAL",
     coverLabel: "EDITORIAL CONTENT",
     category: "资讯内容 / 自媒体视频",
-    group: "影视与内容",
+    group: "视觉与设计",
     year: "2026",
     cover: asset("ai-news-poster.jpg"),
     coverFormat: "landscape",
@@ -518,7 +530,7 @@ const projects: Project[] = [
     listingEnglish: "DUMPLING BRAND IP FILM",
     coverLabel: "BRAND IP FILM",
     category: "品牌 IP / 动态广告",
-    group: "影视与内容",
+    group: "视觉与设计",
     year: "2024",
     cover: asset("dumpling-brand-poster.jpg"),
     coverFormat: "landscape",
@@ -616,7 +628,7 @@ const workflows: Workflow[] = [
   },
 ];
 
-const filters: ProjectGroup[] = ["铺量广告", "TVC", "漫剧作品", "影视与内容", "品牌与商业设计"];
+const filters: ProjectGroup[] = ["铺量广告", "TVC", "商单作品", "漫剧作品", "视觉与设计"];
 
 const readSessionValue = (key: string) => {
   try {
@@ -1354,7 +1366,7 @@ function PortfolioHome() {
   const featuredProjects = projects.filter((project) => project.featured);
   const archiveProjects = useMemo(() => {
     const filteredProjects = projects.filter((project) => project.group === filter);
-    if (filter !== "品牌与商业设计") return filteredProjects;
+    if (filter !== "视觉与设计") return filteredProjects;
 
     const detailOrder = ["shishanju-visual", "coldx-detail", "mouse-detail", "phone-detail", "dumpling-ip", "magazine-cover", "book-cover"];
     return [...filteredProjects].sort(
