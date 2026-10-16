@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 
-type ProjectGroup = "横屏商业广告" | "竖屏抖音爆款" | "自媒体资讯内容" | "漫剧作品" | "商业详情" | "品牌全案" | "平面设计";
+type ProjectGroup = "海外电商广告" | "汽车创意广告" | "数码潮玩广告" | "食品饮料广告" | "时尚生活广告" | "文旅空间影像" | "游戏买量广告" | "品牌 IP 动态" | "情感叙事短片" | "自媒体资讯内容" | "漫剧作品" | "商业详情" | "品牌全案" | "平面设计";
 type MediaType = "video" | "image" | "pages";
 type CoverFormat = "landscape" | "portrait" | "vertical";
 
@@ -60,6 +60,30 @@ const asset = (filename: string) => filename.endsWith(".mp4")
 
 const projects: Project[] = [
   {
+    id: "amazon-shoe-wash", index: "23",
+    title: "轻松洗鞋", english: "AMAZON OVERSEAS E-COMMERCE AD",
+    listingTitle: "亚马逊海外电商 · 洗鞋袋场景广告",
+    listingEnglish: "SHOE WASH BAG / OVERSEAS SOCIAL AD",
+    coverLabel: "OVERSEAS E-COMMERCE", category: "海外电商 / 家居清洁 / 场景演示",
+    group: "海外电商广告", year: "2026",
+    cover: asset("amazon-shoe-wash-poster.jpg"), coverFormat: "vertical",
+    media: "video", source: asset("amazon-shoe-wash.mp4"), portrait: true,
+    summary: "从家庭洗鞋难题切入，通过洗鞋袋装袋、机洗与清洁效果展示，串联生活情境、产品演示与英文行动引导。",
+    role: "海外电商广告创作", deliverable: "28 秒竖屏海外电商广告",
+  },
+  {
+    id: "lol-xiaomi-pengcheng", index: "24",
+    title: "英雄集结，一车全装", english: "LOL × XIAOMI PENGCHENG AI AD",
+    listingTitle: "LOL × 小米澎程汽车 AI 广告",
+    listingEnglish: "GAMING CHARACTERS / AUTOMOTIVE AI AD",
+    coverLabel: "AUTOMOTIVE AI FILM", category: "汽车创意 / 游戏角色 / AI 广告",
+    group: "汽车创意广告", year: "2026",
+    cover: asset("lol-xiaomi-pengcheng-poster.jpg"), coverFormat: "landscape",
+    media: "video", source: asset("lol-xiaomi-pengcheng.mp4"),
+    summary: "将 LOL 角色置入汽车体验场景，以角色互动、多人乘坐与后备厢装载演绎空间卖点，落到“7 人 7 箱，一车全装”的创意表达。",
+    role: "AI 广告创作", deliverable: "44 秒横屏汽车 AI 广告",
+  },
+  {
     id: "headphones",
     index: "01",
     title: "声场之外",
@@ -68,7 +92,7 @@ const projects: Project[] = [
     listingEnglish: "PREMIUM HEADPHONE PRODUCT FILM",
     coverLabel: "PRODUCT FILM",
     category: "AI 动态影像 / 产品广告",
-    group: "横屏商业广告",
+    group: "数码潮玩广告",
     year: "2026",
     cover: asset("hero-headphones-poster.jpg"),
     coverFormat: "landscape",
@@ -88,7 +112,7 @@ const projects: Project[] = [
     listingEnglish: "ORIGINAL MECHA TOY CONCEPT FILM",
     coverLabel: "CONCEPT FILM",
     category: "概念设计 / AI 广告",
-    group: "横屏商业广告",
+    group: "数码潮玩广告",
     year: "2026",
     cover: asset("mecha-toy-poster.jpg"),
     coverFormat: "landscape",
@@ -108,7 +132,7 @@ const projects: Project[] = [
     listingEnglish: "SHISHANJU HOMESTAY BRAND FILM",
     coverLabel: "BRAND FILM",
     category: "空间叙事 / 民宿广告",
-    group: "横屏商业广告",
+    group: "文旅空间影像",
     year: "2026",
     cover: asset("shishanju-poster.jpg"),
     coverFormat: "landscape",
@@ -268,7 +292,7 @@ const projects: Project[] = [
     listingEnglish: "PREMIUM LEGWEAR PRODUCT FILM",
     coverLabel: "FASHION FILM",
     category: "时尚产品 / 短视频广告",
-    group: "横屏商业广告",
+    group: "时尚生活广告",
     year: "2026",
     cover: asset("hosiery-poster.jpg"),
     coverFormat: "landscape",
@@ -287,7 +311,7 @@ const projects: Project[] = [
     listingEnglish: "GAME UA VERTICAL PERFORMANCE AD",
     coverLabel: "GAME UA CREATIVE",
     category: "游戏买量 / 效果广告",
-    group: "竖屏抖音爆款",
+    group: "游戏买量广告",
     year: "2026",
     cover: asset("game-wholesale-poster.jpg"),
     coverFormat: "vertical",
@@ -307,7 +331,7 @@ const projects: Project[] = [
     listingEnglish: "POWER BANK VERTICAL SOCIAL AD",
     coverLabel: "SOCIAL PRODUCT FILM",
     category: "数码产品 / 社交广告",
-    group: "竖屏抖音爆款",
+    group: "数码潮玩广告",
     year: "2026",
     cover: asset("power-bank-poster.jpg"),
     coverFormat: "vertical",
@@ -327,7 +351,7 @@ const projects: Project[] = [
     listingEnglish: "SNACK FOOD VERTICAL PERFORMANCE AD",
     coverLabel: "FOOD PERFORMANCE AD",
     category: "食品饮料 / 效果广告",
-    group: "竖屏抖音爆款",
+    group: "食品饮料广告",
     year: "2026",
     cover: asset("chicken-feet-poster.jpg"),
     coverFormat: "vertical",
@@ -366,7 +390,7 @@ const projects: Project[] = [
     listingEnglish: "RETRO HANDHELD VERTICAL PRODUCT AD",
     coverLabel: "SOCIAL PRODUCT FILM",
     category: "怀旧数码 / 产品广告",
-    group: "竖屏抖音爆款",
+    group: "数码潮玩广告",
     year: "2026",
     cover: asset("pocket-fighter-poster.jpg"),
     coverFormat: "vertical",
@@ -386,7 +410,7 @@ const projects: Project[] = [
     listingEnglish: "WILDERNESS TRAVEL MOOD FILM",
     coverLabel: "TRAVEL MOOD FILM",
     category: "文旅影像 / 人群适配",
-    group: "横屏商业广告",
+    group: "文旅空间影像",
     year: "2026",
     cover: asset("wilderness-journey-poster.jpg"),
     coverFormat: "landscape",
@@ -405,7 +429,7 @@ const projects: Project[] = [
     listingEnglish: "WARM FAMILY VERTICAL STORY FILM",
     coverLabel: "VERTICAL STORY FILM",
     category: "情感叙事 / 抖音短片",
-    group: "竖屏抖音爆款",
+    group: "情感叙事短片",
     year: "2026",
     cover: asset("warm-grandma-poster.jpg"),
     coverFormat: "vertical",
@@ -463,7 +487,7 @@ const projects: Project[] = [
     listingEnglish: "GREEN GRAPE SODA PRODUCT FILM",
     coverLabel: "BEVERAGE PRODUCT FILM",
     category: "食品饮料 / 产品广告",
-    group: "横屏商业广告",
+    group: "食品饮料广告",
     year: "2026",
     cover: asset("green-soda-poster.jpg"),
     coverFormat: "landscape",
@@ -482,7 +506,7 @@ const projects: Project[] = [
     listingEnglish: "DUMPLING BRAND IP FILM",
     coverLabel: "BRAND IP FILM",
     category: "品牌 IP / 动态广告",
-    group: "横屏商业广告",
+    group: "品牌 IP 动态",
     year: "2024",
     cover: asset("dumpling-brand-poster.jpg"),
     coverFormat: "landscape",
@@ -580,7 +604,7 @@ const workflows: Workflow[] = [
   },
 ];
 
-const filters: ProjectGroup[] = ["横屏商业广告", "竖屏抖音爆款", "自媒体资讯内容", "漫剧作品", "商业详情", "品牌全案", "平面设计"];
+const filters: ProjectGroup[] = ["海外电商广告", "汽车创意广告", "数码潮玩广告", "食品饮料广告", "时尚生活广告", "文旅空间影像", "游戏买量广告", "品牌 IP 动态", "情感叙事短片", "自媒体资讯内容", "漫剧作品", "商业详情", "品牌全案", "平面设计"];
 
 const readSessionValue = (key: string) => {
   try {
@@ -1304,6 +1328,8 @@ function CaseScene({ project }: { project: Project }) {
   );
 }
 
+const projectFormat = (project: Project) => project.media !== "video" ? "静态设计" : project.portrait ? "竖屏视频" : "横屏视频";
+
 function PortfolioHome() {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -1315,16 +1341,24 @@ function PortfolioHome() {
     const saved = readSessionValue("portfolio:filter") as ProjectGroup | null;
     return saved && filters.includes(saved) ? saved : filters[0];
   });
+  const [format, setFormat] = useState(() => {
+    if (typeof window === "undefined") return "全部形式";
+    const saved = readSessionValue("portfolio:format");
+    return saved && ["全部形式", "横屏视频", "竖屏视频", "静态设计"].includes(saved) ? saved : "全部形式";
+  });
+  const categoryProjects = projects.filter((project) => project.group === filter);
+  const availableFormats = ["全部形式", ...new Set(categoryProjects.map(projectFormat))];
+  const activeFormat = availableFormats.includes(format) ? format : "全部形式";
   const featuredProjects = projects.filter((project) => project.featured);
   const archiveProjects = useMemo(() => {
-    const filteredProjects = projects.filter((project) => project.group === filter);
+    const filteredProjects = projects.filter((project) => project.group === filter && (activeFormat === "全部形式" || projectFormat(project) === activeFormat));
     if (filter !== "商业详情") return filteredProjects;
 
     const detailOrder = ["shishanju-visual", "coldx-detail", "mouse-detail", "phone-detail"];
     return [...filteredProjects].sort(
       (first, second) => detailOrder.indexOf(first.id) - detailOrder.indexOf(second.id),
     );
-  }, [filter]);
+  }, [filter, activeFormat]);
 
   useEffect(() => {
     document.title = "罗天翔 — AIGC 视觉设计作品集";
@@ -1340,7 +1374,8 @@ function PortfolioHome() {
 
   useEffect(() => {
     writeSessionValue("portfolio:filter", filter);
-  }, [filter]);
+    writeSessionValue("portfolio:format", format);
+  }, [filter, format]);
 
   useEffect(() => {
     const sectionIds = ["profile", "work", "archive", "strengths", "contact"];
@@ -1461,11 +1496,11 @@ function PortfolioHome() {
         <video className="hero-video" src={asset("hero-headphones.mp4")} poster={asset("hero-headphones-poster.jpg")} autoPlay muted loop playsInline preload="metadata" />
         <div className="hero-shade" /><div className="hero-grid" aria-hidden="true" />
         <div className="hero-content shell">
-          <div className="hero-eyebrow"><span><i /> COMPLETE PORTFOLIO · 22 PROJECTS</span><span>PORTFOLIO / 2026</span></div>
+          <div className="hero-eyebrow"><span><i /> COMPLETE PORTFOLIO · {projects.length} PROJECTS</span><span>PORTFOLIO / 2026</span></div>
           <div className="hero-title-wrap"><p className="hero-role">罗天翔 · AIGC 设计师 / AI 视觉 / 商业影像</p><h1 className="motion-title">把想象<br /><em>设计成</em><br />真实</h1></div>
           <div className="hero-footer">
             <p>DESIGNING WHAT PEOPLE FEEL<br />BEFORE THEY READ.</p>
-            <div className="hero-disciplines"><span>15 FULL FILMS</span><span>28 PDF PAGES</span><span>5 COMPLETE ARTWORKS</span></div>
+            <div className="hero-disciplines"><span>{projects.filter((project) => project.media === "video").length} FULL FILMS</span><span>28 PDF PAGES</span><span>5 COMPLETE ARTWORKS</span></div>
             <a className="scroll-cue" href="#work"><span>VIEW ALL</span><i>↓</i></a>
           </div>
         </div>
@@ -1485,7 +1520,7 @@ function PortfolioHome() {
               <a className="resume-link" href={`${import.meta.env.BASE_URL}luo-tianxiang-resume.pdf?v=20260716-2`} target="_blank" rel="noreferrer">查看最新简历 PDF <Arrow /></a>
             </div>
           </div>
-          <div className="profile-stats"><div><strong>22</strong><span>完整项目<br />COMPLETE PROJECTS</span></div><div><strong>15</strong><span>动态影像<br />FULL FILMS</span></div><div><strong>28</strong><span>全案页面<br />PDF PAGES</span></div><div><strong>05</strong><span>完整视觉长图<br />FULL ARTWORKS</span></div></div>
+          <div className="profile-stats"><div><strong>{projects.length}</strong><span>完整项目<br />COMPLETE PROJECTS</span></div><div><strong>{projects.filter((project) => project.media === "video").length}</strong><span>动态影像<br />FULL FILMS</span></div><div><strong>28</strong><span>全案页面<br />PDF PAGES</span></div><div><strong>05</strong><span>完整视觉长图<br />FULL ARTWORKS</span></div></div>
         </div>
       </section>
 
@@ -1499,16 +1534,20 @@ function PortfolioHome() {
             <section className="archive" id="archive">
               <div className="archive-heading">
                 <div><p className="overline">PROJECT CATEGORIES / EVERY WORK INCLUDED</p><h2 className="motion-title">分类作品</h2></div>
-                <strong>22<sup>/22</sup></strong>
+                <strong>{archiveProjects.length}<sup>/{projects.length}</sup></strong>
               </div>
               <div className="archive-filters" role="group" aria-label="按类别筛选作品">
                 {filters.map((item) => (
-                  <button key={item} className={filter === item ? "active" : ""} aria-pressed={filter === item} onClick={() => setFilter(item)}>
+                  <button key={item} className={filter === item ? "active" : ""} aria-pressed={filter === item} onClick={() => { setFilter(item); setFormat("全部形式"); }}>
                     {item}<sup>{projects.filter((project) => project.group === item).length}</sup>
                   </button>
                 ))}
               </div>
-              <p className="sr-only" aria-live="polite">当前显示 {filter}，共 {archiveProjects.length} 个项目</p>
+              <div className="archive-formats" role="group" aria-label="按作品形式筛选">
+                <span>作品形式</span>
+                {availableFormats.map((item) => <button type="button" key={item} className={activeFormat === item ? "active" : ""} aria-pressed={activeFormat === item} onClick={() => setFormat(item)}>{item}</button>)}
+              </div>
+              <p className="archive-result" aria-live="polite">{filter} · {activeFormat} · {archiveProjects.length} 个项目</p>
               <div className="archive-grid">{archiveProjects.map((project) => <ArchiveCard key={project.id} project={project} />)}</div>
             </section>
           </div>

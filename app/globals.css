@@ -1707,3 +1707,10 @@ h1, h2, h3 { text-wrap: balance; }
   .case-intro { margin: 42px 0 0; }
   .case-intro > p { margin-bottom: 34px; font-size: 19px; line-height: 1.6; }
 }
+
+.archive-formats { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: -8px 0 18px; }
+.archive-formats > span { margin-right: 8px; color: #164f8e; font-size: 13px; }
+.archive-formats button { min-height: 44px; padding: 10px 16px; border: 1px solid #6084b7; background: transparent; color: #164f8e; cursor: pointer; font: inherit; font-size: 13px; }
+.archive-formats button.active, .archive-formats button:hover { background: #164f8e; color: white; }
+.archive-formats button:focus-visible, .archive-filters button:focus-visible { outline: 3px solid #0c50d7; outline-offset: 4px; }
+.archive-result { margin: 0 0 30px; color: #164f8e; font-size: 13px; }
