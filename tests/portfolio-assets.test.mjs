@@ -132,7 +132,6 @@ test("all 26 projects have an intentional cover orientation", () => {
   assert.equal(formats.filter((format) => format === "landscape").length, 16);
   assert.equal(formats.filter((format) => format === "portrait").length, 4);
   assert.equal(formats.filter((format) => format === "vertical").length, 6);
-  assert.ok(source.includes("project-${project.id}"), "Featured cards need stable project-specific classes");
   assert.ok(source.includes("archive-${project.id}"), "Archive cards need stable project-specific classes");
   assert.match(styles, /\.media-stage\.cover-landscape\s*\{[^}]*aspect-ratio:\s*16 \/ 9;/s);
   assert.match(styles, /\.media-stage\.cover-portrait\s*\{[^}]*aspect-ratio:\s*3 \/ 4;/s);
@@ -164,7 +163,7 @@ test("every card renders a visible editorial cover identity", () => {
   assert.ok(source.includes("<strong>{project.title}</strong>"), "Covers must show each project title");
   assert.ok(source.includes("<em>{project.english}</em>"), "Covers must show each English project name");
   assert.ok(source.includes("<small>{project.category}</small>"), "Covers must show each project category");
-  assert.equal((source.match(/<CoverIdentity project=\{project\} \/>/g) ?? []).length, 2, "Featured and archive cards both need cover identities");
+  assert.equal((source.match(/<CoverIdentity project=\{project\} \/>/g) ?? []).length, 1, "Archive cards need cover identities");
   assert.match(styles, /\.cover-identity\s*\{[^}]*background:\s*linear-gradient/s);
   assert.match(styles, /\.media-stage\.is-previewing \.cover-identity\s*\{[^}]*opacity:\s*0;/s);
 });

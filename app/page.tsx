@@ -23,7 +23,7 @@ type Project = {
   source?: string;
   pagePrefix?: string;
   pageCount?: number;
-  featured?: boolean;
+  productName?: string;
   long?: boolean;
   portrait?: boolean;
   position?: string;
@@ -61,14 +61,15 @@ const asset = (filename: string) => filename.endsWith(".mp4")
 const projects: Project[] = [
   {
     id: "amazon-shoe-wash", index: "23",
-    title: "轻松洗鞋", english: "AMAZON OVERSEAS E-COMMERCE AD",
-    listingTitle: "亚马逊海外电商 · 洗鞋袋场景广告",
-    listingEnglish: "SHOE WASH BAG / OVERSEAS SOCIAL AD",
-    coverLabel: "OVERSEAS E-COMMERCE", category: "海外电商 / 家居清洁 / 场景演示",
+    productName: "净步洗鞋袋",
+    title: "让日常焕新", english: "A FRESH START",
+    listingTitle: "净步洗鞋袋 · 让日常焕新",
+    listingEnglish: "CLEANSTEP / A FRESH START",
+    coverLabel: "CLEANSTEP / SHOE CARE", category: "海外电商 / 家居清洁 / 场景演示",
     group: "铺量广告", year: "2026",
     cover: asset("amazon-shoe-wash-poster.jpg"), coverFormat: "vertical",
     media: "video", source: asset("amazon-shoe-wash.mp4"), portrait: true,
-    summary: "从家庭洗鞋难题切入，通过洗鞋袋装袋、机洗与清洁效果展示，串联生活情境、产品演示与英文行动引导。",
+    summary: "为原创商品“净步洗鞋袋”设定海外电商场景，以家庭洗鞋难题切入，串联装袋、机洗与清洁效果展示，用生活情境和英文行动引导完成产品表达。",
     role: "海外电商广告创作", deliverable: "28 秒竖屏海外电商广告",
   },
   {
@@ -122,7 +123,6 @@ const projects: Project[] = [
     coverFormat: "landscape",
     media: "video",
     source: asset("hero-headphones.mp4"),
-    featured: true,
     summary: "以微距材质、精密结构与低照度氛围，建立高端头戴耳机的科技感与听觉想象。",
     role: "创意概念 · AI 视觉 · 动态剪辑",
     deliverable: "16 秒耳机品牌广告片",
@@ -142,7 +142,6 @@ const projects: Project[] = [
     coverFormat: "landscape",
     media: "video",
     source: asset("mecha-toy.mp4"),
-    featured: true,
     summary: "从原创机甲设定到战场叙事，用统一的机械语言完成角色、世界观与产品广告表达。",
     role: "世界观设定 · 视觉开发 · 成片",
     deliverable: "33 秒原创机甲广告片",
@@ -162,7 +161,6 @@ const projects: Project[] = [
     coverFormat: "landscape",
     media: "video",
     source: asset("shishanju.mp4"),
-    featured: true,
     summary: "以克制、温暖的东方生活感组织空间镜头，让一座民宿从建筑变成可被向往的旅居体验。",
     role: "视觉提案 · 场景生成 · 影片制作",
     deliverable: "23 秒品牌形象片",
@@ -181,7 +179,6 @@ const projects: Project[] = [
     cover: asset("phone-v2-hero.png"),
     coverFormat: "landscape",
     media: "image",
-    featured: true,
     position: "center top",
     summary: "围绕影像、性能与旗舰工艺重组信息层级，建立从首屏冲击到参数说服的完整电商叙事。",
     role: "视觉策略 · 页面设计 · AI 制图",
@@ -203,7 +200,6 @@ const projects: Project[] = [
     media: "pages",
     pagePrefix: "dumpling-ip",
     pageCount: 17,
-    featured: true,
     summary: "把亲切的社交语义转化成可识别、可延展的饺子 IP，覆盖品牌策略、角色、语言与传播应用。",
     role: "品牌策略 · IP 设计 · 应用延展",
     deliverable: "17 页品牌全案",
@@ -222,7 +218,6 @@ const projects: Project[] = [
     cover: asset("magazine-cover.webp"),
     coverFormat: "portrait",
     media: "image",
-    featured: true,
     long: true,
     position: "center 18%",
     summary: "以复古雕版、东方祝愿与当代版式构成高密度视觉封面，探索传统意象的现代转译。",
@@ -329,11 +324,12 @@ const projects: Project[] = [
   {
     id: "game-wholesale",
     index: "12",
-    title: "一键升级",
-    english: "GAME UA CREATIVE",
-    listingTitle: "游戏 UA 竖屏买量广告",
-    listingEnglish: "GAME UA VERTICAL PERFORMANCE AD",
-    coverLabel: "GAME UA CREATIVE",
+    productName: "余烬车队",
+    title: "向废土进发",
+    english: "INTO THE WASTELAND",
+    listingTitle: "余烬车队 · 向废土进发",
+    listingEnglish: "ASH CONVOY / INTO THE WASTELAND",
+    coverLabel: "ASH CONVOY / GAME FILM",
     category: "游戏买量 / 效果广告",
     group: "铺量广告",
     year: "2026",
@@ -342,18 +338,19 @@ const projects: Project[] = [
     media: "video",
     source: asset("game-wholesale.mp4"),
     portrait: true,
-    summary: "以直接冲突、即时反馈和升级爽点组织竖屏买量节奏，让信息在前三秒快速成立。",
+    summary: "以原创游戏“余烬车队”建立废土载具设定，将冲突、即时反馈与升级爽点融入竖屏节奏，突出车队进发与生存冒险的观看驱动力。",
     role: "买量创意 · 画面生成 · 剪辑",
     deliverable: "15 秒竖屏买量广告",
   },
   {
     id: "power-bank",
     index: "13",
-    title: "随身能量",
-    english: "POWER BANK SOCIAL AD",
-    listingTitle: "充电宝社交平台竖屏广告",
-    listingEnglish: "POWER BANK VERTICAL SOCIAL AD",
-    coverLabel: "SOCIAL PRODUCT FILM",
+    productName: "昼行随身电源",
+    title: "能量不打烊",
+    english: "POWER THROUGH THE DAY",
+    listingTitle: "昼行随身电源 · 能量不打烊",
+    listingEnglish: "DAYWALK / POWER THROUGH THE DAY",
+    coverLabel: "DAYWALK / PORTABLE POWER",
     category: "数码产品 / 社交广告",
     group: "铺量广告",
     year: "2026",
@@ -362,18 +359,19 @@ const projects: Project[] = [
     media: "video",
     source: asset("power-bank.mp4"),
     portrait: true,
-    summary: "以生活场景切入便携充电需求，用人物演示快速连接产品功能与真实使用情境。",
+    summary: "以原创商品“昼行随身电源”组织生活场景，通过人物演示连接便携充电需求与日常体验，形成轻快、直接的竖屏产品表达。",
     role: "脚本 · AI 人物 · 成片",
     deliverable: "15 秒竖屏产品广告",
   },
   {
     id: "chicken-feet",
     index: "14",
-    title: "一口上头",
-    english: "SNACK FOOD SHORT AD",
-    listingTitle: "一口上头 · 抖音竖屏铺量广告",
-    listingEnglish: "DOUYIN VERTICAL PERFORMANCE AD",
-    coverLabel: "FOOD PERFORMANCE AD",
+    productName: "椒醒柠檬凤爪",
+    title: "酸辣有回响",
+    english: "A TASTE THAT LINGERS",
+    listingTitle: "椒醒柠檬凤爪 · 酸辣有回响",
+    listingEnglish: "PEPPER WAKE / A TASTE THAT LINGERS",
+    coverLabel: "PEPPER WAKE / SNACK FILM",
     category: "抖音铺量 / 食品零食 / 效果广告",
     group: "铺量广告",
     year: "2026",
@@ -382,7 +380,7 @@ const projects: Project[] = [
     media: "video",
     source: asset("chicken-feet.mp4"),
     portrait: true,
-    summary: "以夸张人物反应、口味提示与产品特写形成高密度节奏，强化零食的即时诱惑。",
+    summary: "围绕原创商品“椒醒柠檬凤爪”，以人物反应、酸辣口味提示和产品特写组织高密度节奏，完成适合抖音竖屏传播的零食广告表达。",
     role: "创意脚本 · AI 表演 · 剪辑",
     deliverable: "15 秒竖屏食品广告",
   },
@@ -697,6 +695,7 @@ function CoverIdentity({ project }: { project: Project }) {
   return (
     <span className="cover-identity" aria-hidden="true">
       <span className="cover-kicker"><i>{coverTypeLabel(project)}</i><b>{project.year}</b></span>
+      {project.productName && <span className="cover-product">{project.productName}</span>}
       <strong>{project.title}</strong>
       <em>{project.english}</em>
       <small>{project.category}</small>
@@ -787,31 +786,6 @@ function CoverArtwork({
       )}
       <span className="media-preview-shade" aria-hidden="true" />
     </>
-  );
-}
-
-function ProjectCard({ project }: { project: Project }) {
-  const preview = useCoverPreview(project);
-  return (
-    <article className={`project-card project-${project.id} cover-${project.coverFormat} ${project.id === "headphones" ? "is-wide" : ""}`}>
-      <a
-        className={`project-media media-stage cover-${project.coverFormat} media-${project.media} ${project.long ? "is-long-artwork" : ""} ${preview.previewing ? "is-previewing" : ""}`}
-        href={`#case/${project.id}`}
-        onClick={rememberPortfolioPosition}
-        aria-label={`预览并查看完整项目：${project.title}`}
-        {...preview.previewEvents}
-      >
-        <CoverArtwork project={project} previewing={preview.previewing} videoRef={preview.videoRef} onCanPlay={preview.continuePlayback} />
-        <CoverIdentity project={project} />
-        <span className="media-frame-note" aria-hidden="true">{coverPreviewLabel(project, preview.previewing)}</span>
-        <span className="project-index">CASE / {project.index}</span>
-        <span className="open-project">VIEW COMPLETE CASE <Arrow /></span>
-      </a>
-      <div className="project-meta">
-        <div><h3>{project.listingTitle ?? project.title}</h3><p>{project.listingEnglish ?? project.english}</p></div>
-        <div><span>{project.category}</span><time>{project.year}</time></div>
-      </div>
-    </article>
   );
 }
 
@@ -1299,6 +1273,7 @@ function CaseScene({ project }: { project: Project }) {
           <dl>
             <div><dt>我的角色</dt><dd>{project.role}</dd></div>
             <div><dt>交付内容</dt><dd>{project.deliverable}</dd></div>
+            {project.productName && <div><dt>原创商品名称</dt><dd>{project.productName}</dd></div>}
             <div><dt>项目类型</dt><dd>{project.category}</dd></div>
           </dl>
         </div>
@@ -1355,7 +1330,7 @@ function CaseScene({ project }: { project: Project }) {
 function PortfolioHome() {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [activeSection, setActiveSection] = useState("work");
+  const [activeSection, setActiveSection] = useState("archive");
   const [wechatOpen, setWechatOpen] = useState(false);
   const wechatCloseRef = useRef<HTMLButtonElement>(null);
   const [filter, setFilter] = useState<ProjectGroup>(() => {
@@ -1363,7 +1338,6 @@ function PortfolioHome() {
     const saved = readSessionValue("portfolio:filter") as ProjectGroup | null;
     return saved && filters.includes(saved) ? saved : filters[0];
   });
-  const featuredProjects = projects.filter((project) => project.featured);
   const archiveProjects = useMemo(() => {
     const filteredProjects = projects.filter((project) => project.group === filter);
     if (filter !== "视觉与设计") return filteredProjects;
@@ -1391,7 +1365,7 @@ function PortfolioHome() {
   }, [filter]);
 
   useEffect(() => {
-    const sectionIds = ["profile", "work", "archive", "strengths", "contact"];
+    const sectionIds = ["profile", "archive", "strengths", "contact"];
     const sections = sectionIds
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => Boolean(section));
@@ -1402,7 +1376,7 @@ function PortfolioHome() {
       activeFrame = requestAnimationFrame(() => {
         activeFrame = 0;
         if (window.scrollY < window.innerHeight * .55) {
-          setActiveSection("work");
+          setActiveSection("archive");
           return;
         }
 
@@ -1491,18 +1465,17 @@ function PortfolioHome() {
       <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
         <div className="header-inner">
           <a className="brand" href="#top" aria-label="返回首页"><AvatarIdentity /></a>
-          <nav aria-label="主导航"><a className={activeSection === "work" ? "active" : ""} href="#work"><span>01</span> 精选</a><a className={activeSection === "archive" ? "active" : ""} href="#archive"><span>02</span> 分类作品</a><a className={activeSection === "strengths" ? "active" : ""} href="#strengths"><span>03</span> 优势</a><a className={activeSection === "profile" ? "active" : ""} href="#profile"><span>04</span> 关于</a></nav>
+          <nav aria-label="主导航"><a className={activeSection === "archive" ? "active" : ""} href="#archive"><span>01</span> 分类作品</a><a className={activeSection === "strengths" ? "active" : ""} href="#strengths"><span>02</span> 优势</a><a className={activeSection === "profile" ? "active" : ""} href="#profile"><span>03</span> 关于</a></nav>
           <a className="contact-pill" href="#contact">联系合作 <Arrow /></a>
         </div>
         <div className="page-progress" style={{ width: `${progress}%` }} />
       </header>
 
       <nav className="mobile-nav" aria-label="手机快捷导航">
-        <a className={activeSection === "work" ? "active" : ""} href="#work"><span>01</span>作品</a>
-        <a className={activeSection === "archive" ? "active" : ""} href="#archive"><span>02</span>分类</a>
-        <a className={activeSection === "strengths" ? "active" : ""} href="#strengths"><span>03</span>优势</a>
-        <a className={activeSection === "profile" ? "active" : ""} href="#profile"><span>04</span>关于</a>
-        <a className={activeSection === "contact" ? "active" : ""} href="#contact"><span>05</span>联系</a>
+        <a className={activeSection === "archive" ? "active" : ""} href="#archive"><span>01</span>作品</a>
+        <a className={activeSection === "strengths" ? "active" : ""} href="#strengths"><span>02</span>优势</a>
+        <a className={activeSection === "profile" ? "active" : ""} href="#profile"><span>03</span>关于</a>
+        <a className={activeSection === "contact" ? "active" : ""} href="#contact"><span>04</span>联系</a>
       </nav>
 
       <section className="hero" id="top">
@@ -1514,7 +1487,7 @@ function PortfolioHome() {
           <div className="hero-footer">
             <p>DESIGNING WHAT PEOPLE FEEL<br />BEFORE THEY READ.</p>
             <div className="hero-disciplines"><span>{projects.filter((project) => project.media === "video").length} FULL FILMS</span><span>28 PDF PAGES</span><span>5 COMPLETE ARTWORKS</span></div>
-            <a className="scroll-cue" href="#work"><span>VIEW ALL</span><i>↓</i></a>
+            <a className="scroll-cue" href="#archive"><span>VIEW ALL</span><i>↓</i></a>
           </div>
         </div>
         <div className="hero-side" aria-hidden="true">ART × TECHNOLOGY × BUSINESS</div>
@@ -1539,11 +1512,8 @@ function PortfolioHome() {
 
       <section className="work section" id="work">
         <div className="shell work-shell">
-          <div className="section-rail light"><span>02</span><p>SELECTED<br />WORKS</p></div>
+          <div className="section-rail light"><span>02</span><p>PORTFOLIO<br />WORKS</p></div>
           <div className="work-main">
-            <div className="work-heading"><div><p className="overline">CURATED PROJECTS / 2024—2026</p><h2 className="motion-title">精选项目</h2></div></div>
-            <div className="project-grid">{featuredProjects.map((project) => <ProjectCard key={project.id} project={project} />)}</div>
-
             <section className="archive" id="archive">
               <div className="archive-heading">
                 <div><p className="overline">PROJECT CATEGORIES / EVERY WORK INCLUDED</p><h2 className="motion-title">分类作品</h2></div>
@@ -1573,7 +1543,7 @@ function PortfolioHome() {
 
       <footer className="contact" id="contact">
         <div className="contact-grid" aria-hidden="true" />
-        <div className="contact-inner shell"><div className="contact-top"><span><i /> OPEN FOR COLLABORATION</span><span>LUO TIANXIANG / CHINA</span></div><div className="contact-title"><p>HAVE A PROJECT IN MIND?</p><h2 className="motion-title">让下一个想法<br /><em>成为真实作品</em></h2></div><div className="contact-actions"><a className="contact-email" href="mailto:1158190818@qq.com"><span>1158190818@QQ.COM</span><Arrow /></a><button type="button" className="wechat-contact" onClick={() => setWechatOpen(true)}><span><small>WECHAT</small>LTX</span><b>打开二维码 <Arrow /></b></button></div><div className="contact-bottom"><span>© 2026 罗天翔 · AIGC VISUAL DESIGNER</span><div><a href="#top">BACK TO TOP ↑</a><a href="#work">WORKS</a><a href="#strengths">CAPABILITIES</a></div><a href="tel:+8618229693585">+86 182 2969 3585</a></div></div>
+        <div className="contact-inner shell"><div className="contact-top"><span><i /> OPEN FOR COLLABORATION</span><span>LUO TIANXIANG / CHINA</span></div><div className="contact-title"><p>HAVE A PROJECT IN MIND?</p><h2 className="motion-title">让下一个想法<br /><em>成为真实作品</em></h2></div><div className="contact-actions"><a className="contact-email" href="mailto:1158190818@qq.com"><span>1158190818@QQ.COM</span><Arrow /></a><button type="button" className="wechat-contact" onClick={() => setWechatOpen(true)}><span><small>WECHAT</small>LTX</span><b>打开二维码 <Arrow /></b></button></div><div className="contact-bottom"><span>© 2026 罗天翔 · AIGC VISUAL DESIGNER</span><div><a href="#top">BACK TO TOP ↑</a><a href="#archive">WORKS</a><a href="#strengths">CAPABILITIES</a></div><a href="tel:+8618229693585">+86 182 2969 3585</a></div></div>
       </footer>
 
       {wechatOpen && (

@@ -1080,7 +1080,7 @@ body:has(a:hover, button:hover) ::selection { background: white; }
     min-height: 58px;
     padding: 5px;
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 3px;
     color: #bcecff;
     background: rgba(2, 18, 57, .97);
@@ -1719,3 +1719,6 @@ h1, h2, h3 { text-wrap: balance; }
 .archive-grid--masonry .archive-meta > span { display: none; }
 @media (max-width: 1100px) { .archive-grid--masonry { column-count: 2; } }
 @media (max-width: 700px) { .archive-grid--masonry { column-count: 1; } .archive-grid--masonry > .archive-card { margin-bottom: 28px; } }
+
+.work-main > .archive { margin-top: 0; padding-top: 0; border-top: 0; }
+.cover-product { display: block; margin-bottom: 8px; color: #eef8ff; font-size: 13px; font-weight: 700; letter-spacing: .08em; }
